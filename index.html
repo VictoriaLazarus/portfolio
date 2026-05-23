@@ -4,412 +4,653 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Victoria Lazarus — Technical Writer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <meta name="description" content="Technical Writer & Documentation Engineer specialising in developer docs, API writing, and content strategy." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
+ 
+<!-- CUSTOM CURSOR -->
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+ 
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay"></div>
+ 
+<!-- MOBILE MENU -->
+<nav class="mobile-menu">
+  <a href="#works">Works</a>
+  <a href="#experience">Experience</a>
+  <a href="#tools">Skills</a>
+  <a href="#recommendations">Recommendations</a>
+  <a href="https://eu.docworkspace.com/d/sIKXM7d-LAcqulMAG" target="_blank">My Resume</a>
+  <a href="mailto:vlazarus827@gmail.com">Contact</a>
+</nav>
+ 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Victoria Lazarus</a>
+  <a href="#" class="nav-logo">VL <span>✦</span></a>
   <ul class="nav-links">
     <li><a href="#works">Works</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#tools">Skills</a></li>
     <li><a href="#recommendations">Recommendations</a></li>
-    <li><a href="mailto:techcontentwithvicky@gmail.com">Contact</a></li>
+    <li><a href="mailto:vlazarus827@gmail.com" class="nav-cta">Contact</a></li>
   </ul>
+  <button class="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
-
-<!-- HERO -->
-<section class="hero" style="padding:0;">
-  <div class="hero-text" style="padding-top: calc(80px + 5%);">
+ 
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" id="home">
+  <div class="hero-text">
     <p class="hero-eyebrow">Technical Writer & Documentation Engineer</p>
-    <h1 class="hero-name">Hi, I'm<br><em>Victoria Lazarus</em></h1>
-    <p class="hero-bio">
-      With over five years of experience in the writing industry and three-plus years as a technical writer, I specialise in creating clear, user-focused content that bridges the gap between complex technical information and audience comprehension. My experience spans developer docs, user guides, instructional manuals, API docs, and tutorials that effectively communicate product features and functionalities. 
+ 
+    <p class="hero-greeting">
+      <span class="typing-text"></span><span class="cursor-blink"></span>, I'm
     </p>
+    <h1 class="hero-name"><em>Victoria Lazarus</em></h1>
+    <p class="hero-discipline">
+      Your <span class="discipline-word" style="transition: all 0.4s ease;">Technical Writer</span>
+    </p>
+ 
+    <p class="hero-bio">
+      With over five years of writing experience and three-plus years as a technical writer, I create clear, user-focused content that bridges complex technical information and audience comprehension — from API docs and developer guides to landing pages and content strategy.
+    </p>
+ 
     <div class="hero-cta">
       <a href="https://eu.docworkspace.com/d/sIKXM7d-LAcqulMAG" target="_blank" class="btn btn-primary">View My Resume</a>
-      <a href="mailto:techcontentwithvicky@gmail.com" class="btn btn-outline">Send a Mail</a>
+      <a href="#works" class="btn btn-outline">See My Work</a>
     </div>
+ 
     <div class="hero-socials">
       <a href="https://linkedin.com/in/victoria-lazarus" target="_blank" class="social-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
         LinkedIn
       </a>
       <a href="https://twitter.com/Toria_Oluchi" target="_blank" class="social-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
         Twitter
       </a>
       <a href="https://github.com/VictoriaLazarus" target="_blank" class="social-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
         GitHub
       </a>
       <a href="https://hashnode.com/@Vicisagem" target="_blank" class="social-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/></svg>
         Hashnode
       </a>
       <a href="https://www.linkedin.com/newsletters/dear-technical-writers-7169617343709491200" target="_blank" class="social-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Newsletter
       </a>
     </div>
   </div>
-
+ 
   <div class="hero-image-col">
-    
+    <!--
+      TO ADD YOUR PHOTO: replace the hero-photo-placeholder div below with:
+      <img src="your-photo.jpg" alt="Victoria Lazarus" class="hero-photo" />
+    -->
     <div class="hero-photo-placeholder">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#b5572a" stroke-width="1.2">
-        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-        <circle cx="12" cy="7" r="4"/>
+      <!-- Pen & Book illustration -->
+      <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Book -->
+        <rect x="30" y="80" width="100" height="75" rx="4" fill="#e8d5c4" stroke="#c45e2a" stroke-width="1.5"/>
+        <rect x="30" y="80" width="10" height="75" fill="#c9a84c" rx="2"/>
+        <line x1="55" y1="100" x2="120" y2="100" stroke="#c45e2a" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+        <line x1="55" y1="112" x2="120" y2="112" stroke="#c45e2a" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+        <line x1="55" y1="124" x2="100" y2="124" stroke="#c45e2a" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+        <line x1="55" y1="136" x2="110" y2="136" stroke="#c45e2a" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+        <!-- Pen -->
+        <g transform="rotate(-35, 120, 90)">
+          <rect x="108" y="40" width="14" height="65" rx="2" fill="#2a6b8c"/>
+          <polygon points="108,105 122,105 115,125" fill="#1a4f6a"/>
+          <rect x="108" y="40" width="14" height="12" rx="2" fill="#c9a84c"/>
+          <line x1="115" y1="118" x2="115" y2="125" stroke="#f0ebe0" stroke-width="1.5"/>
+        </g>
+        <!-- Stars -->
+        <text x="150" y="75" font-size="12" fill="#c45e2a" opacity="0.7">✦</text>
+        <text x="25" y="75" font-size="8" fill="#c9a84c" opacity="0.6">✦</text>
+        <text x="145" y="145" font-size="6" fill="#2a6b8c" opacity="0.5">✦</text>
       </svg>
-      <img src="images/victoria.jpg" alt="Victoria Lazarus"  class="hero-photo">
+      <p>Add your photo here — replace the placeholder in index.html with an &lt;img&gt; tag</p>
+    </div>
+ 
+    <!-- Decorative art bottom-right -->
+    <div class="hero-art">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+        <circle cx="40" cy="40" r="38" stroke="#c45e2a" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.4"/>
+        <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="28" opacity="0.5">✍🏽</text>
+      </svg>
     </div>
   </div>
 </section>
-
-<!-- WORKS -->
-<section id="works">
-  <div class="section-label">Portfolio</div>
+ 
+<!-- ══════════════ WORKS ══════════════ -->
+<section class="section-wrap" id="works">
+  <div class="section-tag">Portfolio</div>
   <h2 class="section-title fade-up">Featured <em>Works</em></h2>
-  <p class="works-intro fade-up">A selection of articles, tutorials, documentation, and pages I've written and built across different roles.</p>
-
-  <!-- Devart Technical Articles -->
+  <p class="section-sub fade-up">Articles, guides, documentation, and landing pages across databases, developer tools, and software.</p>
+ 
+  <!-- DATABASE, SQL & DEVELOPER TOOLS -->
   <div class="works-category fade-up">
-    <p class="works-category-title">Devart — Technical Articles & Guides</p>
+    <div class="category-header">
+      <span class="category-emoji">🗄️</span>
+      <span class="category-title">Database, SQL & Developer Tools</span>
+      <div class="category-line"></div>
+    </div>
     <div class="works-grid">
       <a href="https://blog.devart.com/datareader-vs-dataset-a-guide-to-connected-and-disconnected-data-access.html" target="_blank" class="work-card">
-        <p class="work-card-meta">Devart Blog · ADO.NET</p>
-        <p class="work-card-title">DataReader vs DataSet: A Guide to Connected and Disconnected Data Access</p>
+        <div class="work-card-img-placeholder">🔌</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Devart Blog <span>·</span> ADO.NET</p>
+          <p class="work-card-title">DataReader vs DataSet: A Guide to Connected and Disconnected Data Access</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
       <a href="https://blog.devart.com/c-equivalent-of-the-tinyint-data-type-in-sql.html" target="_blank" class="work-card">
-        <p class="work-card-meta">Devart Blog · C# / SQL</p>
-        <p class="work-card-title">C# Equivalent of the TinyInt Data Type in SQL</p>
-      </a>
-      <a href="https://blog.devart.com/mariadb-12-guide.html" target="_blank" class="work-card">
-        <p class="work-card-meta">Devart Blog · MariaDB</p>
-        <p class="work-card-title">MariaDB 12 Guide</p>
+        <div class="work-card-img-placeholder">⚙️</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Devart Blog <span>·</span> C# / SQL</p>
+          <p class="work-card-title">C# Equivalent of the TinyInt Data Type in SQL</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
       <a href="https://blog.devart.com/data-integrity-in-database.html" target="_blank" class="work-card">
-        <p class="work-card-meta">Devart Blog · Databases</p>
-        <p class="work-card-title">Data Integrity in Database</p>
-      </a>
-      <a href="https://blog.devart.com/entra-id-authentication.html" target="_blank" class="work-card">
-        <p class="work-card-meta">Devart Blog · Security</p>
-        <p class="work-card-title">Entra ID Authentication</p>
-      </a>
-      <a href="https://blog.devart.com/vector-database-explained-architecture-use-cases-examples.html" target="_blank" class="work-card">
-        <p class="work-card-meta">Devart Blog · Databases</p>
-        <p class="work-card-title">Vector Database Explained: Architecture, Use Cases & Examples</p>
-      </a>
-      <a href="https://blog.devart.com/how-to-use-ai-for-mysql.html" target="_blank" class="work-card">
-        <p class="work-card-meta">Devart Blog · AI / MySQL</p>
-        <p class="work-card-title">How to Use AI for MySQL</p>
+        <div class="work-card-img-placeholder">🛡️</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Devart Blog <span>·</span> Databases</p>
+          <p class="work-card-title">Data Integrity in Database</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
       <a href="https://blog.devart.com/sql-server-filtered-indexes.html" target="_blank" class="work-card">
-        <p class="work-card-meta">Devart Blog · SQL Server</p>
-        <p class="work-card-title">SQL Server Filtered Indexes</p>
+        <div class="work-card-img-placeholder">📊</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Devart Blog <span>·</span> SQL Server</p>
+          <p class="work-card-title">SQL Server Filtered Indexes</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="https://blog.devart.com/vector-database-explained-architecture-use-cases-examples.html" target="_blank" class="work-card">
+        <div class="work-card-img-placeholder">🧠</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Devart Blog <span>·</span> Databases</p>
+          <p class="work-card-title">Vector Database Explained: Architecture, Use Cases & Examples</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
       <a href="https://www.devart.com/blog/top-50-mysql-interview-questions-and-answers-for-every-skill-level.htm" target="_blank" class="work-card">
-        <p class="work-card-meta">Devart Blog · MySQL</p>
-        <p class="work-card-title">Top 50 MySQL Interview Questions and Answers for Every Skill Level</p>
-      </a>
-      <a href="https://www.devart.com/blog/top-tools-to-connect-your-analytics-and-data-visualization-platforms-with-zoho-crm.html" target="_blank" class="work-card">
-        <p class="work-card-meta">Devart Blog · Integrations</p>
-        <p class="work-card-title">Top Tools to Connect Analytics & Data Visualization Platforms with Zoho CRM</p>
+        <div class="work-card-img-placeholder">📋</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Devart Blog <span>·</span> MySQL</p>
+          <p class="work-card-title">Top 50 MySQL Interview Questions and Answers for Every Skill Level</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
     </div>
   </div>
-
-  <!-- Devart Product Pages -->
+ 
+  <!-- AI & EMERGING TECH -->
   <div class="works-category fade-up">
-    <p class="works-category-title">Devart — Product Documentation & Landing Pages</p>
+    <div class="category-header">
+      <span class="category-emoji">🤖</span>
+      <span class="category-title">AI & Emerging Technologies</span>
+      <div class="category-line"></div>
+    </div>
+    <div class="works-grid">
+      <a href="https://blog.devart.com/how-to-use-ai-for-mysql.html" target="_blank" class="work-card">
+        <div class="work-card-img-placeholder">🤖</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Devart Blog <span>·</span> AI / MySQL</p>
+          <p class="work-card-title">How to Use AI for MySQL</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="https://blog.devart.com/entra-id-authentication.html" target="_blank" class="work-card">
+        <div class="work-card-img-placeholder">🔐</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Devart Blog <span>·</span> Security</p>
+          <p class="work-card-title">Entra ID Authentication</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="https://blog.devart.com/mariadb-12-guide.html" target="_blank" class="work-card">
+        <div class="work-card-img-placeholder">📘</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Devart Blog <span>·</span> MariaDB</p>
+          <p class="work-card-title">MariaDB 12 Guide</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+    </div>
+  </div>
+ 
+  <!-- PRODUCT PAGES & LANDING PAGES -->
+  <div class="works-category fade-up">
+    <div class="category-header">
+      <span class="category-emoji">🌐</span>
+      <span class="category-title">Product Pages & Landing Pages</span>
+      <div class="category-line"></div>
+    </div>
     <div class="works-grid">
       <a href="https://www.devart.com/dbforge/best-sql-text-editors.html" target="_blank" class="work-card">
-        <p class="work-card-meta">dbForge · Product Page</p>
-        <p class="work-card-title">Best SQL Text Editors</p>
+        <div class="work-card-img-placeholder">🖊️</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">dbForge <span>·</span> Product Page</p>
+          <p class="work-card-title">Best SQL Text Editors</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
       <a href="https://www.devart.com/dbforge/best-sql-server-tools.html" target="_blank" class="work-card">
-        <p class="work-card-meta">dbForge · Product Page</p>
-        <p class="work-card-title">Best SQL Server Tools</p>
+        <div class="work-card-img-placeholder">🛠️</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">dbForge <span>·</span> Product Page</p>
+          <p class="work-card-title">Best SQL Server Tools</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="https://www.devart.com/blog/top-tools-to-connect-your-analytics-and-data-visualization-platforms-with-zoho-crm.html" target="_blank" class="work-card">
+        <div class="work-card-img-placeholder">📈</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Devart Blog <span>·</span> Integrations</p>
+          <p class="work-card-title">Top Tools to Connect Analytics Platforms with Zoho CRM</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
     </div>
   </div>
-
-  <!-- Getting Started Guides -->
+ 
+  <!-- TUTORIALS & HOW-TOS -->
   <div class="works-category fade-up">
-    <p class="works-category-title">Getting Started Guides</p>
-    <div class="works-grid">
-      <a href="https://vickylazarus.hashnode.dev/getting-started-with-markdown-a-step-by-step-guide" target="_blank" class="work-card">
-        <p class="work-card-meta">Hashnode · Feb 2023 · 6 min</p>
-        <p class="work-card-title">Getting Started with Markdown: A Step-by-Step Guide</p>
-      </a>
-      <a href="https://vickylazarus.hashnode.dev/understanding-html-as-a-beginner" target="_blank" class="work-card">
-        <p class="work-card-meta">Hashnode · Oct 2023 · 8 min</p>
-        <p class="work-card-title">Understanding HTML as a Beginner</p>
-      </a>
-      <a href="https://vickylazarus.hashnode.dev/understanding-the-div-element-in-html-and-how-it-works" target="_blank" class="work-card">
-        <p class="work-card-meta">Hashnode · Nov 2023 · 7 min</p>
-        <p class="work-card-title">Understanding the HTML Div Element and How It Works</p>
-      </a>
+    <div class="category-header">
+      <span class="category-emoji">📖</span>
+      <span class="category-title">Tutorials & How-Tos</span>
+      <div class="category-line"></div>
     </div>
-  </div>
-
-  <!-- Tutorials -->
-  <div class="works-category fade-up">
-    <p class="works-category-title">Tutorials & How-Tos</p>
     <div class="works-grid">
       <a href="https://vickylazarus.hashnode.dev/dark-mode-toggle-with-css-html-and-javascript-a-complete-guide" target="_blank" class="work-card">
-        <p class="work-card-meta">Hashnode · Feb 2025 · 6 min</p>
-        <p class="work-card-title">Dark Mode Toggle with CSS, HTML, and JavaScript: A Complete Guide</p>
+        <div class="work-card-img-placeholder">🌙</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Hashnode <span>·</span> Feb 2025 · 6 min</p>
+          <p class="work-card-title">Dark Mode Toggle with CSS, HTML, and JavaScript: A Complete Guide</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
       <a href="https://vickylazarus.hashnode.dev/mastering-git-and-github-from-beginner-to-pro-part-1" target="_blank" class="work-card">
-        <p class="work-card-meta">Hashnode · Jan 2024 · 11 min</p>
-        <p class="work-card-title">Mastering Git and GitHub: From Beginner to Pro (Part 1)</p>
+        <div class="work-card-img-placeholder">🐙</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Hashnode <span>·</span> Jan 2024 · 11 min</p>
+          <p class="work-card-title">Mastering Git and GitHub: From Beginner to Pro (Part 1)</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
       <a href="https://vickylazarus.hashnode.dev/how-to-create-the-youtube-subscribe-button-with-html-and-css" target="_blank" class="work-card">
-        <p class="work-card-meta">Hashnode · May 2023 · 8 min</p>
-        <p class="work-card-title">How to Create the YouTube SUBSCRIBE Button With HTML and CSS</p>
+        <div class="work-card-img-placeholder">▶️</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Hashnode <span>·</span> May 2023 · 8 min</p>
+          <p class="work-card-title">How to Create the YouTube SUBSCRIBE Button With HTML and CSS</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
     </div>
   </div>
-
-  <!-- Developer Documentation -->
+ 
+  <!-- GETTING STARTED GUIDES -->
   <div class="works-category fade-up">
-    <p class="works-category-title">Developer Documentation</p>
+    <div class="category-header">
+      <span class="category-emoji">🪜</span>
+      <span class="category-title">Getting Started Guides</span>
+      <div class="category-line"></div>
+    </div>
+    <div class="works-grid">
+      <a href="https://vickylazarus.hashnode.dev/getting-started-with-markdown-a-step-by-step-guide" target="_blank" class="work-card">
+        <div class="work-card-img-placeholder">#️⃣</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Hashnode <span>·</span> Feb 2023 · 6 min</p>
+          <p class="work-card-title">Getting Started with Markdown: A Step-by-Step Guide</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="https://vickylazarus.hashnode.dev/understanding-html-as-a-beginner" target="_blank" class="work-card">
+        <div class="work-card-img-placeholder">🌐</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Hashnode <span>·</span> Oct 2023 · 8 min</p>
+          <p class="work-card-title">Understanding HTML as a Beginner</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="https://vickylazarus.hashnode.dev/understanding-the-div-element-in-html-and-how-it-works" target="_blank" class="work-card">
+        <div class="work-card-img-placeholder">📦</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Hashnode <span>·</span> Nov 2023 · 7 min</p>
+          <p class="work-card-title">Understanding the HTML Div Element and How It Works</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+    </div>
+  </div>
+ 
+  <!-- DEVELOPER DOCUMENTATION -->
+  <div class="works-category fade-up">
+    <div class="category-header">
+      <span class="category-emoji">👨🏽‍💻</span>
+      <span class="category-title">Developer Documentation</span>
+      <div class="category-line"></div>
+    </div>
     <div class="works-grid">
       <a href="https://vickylazarus.hashnode.dev/2-simple-ways-to-run-your-javascript-code" target="_blank" class="work-card">
-        <p class="work-card-meta">Hashnode · Jan 2025 · 4 min</p>
-        <p class="work-card-title">2 Simple Ways to Run Your JavaScript Code</p>
+        <div class="work-card-img-placeholder">⚡</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Hashnode <span>·</span> Jan 2025 · 4 min</p>
+          <p class="work-card-title">2 Simple Ways to Run Your JavaScript Code</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
       <a href="https://docs.google.com/document/d/1j-vExrN6bG_XyEwI40XGo4tX7BstQIacF11Pl_gF3k8/edit?tab=t.0" target="_blank" class="work-card">
-        <p class="work-card-meta">Google Docs · Mar 2025 · 13 min</p>
-        <p class="work-card-title">How to Insert Data into an Oracle Database from an ASP.NET Web Application</p>
+        <div class="work-card-img-placeholder">🗃️</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">Google Docs <span>·</span> Mar 2025 · 13 min</p>
+          <p class="work-card-title">How to Insert Data into an Oracle Database from an ASP.NET Web Application</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
     </div>
   </div>
-
-  <!-- API Documentation -->
+ 
+  <!-- API DOCUMENTATION -->
   <div class="works-category fade-up">
-    <p class="works-category-title">API Documentation</p>
+    <div class="category-header">
+      <span class="category-emoji">📄</span>
+      <span class="category-title">API Documentation</span>
+      <div class="category-line"></div>
+    </div>
     <div class="works-grid">
       <a href="#" class="work-card">
-        <p class="work-card-meta">AltexSoft · Feb 2025 · 10 min</p>
-        <p class="work-card-title">Amadeus NDC API Implementation Guide</p>
+        <div class="work-card-img-placeholder">✈️</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">AltexSoft <span>·</span> Feb 2025 · 10 min</p>
+          <p class="work-card-title">Amadeus NDC API Implementation Guide</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
       <a href="#" class="work-card">
-        <p class="work-card-meta">AltexSoft · Feb 2025 · 8 min</p>
-        <p class="work-card-title">Amadeus Enterprise Hotel API Integration</p>
+        <div class="work-card-img-placeholder">🏨</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">AltexSoft <span>·</span> Feb 2025 · 8 min</p>
+          <p class="work-card-title">Amadeus Enterprise Hotel API Integration</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
       <a href="#" class="work-card">
-        <p class="work-card-meta">AltexSoft · Feb 2025 · 13 min</p>
-        <p class="work-card-title">Amadeus Flight API Implementation Guide</p>
+        <div class="work-card-img-placeholder">🛫</div>
+        <div class="work-card-body">
+          <p class="work-card-meta">AltexSoft <span>·</span> Feb 2025 · 13 min</p>
+          <p class="work-card-title">Amadeus Flight API Implementation Guide</p>
+        </div>
+        <div class="work-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </a>
     </div>
   </div>
 </section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-label">Career</div>
+ 
+<!-- ══════════════ EXPERIENCE ══════════════ -->
+<section class="section-wrap alt" id="experience">
+  <div class="section-tag">Career</div>
   <h2 class="section-title fade-up">Where I've <em>Grown</em></h2>
-
-  <div class="experience-list">
-
+  <p class="section-sub fade-up">A journey through roles that shaped my craft in technical communication.</p>
+ 
+  <div class="exp-list">
     <div class="exp-item fade-up">
-      <div class="exp-meta">
+      <div>
         <p class="exp-period">Jan 2026 – May 2026</p>
-        <p class="exp-company">Devart · Remote</p>
+        <div class="exp-company-row">
+          <span class="exp-company-name">Devart · Remote</span>
+        </div>
       </div>
-      <div class="exp-content">
+      <div>
         <p class="exp-role">Technical Writer (Documentation Engineer)</p>
         <ul class="exp-bullets">
-          <li>Worked as part of the Site Team to create, update, and build technical and developer marketing-focused documentation across multiple database management products using a docs-as-code workflow.</li>
-          <li>Developed and maintained product documentation for dbForge IDEs and dotConnect software, ensuring clarity, consistency, and user-focused structure.</li>
-          <li>Managed website layout updates and content publishing using Git, Sourcetree, Docker, CLI, and Visual Studio in a docs-as-code environment.</li>
-          <li>Structured and created landing pages for dbForge IDEs and .NET data providers (dotConnect), combining technical accuracy with SEO and conversion-focused content.</li>
-          <li>Created customer success stories and case studies highlighting real-world product value and user outcomes.</li>
-          <li>Collaborated cross-functionally with developers, designers, marketers, and product stakeholders in an Agile environment using Jira for sprint planning and task tracking.</li>
+          <li>Built and maintained technical and developer marketing-focused documentation across multiple database products using a docs-as-code workflow.</li>
+          <li>Developed product documentation for dbForge IDEs and dotConnect software, ensuring clarity, consistency, and user-focused structure.</li>
+          <li>Managed website layout updates and content publishing using Git, Sourcetree, Docker, CLI, and Visual Studio.</li>
+          <li>Created landing pages for dbForge IDEs and .NET data providers, combining technical accuracy with SEO and conversion-focused content.</li>
+          <li>Produced customer success stories and case studies highlighting real-world product value.</li>
+          <li>Collaborated cross-functionally with developers, designers, and product stakeholders in an Agile environment via Jira.</li>
         </ul>
       </div>
     </div>
-
+ 
     <div class="exp-item fade-up">
-      <div class="exp-meta">
+      <div>
         <p class="exp-period">Apr 2025 – Jan 2026</p>
-        <p class="exp-company">Devart · Remote</p>
+        <div class="exp-company-row">
+          <span class="exp-company-name">Devart · Remote</span>
+        </div>
       </div>
-      <div class="exp-content">
+      <div>
         <p class="exp-role">Technical Content Writer</p>
         <ul class="exp-bullets">
-          <li>Created developer-focused marketing and technical content for Devart's database tools and connectivity solutions, with strong focus on usability, product education, and search visibility.</li>
-          <li>Produced product guides, tutorials, and technical walkthroughs for dbForge IDEs and dotConnect (.NET data providers) for Visual Studio.</li>
-          <li>Authored release notes and update announcements clearly communicating new features, enhancements, bug fixes, and product improvements.</li>
-          <li>Managed and published web content using WordPress, ensuring proper formatting, internal linking, and SEO optimisation.</li>
-          <li>Researched industry trends, developer pain points, and product use cases to create relevant, high-value technical content.</li>
+          <li>Created developer-focused content for Devart's database tools and connectivity solutions, focusing on product education and search visibility.</li>
+          <li>Produced product guides, tutorials, and technical walkthroughs for dbForge IDEs and dotConnect for Visual Studio.</li>
+          <li>Authored release notes clearly communicating new features, enhancements, and bug fixes.</li>
+          <li>Managed web content via WordPress with proper formatting, internal linking, and SEO optimisation.</li>
+          <li>Researched developer pain points and product use cases to create relevant, high-value content.</li>
         </ul>
       </div>
     </div>
-
+ 
     <div class="exp-item fade-up">
-      <div class="exp-meta">
+      <div>
         <p class="exp-period">Jun 2024 – Dec 2024</p>
-        <p class="exp-company">AltexSoft</p>
+        <div class="exp-company-row">
+          <span class="exp-company-name">AltexSoft</span>
+        </div>
       </div>
-      <div class="exp-content">
+      <div>
         <p class="exp-role">Technical Writer</p>
         <ul class="exp-bullets">
-          <li>Conducted research and interviews with industry experts to create comprehensive API documentation that improved operational efficiency by 25%.</li>
-          <li>Leveraged REST/SOAP APIs, JSON, and XML to produce accurate, developer-facing content.</li>
-          <li>Collaborated with technical teams to align documentation with project goals, using Draw.io for visual aids.</li>
-          <li>Delivered presentations that enhanced engineers' understanding by 15%.</li>
+          <li>Created comprehensive API documentation that improved operational efficiency by 25% through expert research and interviews.</li>
+          <li>Leveraged REST/SOAP APIs, JSON, and XML to produce accurate developer-facing content.</li>
+          <li>Used Draw.io for visual aids; delivered presentations that enhanced team understanding by 15%.</li>
         </ul>
       </div>
     </div>
-
+ 
     <div class="exp-item fade-up">
-      <div class="exp-meta">
+      <div>
         <p class="exp-period">Mar 2023 – Present</p>
-        <p class="exp-company">Hashnode</p>
+        <div class="exp-company-row">
+          <span class="exp-company-name">Hashnode</span>
+        </div>
       </div>
-      <div class="exp-content">
+      <div>
         <p class="exp-role">Technical Blogger</p>
         <ul class="exp-bullets">
-          <li>Create and publish technical blog posts simplifying complex topics for developers and tech enthusiasts.</li>
-          <li>Write tutorials, how-to guides, and personal insights covering tools, workflows, and industry trends.</li>
-          <li>Use clear, concise language and practical examples to support learning within the developer community.</li>
+          <li>Create and publish technical blog posts that simplify complex topics for developers and tech enthusiasts.</li>
+          <li>Write tutorials, how-to guides, and insights covering tools, workflows, and industry trends.</li>
         </ul>
       </div>
     </div>
-
+ 
     <div class="exp-item fade-up">
-      <div class="exp-meta">
+      <div>
         <p class="exp-period">Dec 2020 – May 2024</p>
-        <p class="exp-company">Kominiti</p>
+        <div class="exp-company-row">
+          <span class="exp-company-name">Kominiti</span>
+        </div>
       </div>
-      <div class="exp-content">
+      <div>
         <p class="exp-role">Content / Technical Writer</p>
         <ul class="exp-bullets">
-          <li>Optimised product communication strategies, leading to a promotion and significant improvements in user experience by collaborating with cross-functional teams and resolving over 1,000 issues.</li>
+          <li>Optimised product communication, resolving over 1,000 issues and earning a promotion through cross-functional collaboration.</li>
           <li>Developed instructional content that reduced bug fixes by 50%.</li>
-          <li>Contributed to campaigns that increased platform users by 5,000 while reducing bounce rates by 30%.</li>
+          <li>Contributed to campaigns increasing platform users by 5,000 while reducing bounce rates by 30%.</li>
         </ul>
       </div>
     </div>
-
+ 
     <div class="exp-item fade-up">
-      <div class="exp-meta">
+      <div>
         <p class="exp-period">Feb 2021 – Dec 2022</p>
-        <p class="exp-company">Xeroseeker.com</p>
+        <div class="exp-company-row">
+          <span class="exp-company-name">Xeroseeker.com</span>
+        </div>
       </div>
-      <div class="exp-content">
+      <div>
         <p class="exp-role">Content Writer</p>
         <ul class="exp-bullets">
-          <li>Developed engaging content tailored to job seekers, employers, and recruitment professionals — including blog posts, website copy, job descriptions, and social media content.</li>
-          <li>Collaborated with recruiters and marketing teams to align content with brand messaging and strengthen employer branding.</li>
+          <li>Developed engaging content for job seekers, employers, and recruitment professionals — blog posts, website copy, job descriptions, and social media.</li>
+          <li>Collaborated with marketing teams to align content with brand messaging and strengthen employer branding.</li>
         </ul>
       </div>
     </div>
-
   </div>
 </section>
-
-<!-- TOOLS -->
-<section id="tools">
-  <div class="section-label">Skills</div>
+ 
+<!-- ══════════════ TOOLS ══════════════ -->
+<section class="section-wrap" id="tools" style="padding-bottom: 0; overflow: hidden;">
+  <div class="section-tag">Skills</div>
   <h2 class="section-title fade-up">Tools I <em>Geek Out On</em></h2>
-  <div class="tools-grid fade-up">
-    <span class="tool-tag">HTML</span>
-    <span class="tool-tag">CSS</span>
-    <span class="tool-tag">JavaScript</span>
-    <span class="tool-tag">Markdown</span>
-    <span class="tool-tag">Git</span>
-    <span class="tool-tag">GitHub</span>
-    <span class="tool-tag">Sourcetree</span>
-    <span class="tool-tag">Docker</span>
-    <span class="tool-tag">.NET</span>
-    <span class="tool-tag">C#</span>
-    <span class="tool-tag">SQL</span>
-    <span class="tool-tag">Oracle Database</span>
-    <span class="tool-tag">Microsoft SQL</span>
-    <span class="tool-tag">REST API</span>
-    <span class="tool-tag">SOAP API</span>
-    <span class="tool-tag">JSON</span>
-    <span class="tool-tag">XML</span>
-    <span class="tool-tag">Postman</span>
-    <span class="tool-tag">VS Code</span>
-    <span class="tool-tag">Visual Studio</span>
-    <span class="tool-tag">WordPress</span>
-    <span class="tool-tag">Jira</span>
-    <span class="tool-tag">Draw.io</span>
-    <span class="tool-tag">Snagit</span>
-    <span class="tool-tag">Google Office</span>
-    <span class="tool-tag">Microsoft Office</span>
-    <span class="tool-tag">SEO Tools</span>
-    <span class="tool-tag">Docs-as-Code</span>
+  <p class="section-sub fade-up">Technologies and tools I work with every day.</p>
+ 
+  <div class="tools-scroll-wrap" style="padding: 2rem 0 4rem; border-top: 1px solid var(--border);">
+    <div class="tools-track">
+      <!-- Row 1 -->
+      <div class="tool-item"><span class="tool-icon">📝</span> HTML</div>
+      <div class="tool-item"><span class="tool-icon">🎨</span> CSS</div>
+      <div class="tool-item"><span class="tool-icon">⚡</span> JavaScript</div>
+      <div class="tool-item"><span class="tool-icon">#️⃣</span> Markdown</div>
+      <div class="tool-item"><span class="tool-icon">🌿</span> Git</div>
+      <div class="tool-item"><span class="tool-icon">🐙</span> GitHub</div>
+      <div class="tool-item"><span class="tool-icon">🌳</span> Sourcetree</div>
+      <div class="tool-item"><span class="tool-icon">🐳</span> Docker</div>
+      <div class="tool-item"><span class="tool-icon">🔷</span> .NET</div>
+      <div class="tool-item"><span class="tool-icon">⚙️</span> C#</div>
+      <div class="tool-item"><span class="tool-icon">🗄️</span> SQL</div>
+      <div class="tool-item"><span class="tool-icon">🔶</span> Oracle Database</div>
+      <div class="tool-item"><span class="tool-icon">🗃️</span> Microsoft SQL</div>
+      <div class="tool-item"><span class="tool-icon">🔌</span> REST API</div>
+      <div class="tool-item"><span class="tool-icon">📡</span> SOAP API</div>
+      <div class="tool-item"><span class="tool-icon">📦</span> JSON</div>
+      <div class="tool-item"><span class="tool-icon">🏷️</span> XML</div>
+      <div class="tool-item"><span class="tool-icon">📬</span> Postman</div>
+      <div class="tool-item"><span class="tool-icon">💻</span> VS Code</div>
+      <div class="tool-item"><span class="tool-icon">🖥️</span> Visual Studio</div>
+      <div class="tool-item"><span class="tool-icon">🌐</span> WordPress</div>
+      <div class="tool-item"><span class="tool-icon">📋</span> Jira</div>
+      <div class="tool-item"><span class="tool-icon">🗺️</span> Draw.io</div>
+      <div class="tool-item"><span class="tool-icon">📸</span> Snagit</div>
+      <div class="tool-item"><span class="tool-icon">📊</span> SEO Tools</div>
+      <div class="tool-item"><span class="tool-icon">🔄</span> Docs-as-Code</div>
+      <!-- Duplicate for infinite scroll -->
+      <div class="tool-item"><span class="tool-icon">📝</span> HTML</div>
+      <div class="tool-item"><span class="tool-icon">🎨</span> CSS</div>
+      <div class="tool-item"><span class="tool-icon">⚡</span> JavaScript</div>
+      <div class="tool-item"><span class="tool-icon">#️⃣</span> Markdown</div>
+      <div class="tool-item"><span class="tool-icon">🌿</span> Git</div>
+      <div class="tool-item"><span class="tool-icon">🐙</span> GitHub</div>
+      <div class="tool-item"><span class="tool-icon">🌳</span> Sourcetree</div>
+      <div class="tool-item"><span class="tool-icon">🐳</span> Docker</div>
+      <div class="tool-item"><span class="tool-icon">🔷</span> .NET</div>
+      <div class="tool-item"><span class="tool-icon">⚙️</span> C#</div>
+      <div class="tool-item"><span class="tool-icon">🗄️</span> SQL</div>
+      <div class="tool-item"><span class="tool-icon">🔶</span> Oracle Database</div>
+      <div class="tool-item"><span class="tool-icon">🗃️</span> Microsoft SQL</div>
+      <div class="tool-item"><span class="tool-icon">🔌</span> REST API</div>
+      <div class="tool-item"><span class="tool-icon">📡</span> SOAP API</div>
+      <div class="tool-item"><span class="tool-icon">📦</span> JSON</div>
+      <div class="tool-item"><span class="tool-icon">🏷️</span> XML</div>
+      <div class="tool-item"><span class="tool-icon">📬</span> Postman</div>
+      <div class="tool-item"><span class="tool-icon">💻</span> VS Code</div>
+      <div class="tool-item"><span class="tool-icon">🖥️</span> Visual Studio</div>
+      <div class="tool-item"><span class="tool-icon">🌐</span> WordPress</div>
+      <div class="tool-item"><span class="tool-icon">📋</span> Jira</div>
+      <div class="tool-item"><span class="tool-icon">🗺️</span> Draw.io</div>
+      <div class="tool-item"><span class="tool-icon">📸</span> Snagit</div>
+      <div class="tool-item"><span class="tool-icon">📊</span> SEO Tools</div>
+      <div class="tool-item"><span class="tool-icon">🔄</span> Docs-as-Code</div>
+    </div>
   </div>
 </section>
-
-<!-- RECOMMENDATIONS -->
-<section id="recommendations">
-  <div class="section-label">Testimonials</div>
+ 
+<!-- ══════════════ RECOMMENDATIONS ══════════════ -->
+<section class="section-wrap alt" id="recommendations">
+  <div class="section-tag">Testimonials</div>
   <h2 class="section-title fade-up">What People <em>Say</em></h2>
+  <p class="section-sub fade-up">Feedback from managers and collaborators I've worked closely with.</p>
+ 
   <div class="recs-grid">
-
     <div class="rec-card fade-up">
-      <span class="rec-quote-mark">"</span>
+      <span class="rec-quote">"</span>
       <p class="rec-text">
         She's reliable, polite, diligent, and genuinely easy to work with. She was quick to grasp our rather complex workflow and keep up with the pace of our work. She was essential to our team at all times. And of course, she's a pro writer whose contributions proved invaluable. I would always be glad to work with her again and I highly recommend her to any team looking for a skilled and smart tech writer.
       </p>
-      <p class="rec-author-name">Valentine Mostsevoy</p>
-      <p class="rec-author-role">Technical Writer, Devart · Direct Manager</p>
-      <p class="rec-date">May 2026</p>
+      <div class="rec-author">
+        <div class="rec-avatar">VM</div>
+        <div>
+          <p class="rec-author-name">Valentine Mostsevoy</p>
+          <p class="rec-author-role">Technical Writer, Devart · Direct Manager</p>
+          <p class="rec-date">May 2026</p>
+        </div>
+      </div>
     </div>
-
+ 
     <div class="rec-card fade-up">
-      <span class="rec-quote-mark">"</span>
+      <span class="rec-quote">"</span>
       <p class="rec-text">
-        Dear Hiring Manager, <br />
-
-I am pleased to recommend Victoria Lazarus, who worked with me at Devart as a technical content writer from April 2025 through May 2026.
-
-In my role as Product Experience Manager at Devart, I am responsible for validating and reviewing technical content produced for our database-related products, including dbForge IDEs and our .NET data providers (dotConnect) for Visual Studio. This content must be more than well-written – it requires a working understanding of database technologies, ADO.NET, SQL dialects, and the ability to produce accurate code samples, scripts, and practical examples that developers will actually rely on.
-
-Over the course of our collaboration, Victoria authored more than a dozen technical articles across a wide range of topics, including ADO.NET data access patterns, release guides for new database versions, comparative guides on data connectivity products, authentication and security, database change management, and emerging topics. The breadth of these subjects speaks to her ability to quickly absorb unfamiliar technical material and translate it into clear, accurate, developer-facing content.
-
-The quality of her work was consistently high. My reviews typically required only minor, targeted edits rather than substantial rewrites – which is uncommon for technical content of this complexity. She was receptive to feedback, incorporated suggestions thoughtfully, and steadily improved depth and clarity over time. Her articles were well-structured, technically sound, and aligned with our editorial standards from early in our work together.
-
-Beyond the writing itself, Victoria was reliable on deadlines, delivering every assignment within the agreed-upon estimates, and a genuine pleasure to work with – communicative, collaborative, and professional throughout. She required minimal supervision and could be trusted to take a topic brief and return polished, publication-ready material.
-
-I would gladly work with her again, and I recommend her without reservation for roles requiring strong technical writing, attention to detail, and the ability to bridge engineering and editorial work.
-
-Please feel free to contact me if any further information would be helpful.
+        The quality of her work was consistently high. My reviews typically required only minor, targeted edits rather than substantial rewrites — which is uncommon for technical content of this complexity. She was receptive to feedback, incorporated suggestions thoughtfully, and steadily improved depth and clarity over time. Her articles were well-structured, technically sound, and aligned with our editorial standards from early in our work together. She required minimal supervision and could be trusted to take a topic brief and return polished, publication-ready material. I recommend her without reservation for roles requiring strong technical writing, attention to detail, and the ability to bridge engineering and editorial work.
       </p>
-      <p class="rec-author-name">Yeven Pankratovych</p>
-      <p class="rec-author-role">Product Experience Manager, Devart</p>
-      <p class="rec-date">May 2026</p>
+      <div class="rec-author">
+        <div class="rec-avatar">YP</div>
+        <div>
+          <p class="rec-author-name">Yeven Pankratovych</p>
+          <p class="rec-author-role">Product Experience Manager, Devart</p>
+          <p class="rec-date">May 2026</p>
+        </div>
+      </div>
     </div>
-
   </div>
 </section>
-
-<!-- FOOTER -->
+ 
+<!-- ══════════════ FOOTER ══════════════ -->
 <footer>
-  <div>
-    <p class="footer-name">Victoria Lazarus</p>
-    <p class="footer-tagline">Technical Writer & Documentation Engineer</p>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <p>Victoria Lazarus</p>
+      <span>Technical Writer & Documentation Engineer</span>
+      <p class="footer-bio">Creating clear, user-focused content that bridges complex technical information and audience comprehension.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Connect</p>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/victoria-lazarus" target="_blank" class="footer-link">LinkedIn</a>
+        <a href="https://twitter.com/Toria_Oluchi" target="_blank" class="footer-link">Twitter / X</a>
+        <a href="https://github.com/VictoriaLazarus" target="_blank" class="footer-link">GitHub</a>
+        <a href="https://hashnode.com/@Vicisagem" target="_blank" class="footer-link">Hashnode Blog</a>
+        <a href="https://www.linkedin.com/newsletters/dear-technical-writers-7169617343709491200" target="_blank" class="footer-link">Newsletter</a>
+      </div>
+    </div>
+    <div>
+      <p class="footer-col-title">Quick Links</p>
+      <div class="footer-links">
+        <a href="#works" class="footer-link">Works</a>
+        <a href="#experience" class="footer-link">Experience</a>
+        <a href="#tools" class="footer-link">Skills</a>
+        <a href="#recommendations" class="footer-link">Recommendations</a>
+        <a href="https://eu.docworkspace.com/d/sIKXM7d-LAcqulMAG" target="_blank" class="footer-link">Resume</a>
+        <a href="mailto:vlazarus827@gmail.com" class="footer-link">vlazarus827@gmail.com</a>
+      </div>
+    </div>
   </div>
-  <div class="footer-links">
-    <a href="https://linkedin.com/in/victoria-lazarus" target="_blank" class="footer-link">LinkedIn</a>
-    <a href="https://twitter.com/Toria_Oluchi" target="_blank" class="footer-link">Twitter</a>
-    <a href="https://github.com/VictoriaLazarus" target="_blank" class="footer-link">GitHub</a>
-    <a href="https://hashnode.com/@Vicisagem" target="_blank" class="footer-link">Hashnode</a>
-    <a href="https://www.linkedin.com/newsletters/dear-technical-writers-7169617343709491200" target="_blank" class="footer-link">Newsletter — Dear Technical Writers</a>
-    <a href="mailto:vlazarus827@gmail.com" class="footer-link">techcontentwithvicky@gmail.com</a>
+  <div class="footer-bottom">
+    <span>© 2026 Victoria Lazarus. All Rights Reserved.</span>
+    <span>Technical Writer · Documentation Engineer · Content Strategist</span>
   </div>
-  <p class="footer-copy">© 2026 Victoria Lazarus. All Rights Reserved.</p>
 </footer>
-
+ 
 <script src="scripts.js"></script>
 </body>
 </html>
