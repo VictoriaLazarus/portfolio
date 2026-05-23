@@ -121,6 +121,7 @@ nav {
   background: var(--cream);
   display: flex;
   align-items: flex-start;
+  padding-top: 3rem;
   justify-content: center;
   overflow: hidden;
 }
