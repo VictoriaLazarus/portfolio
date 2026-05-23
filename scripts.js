@@ -1,15 +1,13 @@
-/* ── CUSTOM CURSOR ── */
-const cursor = document.querySelector('.cursor');
+/* ── CUSTOM CURSOR (desktop only) ── */
+const cursorDot = document.querySelector('.cursor');
 const cursorRing = document.querySelector('.cursor-ring');
-if (cursor && cursorRing) {
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  (function animCursor() {
-    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
-    rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
-    cursorRing.style.left = rx + 'px'; cursorRing.style.top = ry + 'px';
-    requestAnimationFrame(animCursor);
-  })();
+if (cursorDot && window.matchMedia('(pointer: fine)').matches) {
+  document.addEventListener('mousemove', e => {
+    cursorDot.style.left = e.clientX + 'px';
+    cursorDot.style.top = e.clientY + 'px';
+    cursorRing.style.left = e.clientX + 'px';
+    cursorRing.style.top = e.clientY + 'px';
+  });
 }
 
 /* ── HAMBURGER / MOBILE MENU ── */
@@ -17,75 +15,75 @@ const hamburger = document.querySelector('.hamburger');
 const mobileMenu = document.querySelector('.mobile-menu');
 const mobileOverlay = document.querySelector('.mobile-overlay');
 
-function toggleMenu(open) {
-  hamburger.classList.toggle('open', open);
-  mobileMenu.classList.toggle('open', open);
-  mobileOverlay.classList.toggle('open', open);
-  document.body.style.overflow = open ? 'hidden' : '';
+function openMenu() {
+  hamburger.classList.add('open');
+  mobileMenu.classList.add('open');
+  mobileOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  mobileOverlay.classList.remove('open');
+  document.body.style.overflow = '';
 }
 
-hamburger.addEventListener('click', () => toggleMenu(!mobileMenu.classList.contains('open')));
-mobileOverlay.addEventListener('click', () => toggleMenu(false));
-document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+});
+mobileOverlay.addEventListener('click', closeMenu);
+document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', closeMenu));
 
-/* ── TYPING ANIMATION — GREETINGS ── */
-const greetings = [
-  { text: 'Hi', lang: 'English' },
-  { text: 'Bonjour', lang: 'French' },
-  { text: 'Hola', lang: 'Spanish' },
-  { text: 'Ciao', lang: 'Italian' },
-  { text: 'Olá', lang: 'Portuguese' },
-  { text: 'こんにちは', lang: 'Japanese' },
-  { text: 'Hallo', lang: 'German' },
-  { text: 'مرحبا', lang: 'Arabic' },
-  { text: 'Привет', lang: 'Russian' },
-  { text: 'Nǐ hǎo', lang: 'Chinese' },
-];
+/* ── TYPING — MULTILINGUAL GREETING ── */
+const greetings = ['Hi', 'Bonjour', 'Hola', 'Ciao', 'Olá', 'こんにちは', 'Hallo', 'مرحبا', 'Привет', 'Nǐ hǎo'];
 const typingEl = document.querySelector('.typing-text');
-let gi = 0, ci = 2, deleting = false; // start at 'Hi' fully typed (ci=2)
+let gi = 0, ci = 2, deleting = false;
 
-function typeGreeting() {
-  const word = greetings[gi].text;
+function type() {
+  const word = greetings[gi];
   if (!deleting) {
-    typingEl.textContent = word.slice(0, ++ci);
+    ci++;
+    typingEl.textContent = word.slice(0, ci);
     if (ci === word.length) {
       deleting = true;
-      setTimeout(typeGreeting, 1800);
+      setTimeout(type, 2000);
       return;
     }
-    setTimeout(typeGreeting, 110);
+    setTimeout(type, 120);
   } else {
-    typingEl.textContent = word.slice(0, --ci);
+    ci--;
+    typingEl.textContent = word.slice(0, ci);
     if (ci === 0) {
       deleting = false;
       gi = (gi + 1) % greetings.length;
-      setTimeout(typeGreeting, 300);
+      setTimeout(type, 350);
       return;
     }
-    setTimeout(typeGreeting, 65);
+    setTimeout(type, 70);
   }
 }
-if (typingEl) setTimeout(typeGreeting, 1800); // pause on 'Hi' first
+if (typingEl) setTimeout(type, 2200);
 
 /* ── DISCIPLINE ROTATOR ── */
 const disciplines = ['Technical Writer', 'Documentation Engineer', 'Content Strategist', 'API Writer', 'Knowledge Architect'];
 const disciplineEl = document.querySelector('.discipline-word');
 let di = 0;
 if (disciplineEl) {
-  disciplineEl.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
   setInterval(() => {
     disciplineEl.style.opacity = '0';
-    disciplineEl.style.transform = 'translateY(-10px)';
+    disciplineEl.style.transform = 'translateY(-8px)';
     setTimeout(() => {
       di = (di + 1) % disciplines.length;
       disciplineEl.textContent = disciplines[di];
+      disciplineEl.style.transform = 'translateY(8px)';
       disciplineEl.style.opacity = '0';
-      disciplineEl.style.transform = 'translateY(10px)';
-      setTimeout(() => {
-        disciplineEl.style.opacity = '1';
-        disciplineEl.style.transform = 'translateY(0)';
-      }, 30);
-    }, 380);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          disciplineEl.style.opacity = '1';
+          disciplineEl.style.transform = 'translateY(0)';
+        });
+      });
+    }, 300);
   }, 2800);
 }
 
@@ -95,7 +93,7 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-/* ── ACTIVE NAV ── */
+/* ── ACTIVE NAV HIGHLIGHT ── */
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
 window.addEventListener('scroll', () => {
