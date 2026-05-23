@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Victoria Lazarus — Technical Writer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f0e0c;
+      --paper: #f7f4ef;
+      --cream: #ede9e1;
+      --accent: #b5572a;
+      --accent-light: #e8d5c4;
+      --muted: #7a7060;
+      --border: #d6d0c4;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 5%;
+      background: rgba(247,244,239,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6% 6% 6% 8%;
+    }
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5vw, 4.8rem);
+      line-height: 1.05;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-bio {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.8rem;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      border: 1px solid var(--accent);
+    }
+    .btn-primary:hover { background: #9a4622; border-color: #9a4622; }
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--ink); }
+
+    .hero-image-col {
+      position: relative;
+      background: var(--cream);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-image-col::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 30px,
+        rgba(181,87,42,0.03) 30px,
+        rgba(181,87,42,0.03) 31px
+      );
+    }
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .hero-photo-placeholder {
+      width: 320px;
+      height: 420px;
+      background: var(--accent-light);
+      border-radius: 4px 4px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-photo-placeholder svg {
+      width: 80px; height: 80px; opacity: 0.4;
+    }
+    .hero-photo-placeholder p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+
+    .hero-socials {
+      display: flex; gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .social-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid transparent;
+      transition: all 0.2s;
+    }
+    .social-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 8%; }
+    section:nth-child(even) { background: var(--cream); }
+
+    .section-label {
+      display: flex; align-items: center; gap: 1rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 3rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+
+    /* ── WORKS ── */
+    .works-intro {
+      max-width: 600px;
+      color: var(--muted);
+      margin-bottom: 3.5rem;
+      line-height: 1.75;
+    }
+    .works-category { margin-bottom: 3.5rem; }
+    .works-category-title {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+    .work-card {
+      display: block;
+      padding: 1.4rem 1.6rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--ink);
+      transition: all 0.2s;
+      position: relative;
+    }
+    section:nth-child(even) .work-card { background: var(--paper); }
+    .work-card::after {
+      content: '→';
+      position: absolute;
+      right: 1.6rem;
+      top: 50%;
+      transform: translateY(-50%) translateX(-4px);
+      color: var(--accent);
+      opacity: 0;
+      transition: all 0.2s;
+    }
+    .work-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(181,87,42,0.08); }
+    .work-card:hover::after { opacity: 1; transform: translateY(-50%) translateX(0); }
+    .work-card-meta {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .work-card-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1.4;
+      padding-right: 1.5rem;
+    }
+
+    /* ── EXPERIENCE ── */
+    .experience-list { display: flex; flex-direction: column; gap: 0; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:first-child { border-top: 1px solid var(--border); }
+    .exp-meta {}
+    .exp-period {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.4rem;
+    }
+    .exp-company {
+      font-weight: 500;
+      font-size: 0.88rem;
+    }
+    .exp-role {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+    .exp-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+    }
+    .exp-bullets li {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .exp-bullets li::before {
+      content: '▸';
+      position: absolute; left: 0;
+      color: var(--accent);
+      font-size: 0.7rem;
+      top: 0.25rem;
+    }
+
+    /* ── TOOLS ── */
+    .tools-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .tool-tag {
+      padding: 0.45rem 1rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--ink);
+      transition: all 0.2s;
+    }
+    section:nth-child(even) .tool-tag { background: var(--paper); }
+    .tool-tag:hover { background: var(--accent); color: var(--white); border-color: var(--accent); }
+
+    /* ── RECOMMENDATIONS ── */
+    .recs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .rec-card {
+      padding: 2.5rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    section:nth-child(even) .rec-card { background: var(--paper); }
+    .rec-quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      line-height: 0.8;
+      color: var(--accent-light);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .rec-text {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+    .rec-author-name {
+      font-weight: 500;
+      font-size: 0.9rem;
+      margin-bottom: 0.2rem;
+    }
+    .rec-author-role {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .rec-date {
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 4rem 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .footer-tagline {
+      font-size: 0.82rem;
+      color: rgba(247,244,239,0.5);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .footer-link {
+      text-decoration: none;
+      font-size: 0.82rem;
+      color: rgba(247,244,239,0.6);
+      transition: color 0.2s;
+      letter-spacing: 0.04em;
+    }
+    .footer-link:hover { color: var(--accent-light); }
+    .footer-copy {
+      width: 100%;
+      border-top: 1px solid rgba(247,244,239,0.1);
+      padding-top: 1.5rem;
+      font-size: 0.75rem;
+      color: rgba(247,244,239,0.3);
+      text-align: center;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-image-col { display: none; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .recs-grid { grid-template-columns: 1fr; }
+      nav { padding: 1rem 5%; }
+      .nav-links { gap: 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 4rem 5%; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Victoria Lazarus</a>
+  <ul class="nav-links">
+    <li><a href="#works">Works</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#recommendations">Recommendations</a></li>
+    <li><a href="mailto:vlazarus827@gmail.com">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="hero-text" style="padding-top: calc(80px + 5%);">
+    <p class="hero-eyebrow">Technical Writer & Documentation Engineer</p>
+    <h1 class="hero-name">Hi, I'm<br><em>Victoria Lazarus</em></h1>
+    <p class="hero-bio">
+      With over five years of writing experience and three-plus years as a technical writer, I specialise in creating clear, user-focused content that bridges the gap between complex technical information and audience comprehension — from API docs and developer guides to landing pages and content strategy.
+    </p>
+    <div class="hero-cta">
+      <a href="https://eu.docworkspace.com/d/sIKXM7d-LAcqulMAG" target="_blank" class="btn btn-primary">View My Resume</a>
+      <a href="mailto:vlazarus827@gmail.com" class="btn btn-outline">Send a Mail</a>
+    </div>
+    <div class="hero-socials">
+      <a href="https://linkedin.com/in/victoria-lazarus" target="_blank" class="social-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://twitter.com/Toria_Oluchi" target="_blank" class="social-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+        Twitter
+      </a>
+      <a href="https://github.com/VictoriaLazarus" target="_blank" class="social-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a href="https://hashnode.com/@Vicisagem" target="_blank" class="social-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/></svg>
+        Hashnode
+      </a>
+      <a href="https://www.linkedin.com/newsletters/dear-technical-writers-7169617343709491200" target="_blank" class="social-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Newsletter
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-image-col">
+    <!-- Replace the placeholder below with an <img> tag once you have your photo -->
+    <!-- Example: <img src="your-photo.jpg" alt="Victoria Lazarus" class="hero-photo" /> -->
+    <div class="hero-photo-placeholder">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#b5572a" stroke-width="1.2">
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+      <p>Add your photo here.<br/>Replace the placeholder in the HTML with an &lt;img&gt; tag.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="section-label">Portfolio</div>
+  <h2 class="section-title fade-up">Featured <em>Works</em></h2>
+  <p class="works-intro fade-up">A selection of articles, tutorials, documentation, and pages I've written and built across different roles.</p>
+
+  <!-- Devart Technical Articles -->
+  <div class="works-category fade-up">
+    <p class="works-category-title">Devart — Technical Articles & Guides</p>
+    <div class="works-grid">
+      <a href="https://blog.devart.com/datareader-vs-dataset-a-guide-to-connected-and-disconnected-data-access.html" target="_blank" class="work-card">
+        <p class="work-card-meta">Devart Blog · ADO.NET</p>
+        <p class="work-card-title">DataReader vs DataSet: A Guide to Connected and Disconnected Data Access</p>
+      </a>
+      <a href="https://blog.devart.com/c-equivalent-of-the-tinyint-data-type-in-sql.html" target="_blank" class="work-card">
+        <p class="work-card-meta">Devart Blog · C# / SQL</p>
+        <p class="work-card-title">C# Equivalent of the TinyInt Data Type in SQL</p>
+      </a>
+      <a href="https://blog.devart.com/mariadb-12-guide.html" target="_blank" class="work-card">
+        <p class="work-card-meta">Devart Blog · MariaDB</p>
+        <p class="work-card-title">MariaDB 12 Guide</p>
+      </a>
+      <a href="https://blog.devart.com/data-integrity-in-database.html" target="_blank" class="work-card">
+        <p class="work-card-meta">Devart Blog · Databases</p>
+        <p class="work-card-title">Data Integrity in Database</p>
+      </a>
+      <a href="https://blog.devart.com/entra-id-authentication.html" target="_blank" class="work-card">
+        <p class="work-card-meta">Devart Blog · Security</p>
+        <p class="work-card-title">Entra ID Authentication</p>
+      </a>
+      <a href="https://blog.devart.com/vector-database-explained-architecture-use-cases-examples.html" target="_blank" class="work-card">
+        <p class="work-card-meta">Devart Blog · Databases</p>
+        <p class="work-card-title">Vector Database Explained: Architecture, Use Cases & Examples</p>
+      </a>
+      <a href="https://blog.devart.com/how-to-use-ai-for-mysql.html" target="_blank" class="work-card">
+        <p class="work-card-meta">Devart Blog · AI / MySQL</p>
+        <p class="work-card-title">How to Use AI for MySQL</p>
+      </a>
+      <a href="https://blog.devart.com/sql-server-filtered-indexes.html" target="_blank" class="work-card">
+        <p class="work-card-meta">Devart Blog · SQL Server</p>
+        <p class="work-card-title">SQL Server Filtered Indexes</p>
+      </a>
+      <a href="https://www.devart.com/blog/top-50-mysql-interview-questions-and-answers-for-every-skill-level.htm" target="_blank" class="work-card">
+        <p class="work-card-meta">Devart Blog · MySQL</p>
+        <p class="work-card-title">Top 50 MySQL Interview Questions and Answers for Every Skill Level</p>
+      </a>
+      <a href="https://www.devart.com/blog/top-tools-to-connect-your-analytics-and-data-visualization-platforms-with-zoho-crm.html" target="_blank" class="work-card">
+        <p class="work-card-meta">Devart Blog · Integrations</p>
+        <p class="work-card-title">Top Tools to Connect Analytics & Data Visualization Platforms with Zoho CRM</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Devart Product Pages -->
+  <div class="works-category fade-up">
+    <p class="works-category-title">Devart — Product Documentation & Landing Pages</p>
+    <div class="works-grid">
+      <a href="https://www.devart.com/dbforge/best-sql-text-editors.html" target="_blank" class="work-card">
+        <p class="work-card-meta">dbForge · Product Page</p>
+        <p class="work-card-title">Best SQL Text Editors</p>
+      </a>
+      <a href="https://www.devart.com/dbforge/best-sql-server-tools.html" target="_blank" class="work-card">
+        <p class="work-card-meta">dbForge · Product Page</p>
+        <p class="work-card-title">Best SQL Server Tools</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Getting Started / Featured -->
+  <div class="works-category fade-up">
+    <p class="works-category-title">Getting Started Guides</p>
+    <div class="works-grid">
+      <a href="https://vickylazarus.hashnode.dev/getting-started-with-markdown-a-step-by-step-guide" target="_blank" class="work-card">
+        <p class="work-card-meta">Hashnode · Feb 2023 · 6 min</p>
+        <p class="work-card-title">Getting Started with Markdown: A Step-by-Step Guide</p>
+      </a>
+      <a href="https://vickylazarus.hashnode.dev/understanding-html-as-a-beginner" target="_blank" class="work-card">
+        <p class="work-card-meta">Hashnode · Oct 2023 · 8 min</p>
+        <p class="work-card-title">Understanding HTML as a Beginner</p>
+      </a>
+      <a href="https://vickylazarus.hashnode.dev/understanding-the-div-element-in-html-and-how-it-works" target="_blank" class="work-card">
+        <p class="work-card-meta">Hashnode · Nov 2023 · 7 min</p>
+        <p class="work-card-title">Understanding the HTML Div Element and How It Works</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Tutorials -->
+  <div class="works-category fade-up">
+    <p class="works-category-title">Tutorials & How-Tos</p>
+    <div class="works-grid">
+      <a href="https://vickylazarus.hashnode.dev/dark-mode-toggle-with-css-html-and-javascript-a-complete-guide" target="_blank" class="work-card">
+        <p class="work-card-meta">Hashnode · Feb 2025 · 6 min</p>
+        <p class="work-card-title">Dark Mode Toggle with CSS, HTML, and JavaScript: A Complete Guide</p>
+      </a>
+      <a href="https://vickylazarus.hashnode.dev/mastering-git-and-github-from-beginner-to-pro-part-1" target="_blank" class="work-card">
+        <p class="work-card-meta">Hashnode · Jan 2024 · 11 min</p>
+        <p class="work-card-title">Mastering Git and GitHub: From Beginner to Pro (Part 1)</p>
+      </a>
+      <a href="https://vickylazarus.hashnode.dev/how-to-create-the-youtube-subscribe-button-with-html-and-css" target="_blank" class="work-card">
+        <p class="work-card-meta">Hashnode · May 2023 · 8 min</p>
+        <p class="work-card-title">How to Create the YouTube SUBSCRIBE Button With HTML and CSS</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Developer Documentation -->
+  <div class="works-category fade-up">
+    <p class="works-category-title">Developer Documentation</p>
+    <div class="works-grid">
+      <a href="https://vickylazarus.hashnode.dev/2-simple-ways-to-run-your-javascript-code" target="_blank" class="work-card">
+        <p class="work-card-meta">Hashnode · Jan 2025 · 4 min</p>
+        <p class="work-card-title">2 Simple Ways to Run Your JavaScript Code</p>
+      </a>
+      <a href="https://docs.google.com/document/d/1j-vExrN6bG_XyEwI40XGo4tX7BstQIacF11Pl_gF3k8/edit?tab=t.0" target="_blank" class="work-card">
+        <p class="work-card-meta">Google Docs · Mar 2025 · 13 min</p>
+        <p class="work-card-title">How to Insert Data into an Oracle Database from an ASP.NET Web Application</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- API Documentation -->
+  <div class="works-category fade-up">
+    <p class="works-category-title">API Documentation</p>
+    <div class="works-grid">
+      <a href="#" class="work-card">
+        <p class="work-card-meta">AltexSoft · Feb 2025 · 10 min</p>
+        <p class="work-card-title">Amadeus NDC API Implementation Guide</p>
+      </a>
+      <a href="#" class="work-card">
+        <p class="work-card-meta">AltexSoft · Feb 2025 · 8 min</p>
+        <p class="work-card-title">Amadeus Enterprise Hotel API Integration</p>
+      </a>
+      <a href="#" class="work-card">
+        <p class="work-card-meta">AltexSoft · Feb 2025 · 13 min</p>
+        <p class="work-card-title">Amadeus Flight API Implementation Guide</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career</div>
+  <h2 class="section-title fade-up">Where I've <em>Grown</em></h2>
+
+  <div class="experience-list">
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <p class="exp-period">Jan 2026 – May 2026</p>
+        <p class="exp-company">Devart · Remote</p>
+      </div>
+      <div class="exp-content">
+        <p class="exp-role">Technical Writer (Documentation Engineer)</p>
+        <ul class="exp-bullets">
+          <li>Worked as part of the Site Team to create, update, and build technical and developer marketing-focused documentation across multiple database management products using a docs-as-code workflow.</li>
+          <li>Developed and maintained product documentation for dbForge IDEs and dotConnect software, ensuring clarity, consistency, and user-focused structure.</li>
+          <li>Managed website layout updates and content publishing using Git, Sourcetree, Docker, CLI, and Visual Studio in a docs-as-code environment.</li>
+          <li>Structured and created landing pages for dbForge IDEs and .NET data providers (dotConnect), combining technical accuracy with SEO and conversion-focused content.</li>
+          <li>Created customer success stories and case studies highlighting real-world product value and user outcomes.</li>
+          <li>Collaborated cross-functionally with developers, designers, marketers, and product stakeholders in an Agile environment using Jira for sprint planning and task tracking.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <p class="exp-period">Apr 2025 – Jan 2026</p>
+        <p class="exp-company">Devart · Remote</p>
+      </div>
+      <div class="exp-content">
+        <p class="exp-role">Technical Content Writer</p>
+        <ul class="exp-bullets">
+          <li>Created developer-focused marketing and technical content for Devart's database tools and connectivity solutions, with strong focus on usability, product education, and search visibility.</li>
+          <li>Produced product guides, tutorials, and technical walkthroughs for dbForge IDEs and dotConnect (.NET data providers) for Visual Studio.</li>
+          <li>Authored release notes and update announcements clearly communicating new features, enhancements, bug fixes, and product improvements.</li>
+          <li>Managed and published web content using WordPress, ensuring proper formatting, internal linking, and SEO optimisation.</li>
+          <li>Researched industry trends, developer pain points, and product use cases to create relevant, high-value technical content.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <p class="exp-period">Jun 2024 – Dec 2024</p>
+        <p class="exp-company">AltexSoft</p>
+      </div>
+      <div class="exp-content">
+        <p class="exp-role">Technical Writer</p>
+        <ul class="exp-bullets">
+          <li>Conducted research and interviews with industry experts to create comprehensive API documentation that improved operational efficiency by 25%.</li>
+          <li>Leveraged REST/SOAP APIs, JSON, and XML to produce accurate, developer-facing content.</li>
+          <li>Collaborated with technical teams to align documentation with project goals, using Draw.io for visual aids.</li>
+          <li>Delivered presentations that enhanced engineers' understanding by 15%.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <p class="exp-period">Mar 2023 – Present</p>
+        <p class="exp-company">Hashnode</p>
+      </div>
+      <div class="exp-content">
+        <p class="exp-role">Technical Blogger</p>
+        <ul class="exp-bullets">
+          <li>Create and publish technical blog posts simplifying complex topics for developers and tech enthusiasts.</li>
+          <li>Write tutorials, how-to guides, and personal insights covering tools, workflows, and industry trends.</li>
+          <li>Use clear, concise language and practical examples to support learning within the developer community.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <p class="exp-period">Dec 2020 – May 2024</p>
+        <p class="exp-company">Kominiti</p>
+      </div>
+      <div class="exp-content">
+        <p class="exp-role">Content / Technical Writer</p>
+        <ul class="exp-bullets">
+          <li>Optimised product communication strategies, leading to a promotion and significant improvements in user experience by collaborating with cross-functional teams and resolving over 1,000 issues.</li>
+          <li>Developed instructional content that reduced bug fixes by 50%.</li>
+          <li>Contributed to campaigns that increased platform users by 5,000 while reducing bounce rates by 30%.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <p class="exp-period">Feb 2021 – Dec 2022</p>
+        <p class="exp-company">Xeroseeker.com</p>
+      </div>
+      <div class="exp-content">
+        <p class="exp-role">Content Writer</p>
+        <ul class="exp-bullets">
+          <li>Developed engaging content tailored to job seekers, employers, and recruitment professionals — including blog posts, website copy, job descriptions, and social media content.</li>
+          <li>Collaborated with recruiters and marketing teams to align content with brand messaging and strengthen employer branding.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section-label">Skills</div>
+  <h2 class="section-title fade-up">Tools I <em>Geek Out On</em></h2>
+  <div class="tools-grid fade-up" style="margin-top: 2rem;">
+    <span class="tool-tag">HTML</span>
+    <span class="tool-tag">CSS</span>
+    <span class="tool-tag">JavaScript</span>
+    <span class="tool-tag">Markdown</span>
+    <span class="tool-tag">Git</span>
+    <span class="tool-tag">GitHub</span>
+    <span class="tool-tag">Sourcetree</span>
+    <span class="tool-tag">Docker</span>
+    <span class="tool-tag">.NET</span>
+    <span class="tool-tag">C#</span>
+    <span class="tool-tag">SQL</span>
+    <span class="tool-tag">Oracle Database</span>
+    <span class="tool-tag">Microsoft SQL</span>
+    <span class="tool-tag">REST API</span>
+    <span class="tool-tag">SOAP API</span>
+    <span class="tool-tag">JSON</span>
+    <span class="tool-tag">XML</span>
+    <span class="tool-tag">Postman</span>
+    <span class="tool-tag">VS Code</span>
+    <span class="tool-tag">Visual Studio</span>
+    <span class="tool-tag">WordPress</span>
+    <span class="tool-tag">Jira</span>
+    <span class="tool-tag">Draw.io</span>
+    <span class="tool-tag">Snagit</span>
+    <span class="tool-tag">Google Office</span>
+    <span class="tool-tag">Microsoft Office</span>
+    <span class="tool-tag">SEO Tools</span>
+    <span class="tool-tag">Docs-as-Code</span>
+  </div>
+</section>
+
+<!-- RECOMMENDATIONS -->
+<section id="recommendations">
+  <div class="section-label">Testimonials</div>
+  <h2 class="section-title fade-up">What People <em>Say</em></h2>
+  <div class="recs-grid" style="margin-top: 2.5rem;">
+
+    <div class="rec-card fade-up">
+      <span class="rec-quote-mark">"</span>
+      <p class="rec-text">
+        She's reliable, polite, diligent, and genuinely easy to work with. She was quick to grasp our rather complex workflow and keep up with the pace of our work. She was essential to our team at all times. And of course, she's a pro writer whose contributions proved invaluable. I would always be glad to work with her again and I highly recommend her to any team looking for a skilled and smart tech writer.
+      </p>
+      <p class="rec-author-name">Valentine Mostsevoy</p>
+      <p class="rec-author-role">Technical Writer, Devart · Direct Manager</p>
+      <p class="rec-date">May 2026</p>
+    </div>
+
+    <div class="rec-card fade-up">
+      <span class="rec-quote-mark">"</span>
+      <p class="rec-text">
+        The quality of her work was consistently high. My reviews typically required only minor, targeted edits rather than substantial rewrites — which is uncommon for technical content of this complexity. She was receptive to feedback, incorporated suggestions thoughtfully, and steadily improved depth and clarity over time. Her articles were well-structured, technically sound, and aligned with our editorial standards from early in our work together. She required minimal supervision and could be trusted to take a topic brief and return polished, publication-ready material. I recommend her without reservation for roles requiring strong technical writing, attention to detail, and the ability to bridge engineering and editorial work.
+      </p>
+      <p class="rec-author-name">Yeven Pankratovych</p>
+      <p class="rec-author-role">Product Experience Manager, Devart</p>
+      <p class="rec-date">May 2026</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <p class="footer-name">Victoria Lazarus</p>
+    <p class="footer-tagline">Technical Writer & Documentation Engineer</p>
+  </div>
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/victoria-lazarus" target="_blank" class="footer-link">LinkedIn</a>
+    <a href="https://twitter.com/Toria_Oluchi" target="_blank" class="footer-link">Twitter</a>
+    <a href="https://github.com/VictoriaLazarus" target="_blank" class="footer-link">GitHub</a>
+    <a href="https://hashnode.com/@Vicisagem" target="_blank" class="footer-link">Hashnode</a>
+    <a href="https://www.linkedin.com/newsletters/dear-technical-writers-7169617343709491200" target="_blank" class="footer-link">Newsletter — Dear Technical Writers</a>
+    <a href="mailto:vlazarus827@gmail.com" class="footer-link">vlazarus827@gmail.com</a>
+  </div>
+  <p class="footer-copy">© 2026 Victoria Lazarus. All Rights Reserved.</p>
+</footer>
+
+<script>
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
