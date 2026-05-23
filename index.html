@@ -9,14 +9,14 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
- 
+
 <!-- CUSTOM CURSOR -->
 <div class="cursor"></div>
 <div class="cursor-ring"></div>
- 
+
 <!-- MOBILE OVERLAY -->
 <div class="mobile-overlay"></div>
- 
+
 <!-- MOBILE MENU -->
 <nav class="mobile-menu">
   <a href="#works">Works</a>
@@ -26,7 +26,7 @@
   <a href="https://eu.docworkspace.com/d/sIKXM7d-LAcqulMAG" target="_blank">My Resume</a>
   <a href="mailto:vlazarus827@gmail.com">Contact</a>
 </nav>
- 
+
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">VL <span>✦</span></a>
@@ -41,29 +41,46 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
- 
+
 <!-- ══════════════ HERO ══════════════ -->
 <section class="hero" id="home">
   <div class="hero-text">
     <p class="hero-eyebrow">Technical Writer & Documentation Engineer</p>
- 
-    <p class="hero-greeting">
-      <span class="typing-text"></span><span class="cursor-blink"></span>, I'm
-    </p>
-    <h1 class="hero-name"><em>Victoria Lazarus</em></h1>
+
+    <div class="hero-greeting">
+      <span class="typing-text"></span><span class="cursor-blink"></span><span class="hero-greeting-static">, I'm</span>
+    </div>
+    <h1 class="hero-name">Victoria Lazarus</h1>
     <p class="hero-discipline">
       Your <span class="discipline-word" style="transition: all 0.4s ease;">Technical Writer</span>
+      <span class="discipline-illustration">
+        <svg width="48" height="40" viewBox="0 0 48 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Notebook -->
+          <rect x="4" y="8" width="30" height="24" rx="2" fill="#e8d5c4" stroke="#c45e2a" stroke-width="1.2"/>
+          <rect x="4" y="8" width="5" height="24" fill="#c9a84c" rx="1.5"/>
+          <line x1="14" y1="16" x2="30" y2="16" stroke="#c45e2a" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.5"/>
+          <line x1="14" y1="21" x2="30" y2="21" stroke="#c45e2a" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.5"/>
+          <line x1="14" y1="26" x2="24" y2="26" stroke="#c45e2a" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.5"/>
+          <!-- Pen -->
+          <g transform="rotate(-30, 36, 14)">
+            <rect x="31" y="4" width="7" height="20" rx="1.5" fill="#2a6b8c"/>
+            <polygon points="31,24 38,24 34.5,32" fill="#1a4f6a"/>
+            <rect x="31" y="4" width="7" height="5" rx="1.5" fill="#c9a84c"/>
+            <line x1="34.5" y1="28" x2="34.5" y2="32" stroke="#f0ebe0" stroke-width="1"/>
+          </g>
+        </svg>
+      </span>
     </p>
- 
+
     <p class="hero-bio">
       With over five years of writing experience and three-plus years as a technical writer, I create clear, user-focused content that bridges complex technical information and audience comprehension — from API docs and developer guides to landing pages and content strategy.
     </p>
- 
+
     <div class="hero-cta">
       <a href="https://eu.docworkspace.com/d/sIKXM7d-LAcqulMAG" target="_blank" class="btn btn-primary">View My Resume</a>
       <a href="#works" class="btn btn-outline">See My Work</a>
     </div>
- 
+
     <div class="hero-socials">
       <a href="https://linkedin.com/in/victoria-lazarus" target="_blank" class="social-link">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
@@ -87,7 +104,7 @@
       </a>
     </div>
   </div>
- 
+
   <div class="hero-image-col">
     <!--
       TO ADD YOUR PHOTO: replace the hero-photo-placeholder div below with:
@@ -115,9 +132,9 @@
         <text x="25" y="75" font-size="8" fill="#c9a84c" opacity="0.6">✦</text>
         <text x="145" y="145" font-size="6" fill="#2a6b8c" opacity="0.5">✦</text>
       </svg>
-      <img src="images/victoria.jpg" alt="Victoria Lazarus"  class="hero-photo" />
+      <p>Add your photo here — replace the placeholder in index.html with an &lt;img&gt; tag</p>
     </div>
- 
+
     <!-- Decorative art bottom-right -->
     <div class="hero-art">
       <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
@@ -127,13 +144,13 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ══════════════ WORKS ══════════════ -->
 <section class="section-wrap" id="works">
   <div class="section-tag">Portfolio</div>
   <h2 class="section-title fade-up">Featured <em>Works</em></h2>
   <p class="section-sub fade-up">Articles, guides, documentation, and landing pages across databases, developer tools, and software.</p>
- 
+
   <!-- DATABASE, SQL & DEVELOPER TOOLS -->
   <div class="works-category fade-up">
     <div class="category-header">
@@ -192,7 +209,7 @@
       </a>
     </div>
   </div>
- 
+
   <!-- AI & EMERGING TECH -->
   <div class="works-category fade-up">
     <div class="category-header">
@@ -227,7 +244,7 @@
       </a>
     </div>
   </div>
- 
+
   <!-- PRODUCT PAGES & LANDING PAGES -->
   <div class="works-category fade-up">
     <div class="category-header">
@@ -262,7 +279,7 @@
       </a>
     </div>
   </div>
- 
+
   <!-- TUTORIALS & HOW-TOS -->
   <div class="works-category fade-up">
     <div class="category-header">
@@ -297,7 +314,7 @@
       </a>
     </div>
   </div>
- 
+
   <!-- GETTING STARTED GUIDES -->
   <div class="works-category fade-up">
     <div class="category-header">
@@ -332,7 +349,7 @@
       </a>
     </div>
   </div>
- 
+
   <!-- DEVELOPER DOCUMENTATION -->
   <div class="works-category fade-up">
     <div class="category-header">
@@ -359,7 +376,7 @@
       </a>
     </div>
   </div>
- 
+
   <!-- API DOCUMENTATION -->
   <div class="works-category fade-up">
     <div class="category-header">
@@ -395,13 +412,13 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ══════════════ EXPERIENCE ══════════════ -->
 <section class="section-wrap alt" id="experience">
   <div class="section-tag">Career</div>
   <h2 class="section-title fade-up">Where I've <em>Grown</em></h2>
   <p class="section-sub fade-up">A journey through roles that shaped my craft in technical communication.</p>
- 
+
   <div class="exp-list">
     <div class="exp-item fade-up">
       <div>
@@ -422,7 +439,7 @@
         </ul>
       </div>
     </div>
- 
+
     <div class="exp-item fade-up">
       <div>
         <p class="exp-period">Apr 2025 – Jan 2026</p>
@@ -441,7 +458,7 @@
         </ul>
       </div>
     </div>
- 
+
     <div class="exp-item fade-up">
       <div>
         <p class="exp-period">Jun 2024 – Dec 2024</p>
@@ -458,7 +475,7 @@
         </ul>
       </div>
     </div>
- 
+
     <div class="exp-item fade-up">
       <div>
         <p class="exp-period">Mar 2023 – Present</p>
@@ -474,7 +491,7 @@
         </ul>
       </div>
     </div>
- 
+
     <div class="exp-item fade-up">
       <div>
         <p class="exp-period">Dec 2020 – May 2024</p>
@@ -491,7 +508,7 @@
         </ul>
       </div>
     </div>
- 
+
     <div class="exp-item fade-up">
       <div>
         <p class="exp-period">Feb 2021 – Dec 2022</p>
@@ -509,13 +526,13 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ══════════════ TOOLS ══════════════ -->
 <section class="section-wrap" id="tools" style="padding-bottom: 0; overflow: hidden;">
   <div class="section-tag">Skills</div>
   <h2 class="section-title fade-up">Tools I <em>Geek Out On</em></h2>
   <p class="section-sub fade-up">Technologies and tools I work with every day.</p>
- 
+
   <div class="tools-scroll-wrap" style="padding: 2rem 0 4rem; border-top: 1px solid var(--border);">
     <div class="tools-track">
       <!-- Row 1 -->
@@ -533,7 +550,6 @@
       <div class="tool-item"><span class="tool-icon">🔶</span> Oracle Database</div>
       <div class="tool-item"><span class="tool-icon">🗃️</span> Microsoft SQL</div>
       <div class="tool-item"><span class="tool-icon">🔌</span> REST API</div>
-      <div class="tool-item"><span class="tool-icon">📡</span> SOAP API</div>
       <div class="tool-item"><span class="tool-icon">📦</span> JSON</div>
       <div class="tool-item"><span class="tool-icon">🏷️</span> XML</div>
       <div class="tool-item"><span class="tool-icon">📬</span> Postman</div>
@@ -542,7 +558,7 @@
       <div class="tool-item"><span class="tool-icon">🌐</span> WordPress</div>
       <div class="tool-item"><span class="tool-icon">📋</span> Jira</div>
       <div class="tool-item"><span class="tool-icon">🗺️</span> Draw.io</div>
-      <div class="tool-item"><span class="tool-icon">📸</span> Snagit</div>
+      <div class="tool-item"><span class="tool-icon">🖌️</span> Figma</div>
       <div class="tool-item"><span class="tool-icon">📊</span> SEO Tools</div>
       <div class="tool-item"><span class="tool-icon">🔄</span> Docs-as-Code</div>
       <!-- Duplicate for infinite scroll -->
@@ -560,7 +576,6 @@
       <div class="tool-item"><span class="tool-icon">🔶</span> Oracle Database</div>
       <div class="tool-item"><span class="tool-icon">🗃️</span> Microsoft SQL</div>
       <div class="tool-item"><span class="tool-icon">🔌</span> REST API</div>
-      <div class="tool-item"><span class="tool-icon">📡</span> SOAP API</div>
       <div class="tool-item"><span class="tool-icon">📦</span> JSON</div>
       <div class="tool-item"><span class="tool-icon">🏷️</span> XML</div>
       <div class="tool-item"><span class="tool-icon">📬</span> Postman</div>
@@ -569,19 +584,19 @@
       <div class="tool-item"><span class="tool-icon">🌐</span> WordPress</div>
       <div class="tool-item"><span class="tool-icon">📋</span> Jira</div>
       <div class="tool-item"><span class="tool-icon">🗺️</span> Draw.io</div>
-      <div class="tool-item"><span class="tool-icon">📸</span> Snagit</div>
+      <div class="tool-item"><span class="tool-icon">🖌️</span> Figma</div>
       <div class="tool-item"><span class="tool-icon">📊</span> SEO Tools</div>
       <div class="tool-item"><span class="tool-icon">🔄</span> Docs-as-Code</div>
     </div>
   </div>
 </section>
- 
+
 <!-- ══════════════ RECOMMENDATIONS ══════════════ -->
 <section class="section-wrap alt" id="recommendations">
   <div class="section-tag">Testimonials</div>
   <h2 class="section-title fade-up">What People <em>Say</em></h2>
   <p class="section-sub fade-up">Feedback from managers and collaborators I've worked closely with.</p>
- 
+
   <div class="recs-grid">
     <div class="rec-card fade-up">
       <span class="rec-quote">"</span>
@@ -597,7 +612,7 @@
         </div>
       </div>
     </div>
- 
+
     <div class="rec-card fade-up">
       <span class="rec-quote">"</span>
       <p class="rec-text">
@@ -614,7 +629,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ══════════════ FOOTER ══════════════ -->
 <footer>
   <div class="footer-top">
@@ -650,7 +665,7 @@
     <span>Technical Writer · Documentation Engineer · Content Strategist</span>
   </div>
 </footer>
- 
+
 <script src="scripts.js"></script>
 </body>
 </html>
