@@ -42,22 +42,30 @@ const greetings = [
   { text: 'Nǐ hǎo', lang: 'Chinese' },
 ];
 const typingEl = document.querySelector('.typing-text');
-const cursorEl = document.querySelector('.cursor-blink');
-let gi = 0, ci = 0, deleting = false;
+let gi = 0, ci = 2, deleting = false; // start at 'Hi' fully typed (ci=2)
 
 function typeGreeting() {
   const word = greetings[gi].text;
   if (!deleting) {
     typingEl.textContent = word.slice(0, ++ci);
-    if (ci === word.length) { deleting = true; setTimeout(typeGreeting, 1600); return; }
+    if (ci === word.length) {
+      deleting = true;
+      setTimeout(typeGreeting, 1800);
+      return;
+    }
     setTimeout(typeGreeting, 110);
   } else {
     typingEl.textContent = word.slice(0, --ci);
-    if (ci === 0) { deleting = false; gi = (gi + 1) % greetings.length; setTimeout(typeGreeting, 300); return; }
-    setTimeout(typeGreeting, 60);
+    if (ci === 0) {
+      deleting = false;
+      gi = (gi + 1) % greetings.length;
+      setTimeout(typeGreeting, 300);
+      return;
+    }
+    setTimeout(typeGreeting, 65);
   }
 }
-if (typingEl) typeGreeting();
+if (typingEl) setTimeout(typeGreeting, 1800); // pause on 'Hi' first
 
 /* ── DISCIPLINE ROTATOR ── */
 const disciplines = ['Technical Writer', 'Documentation Engineer', 'Content Strategist', 'API Writer', 'Knowledge Architect'];
