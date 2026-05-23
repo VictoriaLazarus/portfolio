@@ -120,7 +120,7 @@ nav {
   position: relative;
   background: var(--cream);
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
   overflow: hidden;
 }
