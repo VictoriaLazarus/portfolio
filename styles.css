@@ -25,33 +25,8 @@ body {
   overflow-x: hidden;
 }
 
-/* ── CUSTOM CURSOR (desktop only) ── */
-.cursor, .cursor-ring { display: none; }
-@media (pointer: fine) {
-  body { cursor: none; }
-  .cursor {
-    width: 10px; height: 10px;
-    background: var(--accent);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    display: block;
-  }
-  .cursor-ring {
-    width: 34px; height: 34px;
-    border: 1.5px solid var(--accent);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    opacity: 0.45;
-    display: block;
-    transition: left 0.1s ease, top 0.1s ease;
-  }
-}
+/* ── CUSTOM CURSOR — removed, using default browser cursor ── */
+.cursor, .cursor-ring { display: none !important; }
 
 /* ══════════════════════════════════════
    NAV
