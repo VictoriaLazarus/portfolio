@@ -111,11 +111,13 @@ nav {
 }
 /* ───────────────── MOBILE MENU ───────────────── */
 
+/* ───────────────── MOBILE MENU ───────────────── */
+
 .mobile-menu {
   position: fixed;
 
   top: 0;
-  right: -100%;
+  right: 0;
 
   width: 75vw;
   max-width: 280px;
@@ -132,14 +134,36 @@ nav {
 
   overflow-y: auto;
 
-  transition: right 0.3s ease;
+  /* HIDDEN OFF SCREEN */
+  transform: translateX(100%);
+
+  transition: transform 0.3s ease;
 }
 
-/* SHOW MENU */
+/* OPEN MENU */
 
 .mobile-menu.open {
-  right: 0;
+  transform: translateX(0);
 }
+
+/* MOBILE MENU LINKS */
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+
+  padding: 1rem 0;
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.mobile-menu a:hover {
+  color: var(--accent-light);
+}
+
 /* ───────────────── OVERLAY ───────────────── */
 
 .mobile-overlay {
@@ -160,20 +184,13 @@ nav {
   opacity: 1;
   pointer-events: auto;
 }
-/* ───────────────── MOBILE VIEW ───────────────── */
 
-@media (max-width: 768px) {
-
-  /* HIDE DESKTOP LINKS */
-  .nav-links {
-    display: none;
-  }
-
-  /* SHOW HAMBURGER */
-  .hamburger {
-    display: flex;
-  }
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
 }
+
+/* ───────────────── MOBILE VIEW ───────────────── */
 
 /* ── HERO ── */
 .hero {
@@ -523,7 +540,14 @@ footer { background: var(--ink); color: var(--paper); padding: 5rem 8% 2.5rem; }
 /* ── RESPONSIVE ── */
 @media (max-width: 960px) {
   .cursor, .cursor-ring { display: none; }
-  
+  nav .nav-links {
+  display: none;
+}
+
+nav .hamburger {
+  display: flex;
+}
+
 
   .hero {
     grid-template-columns: 1fr;
