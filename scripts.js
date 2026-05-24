@@ -1,117 +1,119 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
 
-/* ── CUSTOM CURSOR (desktop only) ── */
-const cursorDot = document.querySelector('.cursor');
-const cursorRing = document.querySelector('.cursor-ring');
-if (cursorDot && window.matchMedia('(pointer: fine)').matches) {
-  document.addEventListener('mousemove', e => {
-    cursorDot.style.left = e.clientX + 'px';
-    cursorDot.style.top = e.clientY + 'px';
-    cursorRing.style.left = e.clientX + 'px';
-    cursorRing.style.top = e.clientY + 'px';
-  });
-}
+  /* ── HAMBURGER MENU ── */
+  var btn = document.getElementById('hamburgerBtn');
+  var menu = document.getElementById('mobileMenu');
+  var overlay = document.getElementById('mobileOverlay');
+  var isOpen = false;
 
-/* ── HAMBURGER / MOBILE MENU ── */
-const hamburger = document.querySelector('.hamburger');
-const mobileMenu = document.querySelector('.mobile-menu');
-const mobileOverlay = document.querySelector('.mobile-overlay');
-
-function openMenu() {
-  hamburger.classList.add('open');
-  mobileMenu.classList.add('open');
-  mobileOverlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeMenu() {
-  hamburger.classList.remove('open');
-  mobileMenu.classList.remove('open');
-  mobileOverlay.classList.remove('open');
-  document.body.style.overflow = '';
-}
-hamburger.addEventListener('click', () => {
-  mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
-});
-mobileOverlay.addEventListener('click', closeMenu);
-document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', closeMenu));
-
-/* ── TYPING — MULTILINGUAL GREETING ── */
-const greetings = [
-  'Hi', 'Bonjour', 'Hola', 'Ciao', 'Olá',
-  'こんにちは', 'Hallo', 'مرحبا', 'Привет', 'Nǐ hǎo'
-];
-const typingEl = document.querySelector('.typing-text');
-
-if (typingEl) {
-  typingEl.textContent = 'Hi';
-  let gi = 0, ci = 2, deleting = false;
-
-  function type() {
-    const word = greetings[gi];
-    if (!deleting) {
-      ci++;
-      typingEl.textContent = word.slice(0, ci);
-      if (ci >= word.length) {
-        deleting = true;
-        setTimeout(type, 2000);
-        return;
-      }
-      setTimeout(type, 130);
-    } else {
-      ci--;
-      typingEl.textContent = word.slice(0, ci);
-      if (ci <= 0) {
-        deleting = false;
-        gi = (gi + 1) % greetings.length;
-        setTimeout(type, 380);
-        return;
-      }
-      setTimeout(type, 75);
-    }
+  function openMenu() {
+    isOpen = true;
+    menu.classList.add('open');
+    overlay.classList.add('open');
+    btn.classList.add('open');
+    document.body.style.overflow = 'hidden';
   }
-  setTimeout(type, 2200); // start cycling after showing 'Hi' for 2.2s
-}
 
-/* ── DISCIPLINE ROTATOR ── */
-const disciplines = [
-  'Technical Writer', 'Documentation Engineer',
-  'Content Strategist', 'API Writer', 'Knowledge Architect'
-];
-const disciplineEl = document.querySelector('.discipline-word');
-let di = 0;
+  function closeMenu() {
+    isOpen = false;
+    menu.classList.remove('open');
+    overlay.classList.remove('open');
+    btn.classList.remove('open');
+    document.body.style.overflow = '';
+  }
 
-if (disciplineEl) {
-  disciplineEl.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-  setInterval(() => {
-    disciplineEl.style.opacity = '0';
-    disciplineEl.style.transform = 'translateY(-8px)';
-    setTimeout(() => {
-      di = (di + 1) % disciplines.length;
-      disciplineEl.textContent = disciplines[di];
-      disciplineEl.style.transform = 'translateY(8px)';
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        disciplineEl.style.opacity = '1';
-        disciplineEl.style.transform = 'translateY(0)';
-      }));
-    }, 320);
-  }, 2800);
-}
-
-/* ── SCROLL FADE-UP ── */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.08 });
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-/* ── ACTIVE NAV HIGHLIGHT ── */
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
-  navLinks.forEach(a => {
-    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    isOpen ? closeMenu() : openMenu();
   });
-}, { passive: true });
 
-}); // end DOMContentLoaded
+  overlay.addEventListener('click', closeMenu);
+
+  document.querySelectorAll('.mobile-link').forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  /* ── TYPING — MULTILINGUAL GREETING ── */
+  var greetings = ['Hi','Bonjour','Hola','Ciao','Olá','こんにちは','Hallo','مرحبا','Привет','Nǐ hǎo'];
+  var typingEl = document.querySelector('.typing-text');
+
+  if (typingEl) {
+    typingEl.textContent = 'Hi';
+    var gi = 0, ci = 2, deleting = false;
+
+    function type() {
+      var word = greetings[gi];
+      if (!deleting) {
+        ci++;
+        typingEl.textContent = word.slice(0, ci);
+        if (ci >= word.length) {
+          deleting = true;
+          setTimeout(type, 2000);
+          return;
+        }
+        setTimeout(type, 130);
+      } else {
+        ci--;
+        typingEl.textContent = word.slice(0, ci);
+        if (ci <= 0) {
+          deleting = false;
+          gi = (gi + 1) % greetings.length;
+          setTimeout(type, 380);
+          return;
+        }
+        setTimeout(type, 75);
+      }
+    }
+    setTimeout(type, 2200);
+  }
+
+  /* ── DISCIPLINE ROTATOR ── */
+  var disciplines = ['Technical Writer','Documentation Engineer','Content Strategist','API Writer','Knowledge Architect'];
+  var disciplineEl = document.querySelector('.discipline-word');
+  var di = 0;
+
+  if (disciplineEl) {
+    disciplineEl.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    setInterval(function() {
+      disciplineEl.style.opacity = '0';
+      disciplineEl.style.transform = 'translateY(-8px)';
+      setTimeout(function() {
+        di = (di + 1) % disciplines.length;
+        disciplineEl.textContent = disciplines[di];
+        disciplineEl.style.transform = 'translateY(8px)';
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            disciplineEl.style.opacity = '1';
+            disciplineEl.style.transform = 'translateY(0)';
+          });
+        });
+      }, 320);
+    }, 2800);
+  }
+
+  /* ── SCROLL FADE-UP ── */
+  var fadeEls = document.querySelectorAll('.fade-up');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    fadeEls.forEach(function(el) { observer.observe(el); });
+  } else {
+    fadeEls.forEach(function(el) { el.classList.add('visible'); });
+  }
+
+  /* ── CUSTOM CURSOR ── */
+  var cursorDot = document.querySelector('.cursor');
+  var cursorRing = document.querySelector('.cursor-ring');
+  if (cursorDot && window.matchMedia('(pointer: fine)').matches) {
+    document.addEventListener('mousemove', function(e) {
+      cursorDot.style.left = e.clientX + 'px';
+      cursorDot.style.top = e.clientY + 'px';
+      cursorRing.style.left = e.clientX + 'px';
+      cursorRing.style.top = e.clientY + 'px';
+    });
+  }
+
+});
