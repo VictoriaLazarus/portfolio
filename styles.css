@@ -115,7 +115,7 @@ nav {
   position: fixed;
 
   top: 0;
-  right: 0;
+  right: -100%;
 
   width: 75vw;
   max-width: 280px;
@@ -132,16 +132,13 @@ nav {
 
   overflow-y: auto;
 
-  /* HIDE MENU */
-  transform: translateX(100%);
-
-  transition: transform 0.3s ease;
+  transition: right 0.3s ease;
 }
 
 /* SHOW MENU */
 
 .mobile-menu.open {
-  transform: translateX(0);
+  right: 0;
 }
 /* ───────────────── OVERLAY ───────────────── */
 
@@ -526,8 +523,7 @@ footer { background: var(--ink); color: var(--paper); padding: 5rem 8% 2.5rem; }
 /* ── RESPONSIVE ── */
 @media (max-width: 960px) {
   .cursor, .cursor-ring { display: none; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
+  
 
   .hero {
     grid-template-columns: 1fr;
