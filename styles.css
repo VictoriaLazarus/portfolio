@@ -414,21 +414,28 @@ nav {
 }
 .category-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 700;
   font-style: italic;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   color: var(--accent);
   white-space: nowrap;
+  text-transform: none;
+  position: relative;
+  padding-bottom: 4px;
+  border-bottom: 2.5px solid var(--accent);
 }
 
 .category-line {
   flex: 1;
   height: 2px;
   background: linear-gradient(to right, var(--accent), transparent);
+  margin-left: 0.5rem;
 }
-.category-emoji { font-size: 1.4rem; }
+.category-emoji { 
+  font-size: 1.6rem; 
+  filter: drop-shadow(0 2px 4px rgba(158,74,30,0.3));
+}
 
 .works-grid {
   display: grid;
