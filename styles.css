@@ -93,39 +93,33 @@ nav {
 /* ── MOBILE MENU ── */
 .mobile-menu {
   position: fixed;
-  top: 0; right: 0; bottom: 0;
-  width: 75vw; max-width: 280px;
-  background: var(--ink);
-  z-index: 505;
-  padding: 5rem 2rem 3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  transform: translateX(100%);
-  visibility: hidden;
-  transition: transform 0.3s ease, visibility 0.3s;
-}
-.mobile-menu.open { transform: translateX(0); visibility: visible; }
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 75vw;
+  max-width: 280px;
 
-/* ── MOBILE MENU — slides in from right on mobile only ── */
-.mobile-menu {
-  position: fixed;
-  top: 0; right: 0; bottom: 0;
-  width: 75vw; max-width: 280px;
   background: var(--ink);
-  z-index: 1000;
+
+  z-index: 2000;
+
   padding: 5rem 2rem 3rem;
+
   display: flex;
   flex-direction: column;
-  gap: 0;
+
   transform: translateX(100%);
-  visibility: hidden;
-  transition: transform 0.3s ease, visibility 0.3s ease;
+  transition: transform 0.3s ease;
+
+  overflow-y: auto;
 }
+
+/* OPEN STATE */
 .mobile-menu.open {
   transform: translateX(0);
-  visibility: visible;
 }
+
+/* LINKS */
 .mobile-menu a {
   display: block;
   text-decoration: none;
@@ -139,21 +133,37 @@ nav {
   border-bottom: 1px solid rgba(247,244,239,0.08);
   transition: color 0.2s;
 }
-.mobile-menu a:last-child { border-bottom: none; }
-.mobile-menu a:hover { color: var(--accent-light); }
 
-/* ── MOBILE OVERLAY — hidden by default ── */
+.mobile-menu a:last-child {
+  border-bottom: none;
+}
+
+.mobile-menu a:hover {
+  color: var(--accent-light);
+}
+
+/* OVERLAY */
 .mobile-overlay {
-  position: fixed; inset: 0;
+  position: fixed;
+  inset: 0;
   background: rgba(0,0,0,0.45);
-  z-index: 999;
+
+  z-index: 1500;
+
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s;
+
+  transition: opacity 0.3s ease;
 }
+
 .mobile-overlay.open {
   opacity: 1;
-  pointer-events: all;
+  pointer-events: auto;
+}
+
+/* HAMBURGER */
+.hamburger {
+  z-index: 2100;
 }
 
 /* ── HERO ── */
