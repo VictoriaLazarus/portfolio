@@ -36,6 +36,7 @@ nav {
   background: rgba(247,244,239,0.95);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
+  min-height: 60px;
 }
 .nav-logo {
   font-family: 'Playfair Display', serif;
@@ -75,6 +76,8 @@ nav {
   background: none;
   border: none;
   z-index: 600;
+  position: relative;
+  flex-shrink: 0;
 }
 .hamburger span {
   display: block; width: 22px; height: 2px;
@@ -165,16 +168,33 @@ nav {
   flex-shrink: 0;
 }
 
-/* Greeting line */
+/* Greeting line — light and secondary to the name */
 .hero-greeting {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 3.5vw, 3.2rem);
-  font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 0.1rem;
-  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  font-weight: 400;
+  line-height: 1.4;
+  margin-bottom: 0.2rem;
+  color: var(--muted);
+  display: flex; align-items: center; gap: 0;
+  flex-wrap: nowrap;
 }
-.cursor-blink { display: none; }
+.typing-text {
+  color: var(--ink);
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+}
+.cursor-blink {
+  display: inline-block;
+  width: 2px;
+  height: 0.8em;
+  background: var(--accent);
+  vertical-align: middle;
+  margin: 0 2px;
+  animation: blink 0.85s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+.hero-greeting-static { color: var(--muted); }
 
 /* Name line */
 .hero-name {
@@ -193,18 +213,20 @@ nav {
   font-size: 0.95rem;
   color: var(--muted);
   margin-bottom: 1.6rem;
-  display: flex; align-items: center; gap: 0.6rem;
-  flex-wrap: wrap;
+  display: flex; align-items: center; gap: 0.5rem;
+  flex-wrap: nowrap;
 }
 .discipline-word {
   color: var(--accent2);
   font-weight: 600;
   transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
 }
 .discipline-illustration {
   display: inline-flex; align-items: center;
   flex-shrink: 0;
-  opacity: 0.8;
+  opacity: 0.85;
+  line-height: 1;
 }
 
 .hero-bio {
@@ -278,6 +300,8 @@ nav {
   object-position: center top;
   display: block;
   border-radius: 4px;
+  border: none;
+  outline: none;
   box-shadow: 0 16px 48px rgba(0,0,0,0.13);
 }
 .hero-photo-placeholder {
@@ -462,7 +486,7 @@ footer { background: var(--ink); color: var(--paper); padding: 5rem 8% 2.5rem; }
 @media (max-width: 960px) {
   .cursor, .cursor-ring { display: none; }
   .nav-links { display: none; }
-  .hamburger { display: flex; }
+  .hamburger { display: flex; margin-left: auto; }
 
   .hero {
     grid-template-columns: 1fr;
@@ -485,15 +509,15 @@ footer { background: var(--ink); color: var(--paper); padding: 5rem 8% 2.5rem; }
     max-width: 280px;
     height: 340px;
     margin: 0 auto;
-    border: 1px dashed var(--border);
   }
   .hero-text {
     grid-row: 2;
     padding: 2rem 6% 4rem;
     justify-content: flex-start;
   }
-  .hero-greeting { font-size: clamp(1.8rem, 6vw, 2.6rem); }
+  .hero-greeting { font-size: 0.95rem; white-space: nowrap; }
   .hero-name { font-size: clamp(1.8rem, 6vw, 2.6rem); }
+  .discipline-illustration svg { width: 36px; height: 30px; }
 
   .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
   .recs-grid { grid-template-columns: 1fr; }
