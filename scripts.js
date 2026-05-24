@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   /* ── DISCIPLINE ROTATOR ── */
-  var disciplines = ['Technical Writer','Documentation Engineer','Content Strategist','API Writer','Knowledge Architect'];
+  var disciplines = ['Technical Writer','Documentation Engineer','AI Content Systems','Content Strategist','API Writer','Knowledge Architect'];
   var disciplineEl = document.querySelector('.discipline-word');
   var di = 0;
 
