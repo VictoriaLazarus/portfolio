@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', () => {
+
 /* ── CUSTOM CURSOR (desktop only) ── */
 const cursorDot = document.querySelector('.cursor');
 const cursorRing = document.querySelector('.cursor-ring');
@@ -27,7 +29,6 @@ function closeMenu() {
   mobileOverlay.classList.remove('open');
   document.body.style.overflow = '';
 }
-
 hamburger.addEventListener('click', () => {
   mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
 });
@@ -36,57 +37,51 @@ document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('cli
 
 /* ── TYPING — MULTILINGUAL GREETING ── */
 const greetings = [
-  { text: 'Hi',        lang: 'English'    },
-  { text: 'Bonjour',   lang: 'French'     },
-  { text: 'Hola',      lang: 'Spanish'    },
-  { text: 'Ciao',      lang: 'Italian'    },
-  { text: 'Olá',       lang: 'Portuguese' },
-  { text: 'こんにちは', lang: 'Japanese'   },
-  { text: 'Hallo',     lang: 'German'     },
-  { text: 'مرحبا',    lang: 'Arabic'     },
-  { text: 'Привет',    lang: 'Russian'    },
-  { text: 'Nǐ hǎo',   lang: 'Chinese'    },
+  'Hi', 'Bonjour', 'Hola', 'Ciao', 'Olá',
+  'こんにちは', 'Hallo', 'مرحبا', 'Привет', 'Nǐ hǎo'
 ];
 const typingEl = document.querySelector('.typing-text');
-let gi = 0;    // greeting index (start at 'Hi')
-let ci = 2;    // char index (start fully typed: 'Hi' = 2 chars)
-let deleting = false;
 
-function type() {
-  if (!typingEl) return;
-  const word = greetings[gi].text;
-  if (!deleting) {
-    ci++;
-    typingEl.textContent = word.slice(0, ci);
-    if (ci >= word.length) {
-      deleting = true;
-      setTimeout(type, 2000); // pause before deleting
-      return;
-    }
-    setTimeout(type, 130);
-  } else {
-    ci--;
-    typingEl.textContent = word.slice(0, ci);
-    if (ci <= 0) {
-      deleting = false;
-      gi = (gi + 1) % greetings.length;
-      setTimeout(type, 400);
-      return;
-    }
-    setTimeout(type, 75);
-  }
-}
-// Start with 'Hi' already shown, begin cycling after 2s pause
 if (typingEl) {
   typingEl.textContent = 'Hi';
-  setTimeout(type, 2200);
+  let gi = 0, ci = 2, deleting = false;
+
+  function type() {
+    const word = greetings[gi];
+    if (!deleting) {
+      ci++;
+      typingEl.textContent = word.slice(0, ci);
+      if (ci >= word.length) {
+        deleting = true;
+        setTimeout(type, 2000);
+        return;
+      }
+      setTimeout(type, 130);
+    } else {
+      ci--;
+      typingEl.textContent = word.slice(0, ci);
+      if (ci <= 0) {
+        deleting = false;
+        gi = (gi + 1) % greetings.length;
+        setTimeout(type, 380);
+        return;
+      }
+      setTimeout(type, 75);
+    }
+  }
+  setTimeout(type, 2200); // start cycling after showing 'Hi' for 2.2s
 }
 
 /* ── DISCIPLINE ROTATOR ── */
-const disciplines = ['Technical Writer', 'Documentation Engineer', 'Content Strategist', 'API Writer', 'Knowledge Architect'];
+const disciplines = [
+  'Technical Writer', 'Documentation Engineer',
+  'Content Strategist', 'API Writer', 'Knowledge Architect'
+];
 const disciplineEl = document.querySelector('.discipline-word');
 let di = 0;
+
 if (disciplineEl) {
+  disciplineEl.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
   setInterval(() => {
     disciplineEl.style.opacity = '0';
     disciplineEl.style.transform = 'translateY(-8px)';
@@ -94,14 +89,11 @@ if (disciplineEl) {
       di = (di + 1) % disciplines.length;
       disciplineEl.textContent = disciplines[di];
       disciplineEl.style.transform = 'translateY(8px)';
-      disciplineEl.style.opacity = '0';
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          disciplineEl.style.opacity = '1';
-          disciplineEl.style.transform = 'translateY(0)';
-        });
-      });
-    }, 300);
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        disciplineEl.style.opacity = '1';
+        disciplineEl.style.transform = 'translateY(0)';
+      }));
+    }, 320);
   }, 2800);
 }
 
@@ -121,3 +113,5 @@ window.addEventListener('scroll', () => {
     a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
   });
 }, { passive: true });
+
+}); // end DOMContentLoaded
