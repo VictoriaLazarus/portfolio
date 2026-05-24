@@ -35,34 +35,52 @@ mobileOverlay.addEventListener('click', closeMenu);
 document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', closeMenu));
 
 /* ── TYPING — MULTILINGUAL GREETING ── */
-const greetings = ['Hi', 'Bonjour', 'Hola', 'Ciao', 'Olá', 'こんにちは', 'Hallo', 'مرحبا', 'Привет', 'Nǐ hǎo'];
+const greetings = [
+  { text: 'Hi',        lang: 'English'    },
+  { text: 'Bonjour',   lang: 'French'     },
+  { text: 'Hola',      lang: 'Spanish'    },
+  { text: 'Ciao',      lang: 'Italian'    },
+  { text: 'Olá',       lang: 'Portuguese' },
+  { text: 'こんにちは', lang: 'Japanese'   },
+  { text: 'Hallo',     lang: 'German'     },
+  { text: 'مرحبا',    lang: 'Arabic'     },
+  { text: 'Привет',    lang: 'Russian'    },
+  { text: 'Nǐ hǎo',   lang: 'Chinese'    },
+];
 const typingEl = document.querySelector('.typing-text');
-let gi = 0, ci = 2, deleting = false;
+let gi = 0;    // greeting index (start at 'Hi')
+let ci = 2;    // char index (start fully typed: 'Hi' = 2 chars)
+let deleting = false;
 
 function type() {
-  const word = greetings[gi];
+  if (!typingEl) return;
+  const word = greetings[gi].text;
   if (!deleting) {
     ci++;
     typingEl.textContent = word.slice(0, ci);
-    if (ci === word.length) {
+    if (ci >= word.length) {
       deleting = true;
-      setTimeout(type, 2000);
+      setTimeout(type, 2000); // pause before deleting
       return;
     }
-    setTimeout(type, 120);
+    setTimeout(type, 130);
   } else {
     ci--;
     typingEl.textContent = word.slice(0, ci);
-    if (ci === 0) {
+    if (ci <= 0) {
       deleting = false;
       gi = (gi + 1) % greetings.length;
-      setTimeout(type, 350);
+      setTimeout(type, 400);
       return;
     }
-    setTimeout(type, 70);
+    setTimeout(type, 75);
   }
 }
-if (typingEl) setTimeout(type, 2200);
+// Start with 'Hi' already shown, begin cycling after 2s pause
+if (typingEl) {
+  typingEl.textContent = 'Hi';
+  setTimeout(type, 2200);
+}
 
 /* ── DISCIPLINE ROTATOR ── */
 const disciplines = ['Technical Writer', 'Documentation Engineer', 'Content Strategist', 'API Writer', 'Knowledge Architect'];
