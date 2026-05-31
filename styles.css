@@ -171,7 +171,7 @@ background: radial-gradient(circle, rgba(31,138,112,0.18) 0%, transparent 65%);
   content: '';
   position: absolute; bottom: -100px; left: -100px;
   width: 440px; height: 440px;
-  background: radial-gradient(circle, rgba(29,95,232,0.09) 0%, transparent 70%);
+ background: radial-gradient(circle, rgba(31,138,112,0.09) 0%, transparent 70%);
   pointer-events: none;
 }
 
