@@ -3,27 +3,27 @@
 
 /* ── VARIABLES ── */
 :root {
-  /* Deep dark blues — the main palette */
-  --bg:         #040d1a;       /* page background — near-black midnight */
-  --surface:    #07142b;       /* cards, sections */
-  --surface2:   #0b1e3d;       /* alternate sections */
-  --panel:      #0f2547;       /* elevated panels */
-  --panel2:     #122d56;       /* hover states, borders */
+  /* Backgrounds */
+  --bg:         #0b1118;
+  --surface:    #121a23;
+  --surface2:   #18222d;
+  --panel:      #1d2835;
+  --panel2:     #243243;
 
-  /* Accent — rich cobalt/indigo */
-  --accent:     #1d5fe8;       /* primary buttons, links */
-  --accent-mid: #3b76f0;       /* hover */
-  --accent-glow:rgba(29,95,232,0.22);
+  /* Accent — Deep Teal */
+  --accent:      #1f8a70;
+  --accent-mid:  #3aa88a;
+  --accent-glow: rgba(31,138,112,0.22);
 
   /* Text */
-  --white:      #ffffff;
-  --text-main:  #e8edf8;       /* body text */
-  --text-muted: #7a93be;       /* secondary text */
-  --text-dim:   #3d5a8a;       /* very muted */
+  --white:       #ffffff;
+  --text-main:   #eef2f5;
+  --text-muted:  #9fb3a8;
+  --text-dim:    #5d7368;
 
   /* Borders */
-  --border:     rgba(100,140,220,0.14);
-  --border-mid: rgba(100,140,220,0.22);
+  --border:      rgba(120,150,140,0.14);
+  --border-mid:  rgba(120,150,140,0.22);
 }
 
 html { scroll-behavior: smooth; }
@@ -164,7 +164,7 @@ nav {
   content: '';
   position: absolute; top: -160px; right: -120px;
   width: 680px; height: 680px;
-  background: radial-gradient(circle, rgba(29,95,232,0.18) 0%, transparent 65%);
+background: radial-gradient(circle, rgba(31,138,112,0.18) 0%, transparent 65%);
   pointer-events: none;
 }
 .hero::after {
@@ -215,12 +215,21 @@ nav {
 .hero-name {
   font-family: 'Fraunces', serif;
   font-size: clamp(2.6rem, 4.5vw, 4.6rem);
-  line-height: 1.05; font-weight: 700; font-style: italic;
-  /* Gradient name — the showstopper */
-  background: linear-gradient(135deg, #ffffff 20%, #93b8ff 60%, #1d5fe8 100%);
+  line-height: 1.05;
+  font-weight: 700;
+  font-style: italic;
+
+  background: linear-gradient(
+    135deg,
+    #ffffff 20%,
+    #8fd4c0 60%,
+    #1f8a70 100%
+  );
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+
   margin-bottom: 0.6rem;
 }
 
