@@ -47,7 +47,7 @@ em { font-style: italic; color: var(--accent-coral); }
 a  { color: inherit; text-decoration: none; }
 
 /* ══════════════════════════════════════════
-   NAV — links pushed to right edge
+   NAV
 ══════════════════════════════════════════ */
 #mainNav {
   position: fixed;
@@ -72,7 +72,6 @@ a  { color: inherit; text-decoration: none; }
 }
 .nav-logo span { color: var(--accent); }
 
-/* Links stay right */
 .nav-links {
   display: flex;
   align-items: center;
@@ -161,12 +160,13 @@ a  { color: inherit; text-decoration: none; }
 
 /* ══════════════════════════════════════════
    HERO
+   — reduced gap so image sits closer to text
 ══════════════════════════════════════════ */
 .hero {
   min-height: 100vh;
   padding: calc(var(--nav-h) + 3rem) clamp(1.25rem, 5vw, 4rem) 4rem;
   display: flex; align-items: center;
-  gap: clamp(2rem, 4vw, 4rem);
+  gap: clamp(1rem, 2vw, 2.5rem);   /* ← was clamp(2rem,4vw,4rem) */
   max-width: 1280px; margin: 0 auto;
 }
 .hero-text { flex: 1; min-width: 0; }
@@ -237,8 +237,6 @@ a  { color: inherit; text-decoration: none; }
 .stat-divider { width: 1px; height: 40px; background: var(--border2); }
 
 /* Buttons */
-.hero-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
-
 .btn {
   display: inline-flex; align-items: center; gap: 0.4rem;
   padding: 0.75rem 1.5rem; border-radius: 10px;
@@ -264,6 +262,8 @@ a  { color: inherit; text-decoration: none; }
   color: var(--accent2); transform: translateY(-2px);
 }
 
+.hero-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+
 /* Socials */
 .hero-socials { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .social-link {
@@ -276,10 +276,11 @@ a  { color: inherit; text-decoration: none; }
 .social-link:hover { color: var(--accent2); border-color: var(--accent); background: var(--surface2); }
 
 /* ══════════════════════════════════════════
-   HERO IMAGE — circular portrait, no ghost
+   HERO IMAGE
+   — flex width tightened, image shifted up
 ══════════════════════════════════════════ */
 .hero-image-col {
-  flex: 0 0 300px;             /* fixed width, stays close to text */
+  flex: 0 0 280px;             /* ← was 300px */
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -299,13 +300,12 @@ a  { color: inherit; text-decoration: none; }
   position: relative;
 }
 
-/* Hide ghost placeholder SVG completely */
 .hero-photo-placeholder > svg { display: none !important; }
 
 .hero-photo {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center 15%;
+  object-position: center 5%;   /* ← was 15% — shifts subject up */
   display: block;
   border-radius: 50%;
 }
@@ -362,7 +362,7 @@ a  { color: inherit; text-decoration: none; }
 .fade-up.visible { opacity: 1; transform: none; }
 
 /* ══════════════════════════════════════════
-   WORKS — refined hover arrow (small pill)
+   WORKS
 ══════════════════════════════════════════ */
 .works-category { margin-bottom: 3.5rem; }
 .category-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem; }
@@ -427,33 +427,36 @@ a  { color: inherit; text-decoration: none; }
 .work-card-meta span { color: var(--accent); }
 .work-card-title { font-size: 0.9rem; font-weight: 600; color: var(--text); line-height: 1.45; }
 
-/* ── Arrow: ultra-tiny, lightweight, hover only ── */
+/* ── Arrow pill — more visible, solid bg, bolder ── */
 .work-card-arrow {
   display: flex; align-items: center; justify-content: flex-end;
   padding: 0 0.9rem 0.75rem;
 }
 
 .work-card-pill {
-  display: inline-flex; align-items: center; gap: 0.25rem;
-  padding: 0.18rem 0.5rem;
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.28rem 0.65rem;                        /* ← bigger */
   border-radius: 999px;
-  border: 1px solid var(--border);
-  background: transparent;
-  font-size: 0.62rem; font-weight: 400; letter-spacing: 0.03em;
+  border: 1px solid rgba(201,149,42,0.25);          /* ← tinted, not transparent */
+  background: rgba(22,22,22,0.7);                   /* ← solid dark bg */
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.03em;
   color: var(--text3);
   white-space: nowrap;
   opacity: 0;
   transform: translateY(6px);
-  transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s, border-color 0.2s;
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s, border-color 0.2s, background 0.2s;
   pointer-events: none;
 }
 .work-card-pill svg {
-  width: 9px; height: 9px;
-  stroke: var(--text3); stroke-width: 1.8; flex-shrink: 0;
+  width: 11px; height: 11px;                        /* ← was 9px */
+  stroke: var(--text3); stroke-width: 2.2; flex-shrink: 0;
 }
 .work-card:hover .work-card-pill {
   opacity: 1; transform: translateY(0);
-  color: var(--accent2); border-color: rgba(201,149,42,0.3);
+  color: var(--accent2);
+  border-color: rgba(201,149,42,0.5);               /* ← more visible on hover */
+  background: rgba(22,22,22,0.9);
 }
 .work-card:hover .work-card-pill svg { stroke: var(--accent2); }
 
@@ -595,18 +598,18 @@ footer {
     align-items: center;
     text-align: left;
     padding-top: calc(var(--nav-h) + 2rem);
-    gap: 1.5rem;
+    gap: 1rem;                  /* ← was 1.5rem — tighter image-to-text gap */
   }
 
-  /* Image on mobile: circular, centered */
+  /* Image on mobile: larger circle, centered */
   .hero-image-col {
     width: 100%; justify-content: center;
     order: -1;
     margin-top: 0;
   }
   .hero-photo-placeholder {
-    width: 160px;
-    height: 160px;
+    width: 200px;               /* ← was 160px */
+    height: 200px;
     border-radius: 50%;
   }
   .hero-photo-placeholder > svg { display: none !important; }
@@ -640,5 +643,5 @@ footer {
   .section-wrap.alt > *  { padding-left: 1rem; padding-right: 1rem; }
   .rec-card  { padding: 1.25rem; }
   .rec-text  { font-size: 0.88rem; }
-  .hero-photo-placeholder { width: 140px; height: 140px; }
+  .hero-photo-placeholder { width: 170px; height: 170px; } /* ← was 140px */
 }
