@@ -169,7 +169,7 @@ a  { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: clamp(1rem, 3vw, 3rem);
+  gap: clamp(1rem, 2vw, 2rem);
   width: 100%;
   max-width: 100%;
   margin: 0;
@@ -333,24 +333,33 @@ a  { color: inherit; text-decoration: none; }
    SECTION LAYOUT
 ══════════════════════════════════════════ */
 .section-wrap {
-  padding: 6rem clamp(1.25rem, 5vw, 4rem);
-  max-width: 1280px; margin: 0 auto;
+  padding: 6rem clamp(1.25rem, 4vw, 3rem);
+  max-width: 100%;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 .section-wrap.alt {
   background: var(--surface); max-width: 100%;
   padding-left: 0; padding-right: 0;
 }
+
 .section-wrap.alt > * {
-  max-width: 1280px; margin-left: auto; margin-right: auto;
-  padding-left: clamp(1.25rem, 5vw, 4rem);
-  padding-right: clamp(1.25rem, 5vw, 4rem);
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
 }
+
 .section-wrap.alt .recs-grid,
 .section-wrap.alt .exp-list,
 .section-wrap.alt .tools-scroll-wrap {
-  max-width: 1280px; margin-left: auto; margin-right: auto;
-  padding-left: clamp(1.25rem, 5vw, 4rem);
-  padding-right: clamp(1.25rem, 5vw, 4rem);
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
 }
 
 .section-tag {
