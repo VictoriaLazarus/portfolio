@@ -276,26 +276,25 @@ a  { color: inherit; text-decoration: none; }
 .social-link:hover { color: var(--accent2); border-color: var(--accent); background: var(--surface2); }
 
 /* ══════════════════════════════════════════
-   HERO IMAGE
-   — flex width tightened, image shifted up
+   HERO IMAGE — circle, vertically centred
 ══════════════════════════════════════════ */
 .hero-image-col {
-  flex: 0 0 280px;             /* ← was 300px */
+  flex: 0 0 320px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;        /* vertically centre with text */
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 0;              /* no extra push */
 }
 .hero-photo-wrapper { position: relative; }
 
 .hero-photo-placeholder {
   width: 300px;
-  height: 380px;                         /* taller = face near the top, body fills in */
-  border-radius: 160px 160px 50% 50%;   /* pill/arch top, soft round bottom */
+  height: 300px;              /* equal width & height = perfect circle */
+  border-radius: 50%;         /* circle */
   background: var(--surface2);
   border: 3px solid rgba(201,149,42,0.35);
   overflow: hidden;
-  display: flex; align-items: flex-start; justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   box-shadow: 0 0 0 7px rgba(201,149,42,0.07), var(--shadow-lg);
   position: relative;
 }
@@ -305,9 +304,9 @@ a  { color: inherit; text-decoration: none; }
 .hero-photo {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center top;  /* face anchored to top of container */
+  object-position: center top;
   display: block;
-  border-radius: 0;             /* container handles the clipping shape */
+  border-radius: 0;
 }
 
 .hero-photo-badge {
@@ -597,20 +596,21 @@ footer {
     align-items: center;
     text-align: left;
     padding-top: calc(var(--nav-h) + 2rem);
-    gap: 1rem;                  /* ← was 1.5rem — tighter image-to-text gap */
+    gap: 1.5rem;
   }
 
-  /* Image on mobile: arch shape, centered, scaled down */
+  /* Image on mobile: same circle, just smaller */
   .hero-image-col {
-    width: 100%; justify-content: center;
-    order: -1;
+    width: 100%;
+    justify-content: center;
+    order: -1;                /* image above text on mobile */
     margin-top: 0;
+    flex: none;
   }
   .hero-photo-placeholder {
-    width: 160px;
-    height: 210px;
-    border-radius: 90px 90px 50% 50%;  /* arch on mobile too */
-    align-items: flex-start;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;       /* keep it a circle on mobile too */
   }
   .hero-photo-placeholder > svg { display: none !important; }
   .hero-photo { border-radius: 0; }
@@ -643,5 +643,5 @@ footer {
   .section-wrap.alt > *  { padding-left: 1rem; padding-right: 1rem; }
   .rec-card  { padding: 1.25rem; }
   .rec-text  { font-size: 0.88rem; }
-  .hero-photo-placeholder { width: 140px; height: 185px; border-radius: 80px 80px 50% 50%; } /* arch scaled for small phones */
+  .hero-photo-placeholder { width: 150px; height: 150px; border-radius: 50%; } /* arch scaled for small phones */
 }
