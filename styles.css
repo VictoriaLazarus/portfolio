@@ -168,12 +168,25 @@ a  { color: inherit; text-decoration: none; }
   padding: calc(var(--nav-h) + 3rem) clamp(1.25rem, 4vw, 3rem) 4rem;
   display: flex;
   align-items: center;
-  justify-content: flex-start;   /* ← was space-between */
-  gap: clamp(2rem, 5vw, 5rem);   /* ← controls the actual gap between text and image */
+  justify-content: flex-start;
+  gap: clamp(2rem, 4vw, 4rem);
   width: 100%;
   max-width: 100%;
   margin: 0;
   box-sizing: border-box;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 0;
+  max-width: 680px;
+}
+
+.hero-image-col {
+  flex: 1;                        /* ← grows to fill the empty space */
+  display: flex;
+  align-items: center;
+  justify-content: center;        /* ← centers the circle in the remaining space */
 }
 
 .hero-text {
@@ -236,16 +249,50 @@ a  { color: inherit; text-decoration: none; }
 }
 
 /* Stats */
+
 .hero-stats {
-  display: flex; align-items: center; gap: 1rem;
-  background: var(--surface); border: 1px solid var(--border2);
-  border-radius: var(--radius); padding: 1.1rem 1.5rem;
-  width: fit-content; margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;   /* ← spreads items across full width */
+  gap: 0;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+  padding: 1.4rem 2rem;
+  width: 100%;                      /* ← full width of .hero-text */
+  max-width: 100%;
+  margin-bottom: 2rem;
 }
-.stat-item    { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; }
-.stat-num     { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 700; color: var(--text); }
-.stat-label   { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); }
-.stat-divider { width: 1px; height: 40px; background: var(--border2); }
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  flex: 1;                          /* ← each stat takes equal space */
+}
+
+.stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;                  /* ← bigger number */
+  font-weight: 700;
+  color: var(--text);
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+.stat-divider {
+  width: 1px;
+  height: 48px;
+  background: var(--border2);
+  flex-shrink: 0;
+}
 
 /* Buttons */
 .btn {
@@ -376,8 +423,12 @@ a  { color: inherit; text-decoration: none; }
   color: var(--text); margin-bottom: 0.75rem; letter-spacing: -0.02em;
 }
 .section-sub {
-  font-size: 1rem; color: var(--text2);
-  max-width: 600px; margin-bottom: 3rem; line-height: 1.7;
+  font-size: 1rem;
+  color: var(--text2);
+  max-width: 100%;        /* ← was 600px, which caused the wrap */
+  margin-bottom: 3rem;
+  line-height: 1.7;
+  white-space: nowrap;    /* ← keeps it on one line on large screens */
 }
 
 .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
@@ -398,8 +449,14 @@ a  { color: inherit; text-decoration: none; }
 
 .works-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
+}
+
+@media (min-width: 1400px) {
+  .works-grid {
+    grid-template-columns: repeat(4, 1fr);  /* max 4 columns */
+  }
 }
 
 .work-card {
@@ -613,7 +670,10 @@ footer {
 @media (max-width: 900px) {
   .nav-links { display: none; }
   .hamburger { visibility: visible; pointer-events: auto; }
-
+  .section-sub {
+    white-space: normal;  /* ← wraps normally on mobile */
+    max-width: 100%;
+  }
   .hero {
     flex-direction: column;
     align-items: center;
