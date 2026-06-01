@@ -279,23 +279,23 @@ a  { color: inherit; text-decoration: none; }
    HERO IMAGE — circular portrait, no ghost
 ══════════════════════════════════════════ */
 .hero-image-col {
-  flex: 0 0 auto;
+  flex: 0 0 300px;             /* fixed width, stays close to text */
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  margin-top: -0.5rem;
+  margin-top: 1rem;
 }
 .hero-photo-wrapper { position: relative; }
 
 .hero-photo-placeholder {
-  width: 260px;
-  height: 260px;
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
   background: var(--surface2);
   border: 3px solid rgba(201,149,42,0.35);
   overflow: hidden;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 0 0 7px rgba(201,149,42,0.08), var(--shadow-lg);
+  box-shadow: 0 0 0 7px rgba(201,149,42,0.07), var(--shadow-lg);
   position: relative;
 }
 
@@ -427,38 +427,35 @@ a  { color: inherit; text-decoration: none; }
 .work-card-meta span { color: var(--accent); }
 .work-card-title { font-size: 0.9rem; font-weight: 600; color: var(--text); line-height: 1.45; }
 
-/* ── Arrow: tiny pill, slides up on hover ── */
+/* ── Arrow: ultra-tiny, lightweight, hover only ── */
 .work-card-arrow {
   display: flex; align-items: center; justify-content: flex-end;
-  padding: 0 0.9rem 0.9rem;
+  padding: 0 0.9rem 0.75rem;
 }
 
 .work-card-pill {
-  display: inline-flex; align-items: center; gap: 0.35rem;
-  padding: 0.28rem 0.65rem 0.28rem 0.75rem;
+  display: inline-flex; align-items: center; gap: 0.25rem;
+  padding: 0.18rem 0.5rem;
   border-radius: 999px;
-  border: 1px solid var(--border2);
-  background: var(--surface2);
-  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.04em;
-  color: var(--accent2);
+  border: 1px solid var(--border);
+  background: transparent;
+  font-size: 0.62rem; font-weight: 400; letter-spacing: 0.03em;
+  color: var(--text3);
   white-space: nowrap;
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.22s ease, transform 0.22s ease,
-              border-color 0.2s, background 0.2s;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s, border-color 0.2s;
   pointer-events: none;
 }
 .work-card-pill svg {
-  width: 11px; height: 11px;
-  stroke: var(--accent); flex-shrink: 0;
+  width: 9px; height: 9px;
+  stroke: var(--text3); stroke-width: 1.8; flex-shrink: 0;
 }
 .work-card:hover .work-card-pill {
   opacity: 1; transform: translateY(0);
+  color: var(--accent2); border-color: rgba(201,149,42,0.3);
 }
-.work-card:hover .work-card-pill:hover {
-  border-color: var(--accent);
-  background: rgba(201,149,42,0.1);
-}
+.work-card:hover .work-card-pill svg { stroke: var(--accent2); }
 
 /* ══════════════════════════════════════════
    EXPERIENCE
