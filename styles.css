@@ -4,28 +4,28 @@
 /* ── VARIABLES ── */
 :root {
   /* Backgrounds */
-  --bg:        #111417;
-  --surface:   #171c20;
-  --surface2:  #1d2328;
-  --panel:     #252d33;
-  --panel2:    #2d363d;
+  --bg:        #121315;
+  --surface:   #181a1d;
+  --surface2:  #202327;
+  --panel:     #292d33;
+  --panel2:    #323740;
 
-  /* Accent — muted sage */
-  --accent:    #7ea38a;
-  --accent-h:  #96b8a1;
-  --accent-dim: rgba(126,163,138,0.12);
-  --accent-glow: rgba(126,163,138,0.20);
+  /* Accent — soft copper */
+  --accent:    #c97b63;
+  --accent-h:  #d88d76;
+  --accent-dim: rgba(201,123,99,0.12);
+  --accent-glow: rgba(201,123,99,0.18);
 
   /* Text */
   --white:     #ffffff;
-  --text-head: #f6f7f5;
-  --text-body: #c6cbc7;
-  --text-sub:  #8d9591;
-  --text-dim:  #5e6663;
+  --text-head: #f5f4f2;
+  --text-body: #c8c6c2;
+  --text-sub:  #9b9892;
+  --text-dim:  #67635d;
 
   /* Borders */
-  --border:     rgba(126,163,138,0.10);
-  --border-mid: rgba(126,163,138,0.22);
+  --border:     rgba(201,123,99,0.10);
+  --border-mid: rgba(201,123,99,0.22);
   --border-w:   rgba(255,255,255,0.07);
 }
 
