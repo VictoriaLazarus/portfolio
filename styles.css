@@ -72,13 +72,13 @@ a  { color: inherit; text-decoration: none; }
 }
 .nav-logo span { color: var(--accent); }
 
-/* Links stay right — no auto margin, no flex centering */
+/* Links stay right */
 .nav-links {
   display: flex;
   align-items: center;
   gap: 0.25rem;
   list-style: none;
-  margin-left: auto;   /* pushes the group to the right */
+  margin-left: auto;
 }
 .nav-links a {
   font-size: 0.875rem; font-weight: 500;
@@ -210,13 +210,12 @@ a  { color: inherit; text-decoration: none; }
   font-family: 'DM Mono', monospace;
 }
 
-/* ── FIX: replace blue SVG book/pen icon with an amber one ── */
 .discipline-illustration { display: inline-flex; align-items: center; }
-.discipline-illustration svg { display: none; }  /* hide the hardcoded blue SVG */
+.discipline-illustration svg { display: none; }
 .discipline-illustration::after {
-  content: '✍';          /* amber pencil emoji — no blue, always on-brand */
+  content: '✍';
   font-size: 1.3rem;
-  filter: sepia(1) saturate(3) hue-rotate(5deg);  /* warms the emoji to amber */
+  filter: sepia(1) saturate(3) hue-rotate(5deg);
 }
 
 .hero-bio {
@@ -277,38 +276,36 @@ a  { color: inherit; text-decoration: none; }
 .social-link:hover { color: var(--accent2); border-color: var(--accent); background: var(--surface2); }
 
 /* ══════════════════════════════════════════
-   HERO IMAGE
-   FIX 1: smaller, portrait card style
-   FIX 2: NO background ghost diagram (removed
-           the placeholder SVG via CSS)
+   HERO IMAGE — circular portrait, no ghost
 ══════════════════════════════════════════ */
 .hero-image-col {
   flex: 0 0 auto;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: flex-start; justify-content: center;
+  padding-top: 1rem; /* nudge the photo up relative to text block */
 }
 .hero-photo-wrapper { position: relative; }
 
 .hero-photo-placeholder {
-  /* Smaller — 240px fixed, not clamped wide */
-  width: 240px;
-  aspect-ratio: 3/4;
-  border-radius: 20px;
-  background: var(--surface2);   /* plain dark bg — no ghost SVG */
-  border: 1px solid var(--border2);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;                  /* fully circular */
+  background: var(--surface2);
+  border: 3px solid var(--border2);
   overflow: hidden;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 0 0 6px rgba(201,149,42,0.12), var(--shadow-lg);
   position: relative;
 }
 
-/* Hide the ghost placeholder SVG completely */
-.hero-photo-placeholder > svg { display: none; }
+/* Hide ghost placeholder SVG completely */
+.hero-photo-placeholder > svg { display: none !important; }
 
 .hero-photo {
   width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
+  object-fit: cover;
+  object-position: center top;   /* show face, crop bottom */
   display: block;
-  border-radius: 20px;
+  border-radius: 50%;
 }
 
 .hero-photo-badge {
@@ -363,7 +360,7 @@ a  { color: inherit; text-decoration: none; }
 .fade-up.visible { opacity: 1; transform: none; }
 
 /* ══════════════════════════════════════════
-   WORKS — bold amber round hover arrow
+   WORKS — refined hover arrow (small pill)
 ══════════════════════════════════════════ */
 .works-category { margin-bottom: 3.5rem; }
 .category-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem; }
@@ -428,28 +425,36 @@ a  { color: inherit; text-decoration: none; }
 .work-card-meta span { color: var(--accent); }
 .work-card-title { font-size: 0.9rem; font-weight: 600; color: var(--text); line-height: 1.45; }
 
+/* ── Arrow: tiny pill, appears only on hover ── */
 .work-card-arrow {
   display: flex; align-items: center; justify-content: flex-end;
-  padding: 0.6rem 0.9rem 1rem;
+  padding: 0 0.9rem 0.9rem;
 }
 .work-card-arrow-circle {
-  width: 42px; height: 42px; border-radius: 50%;
-  background: var(--accent);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.3rem 0.75rem 0.3rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border2);
+  background: var(--surface2);
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em;
+  color: var(--accent2);
+  white-space: nowrap;
   opacity: 0;
-  transform: scale(0.65) translateY(8px);
-  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
-  box-shadow: 0 4px 16px var(--accent-glow);
+  transform: translateY(6px);
+  transition: opacity 0.22s ease, transform 0.22s ease, border-color 0.2s, background 0.2s;
 }
 .work-card-arrow-circle svg {
-  width: 18px; height: 18px;
-  stroke: #0f0f0f; stroke-width: 2.5; fill: none;
+  width: 11px; height: 11px;
+  stroke: var(--accent); stroke-width: 2.2; fill: none;
+  flex-shrink: 0;
 }
 .work-card:hover .work-card-arrow-circle {
-  opacity: 1; transform: scale(1) translateY(0);
+  opacity: 1; transform: translateY(0);
 }
-.work-card-arrow-circle:hover { background: var(--accent-hover); }
+.work-card-arrow-circle:hover {
+  border-color: var(--accent);
+  background: rgba(201,149,42,0.1);
+}
 
 /* ══════════════════════════════════════════
    EXPERIENCE
@@ -589,17 +594,22 @@ footer {
     align-items: center;
     text-align: left;
     padding-top: calc(var(--nav-h) + 2rem);
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
-  /* Image on mobile: smaller, centered, no ghost */
-  .hero-image-col { width: 100%; justify-content: center; order: -1; }
-  .hero-photo-placeholder {
-    width: 180px;      /* compact on mobile */
-    aspect-ratio: 3/4;
+  /* Image on mobile: circular, centered, compact */
+  .hero-image-col {
+    width: 100%; justify-content: center;
+    order: -1;
+    padding-top: 0;
   }
-  /* Ensure ghost SVG stays hidden on mobile too */
+  .hero-photo-placeholder {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+  }
   .hero-photo-placeholder > svg { display: none !important; }
+  .hero-photo { border-radius: 50%; }
 
   .hero-text { width: 100%; }
   .hero-stats { flex-wrap: wrap; gap: 0.75rem; width: 100%; justify-content: space-around; }
@@ -629,5 +639,5 @@ footer {
   .section-wrap.alt > *  { padding-left: 1rem; padding-right: 1rem; }
   .rec-card  { padding: 1.25rem; }
   .rec-text  { font-size: 0.88rem; }
-  .hero-photo-placeholder { width: 160px; }
+  .hero-photo-placeholder { width: 110px; height: 110px; }
 }
