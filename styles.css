@@ -3,26 +3,30 @@
 
 /* ── VARIABLES ── */
 :root {
-  --bg:          #f0f4ff;
-  --surface:     #e8eef9;
-  --surface2:    #dde5f5;
-  --panel:       #ffffff;
+  /* Backgrounds */
+  --bg:        #111417;
+  --surface:   #171c20;
+  --surface2:  #1d2328;
+  --panel:     #252d33;
+  --panel2:    #2d363d;
 
-  --navy:        #0f2557;
-  --navy-mid:    #1a3a80;
-  --accent:      #2353d4;
-  --accent-h:    #3b6ef5;
-  --accent-glow: rgba(35,83,212,0.18);
+  /* Accent — muted sage */
+  --accent:    #7ea38a;
+  --accent-h:  #96b8a1;
+  --accent-dim: rgba(126,163,138,0.12);
+  --accent-glow: rgba(126,163,138,0.20);
 
-  --white:       #ffffff;
-  --text-head:   #0a1a40;
-  --text-body:   #2d3f6e;
-  --text-sub:    #6278a8;
-  --text-dim:    #9aaacb;
+  /* Text */
+  --white:     #ffffff;
+  --text-head: #f6f7f5;
+  --text-body: #c6cbc7;
+  --text-sub:  #8d9591;
+  --text-dim:  #5e6663;
 
-  --border:      rgba(35,83,212,0.10);
-  --border-mid:  rgba(35,83,212,0.18);
-  --border-soft: rgba(35,83,212,0.06);
+  /* Borders */
+  --border:     rgba(126,163,138,0.10);
+  --border-mid: rgba(126,163,138,0.22);
+  --border-w:   rgba(255,255,255,0.07);
 }
 
 html { scroll-behavior: smooth; }
