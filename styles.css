@@ -160,7 +160,7 @@ a  { color: inherit; text-decoration: none; }
 
 /* ══════════════════════════════════════════
    HERO
-   — reduced gap so image sits closer to text
+   FIX: proper spacing, image pushed to far right
 ══════════════════════════════════════════ */
 
 .hero {
@@ -168,8 +168,8 @@ a  { color: inherit; text-decoration: none; }
   padding: calc(var(--nav-h) + 3rem) clamp(1.25rem, 4vw, 3rem) 4rem;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: clamp(3rem, 5vw, 6rem);
+  justify-content: space-between;   /* ← key fix: pushes image to far right */
+  gap: clamp(2rem, 4vw, 5rem);
   width: 100%;
   max-width: 100%;
   margin: 0;
@@ -177,22 +177,18 @@ a  { color: inherit; text-decoration: none; }
 }
 
 .hero-text {
-  flex: 1;
+  flex: 1 1 0;
   min-width: 0;
-  max-width: 680px;
+  max-width: 640px;
 }
 
+/* FIX: image column — fixed size, no growing, sits at far right */
 .hero-image-col {
-  flex: 0 0 420px;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.hero-text {
-  flex: 1;
-  min-width: 0;
-  max-width: 680px;   /* ← add this line */
+  justify-content: flex-end;
+  align-self: center;
 }
 
 .hero-eyebrow {
@@ -249,17 +245,16 @@ a  { color: inherit; text-decoration: none; }
 }
 
 /* Stats */
-
 .hero-stats {
   display: flex;
   align-items: center;
-  justify-content: space-between;   /* ← spreads items across full width */
+  justify-content: space-between;
   gap: 0;
   background: var(--surface);
   border: 1px solid var(--border2);
   border-radius: var(--radius);
   padding: 1.4rem 2rem;
-  width: 100%;                      /* ← full width of .hero-text */
+  width: 100%;
   max-width: 100%;
   margin-bottom: 2rem;
 }
@@ -269,12 +264,12 @@ a  { color: inherit; text-decoration: none; }
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
-  flex: 1;                          /* ← each stat takes equal space */
+  flex: 1;
 }
 
 .stat-num {
   font-family: 'Fraunces', serif;
-  font-size: 2rem;                  /* ← bigger number */
+  font-size: 2rem;
   font-weight: 700;
   color: var(--text);
 }
@@ -334,15 +329,14 @@ a  { color: inherit; text-decoration: none; }
 .social-link:hover { color: var(--accent2); border-color: var(--accent); background: var(--surface2); }
 
 /* ══════════════════════════════════════════
-   HERO IMAGE — circle, vertically centred
+   HERO IMAGE — circle, proper size & position
 ══════════════════════════════════════════ */
 
 .hero-photo-wrapper { position: relative; }
 
-
 .hero-photo-placeholder {
-  width: clamp(300px, 24vw, 430px);
-  height: clamp(300px, 24vw, 430px);
+  width: clamp(280px, 22vw, 400px);
+  height: clamp(280px, 22vw, 400px);
   border-radius: 50%;
   background: var(--surface2);
   border: 3px solid rgba(201,149,42,0.35);
@@ -417,10 +411,10 @@ a  { color: inherit; text-decoration: none; }
 .section-sub {
   font-size: 1rem;
   color: var(--text2);
-  max-width: 100%;        /* ← was 600px, which caused the wrap */
+  max-width: 100%;
   margin-bottom: 3rem;
   line-height: 1.7;
-  white-space: nowrap;    /* ← keeps it on one line on large screens */
+  white-space: nowrap;
 }
 
 .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
@@ -447,7 +441,7 @@ a  { color: inherit; text-decoration: none; }
 
 @media (min-width: 1400px) {
   .works-grid {
-    grid-template-columns: repeat(4, 1fr);  /* max 4 columns */
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -480,15 +474,28 @@ a  { color: inherit; text-decoration: none; }
   font-size: 2.4rem;
 }
 
+/* FIX: subtle badge — no bold colour block, just a soft ghost pill */
 .work-card-type {
   position: absolute; top: 0.6rem; left: 0.6rem;
-  font-size: 0.65rem; font-weight: 700;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  background: rgba(201,149,42,0.92); color: #0f0f0f;
-  padding: 0.25rem 0.55rem; border-radius: 6px;
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  background: rgba(0,0,0,0.52);
+  backdrop-filter: blur(6px);
+  color: rgba(255,255,255,0.72);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.12);
 }
-.work-card-type.landing { background: rgba(232,108,74,0.92); color: #fff; }
-.work-card-type.success { background: rgba(34,197,94,0.88); color: #0f0f0f; }
+.work-card-type.landing {
+  background: rgba(0,0,0,0.52);
+  color: rgba(232,108,74,0.9);
+  border-color: rgba(232,108,74,0.25);
+}
+.work-card-type.success {
+  background: rgba(0,0,0,0.52);
+  color: rgba(34,197,94,0.9);
+  border-color: rgba(34,197,94,0.25);
+}
 
 .work-card-body { padding: 0.9rem 1rem 0.6rem; flex: 1; }
 .work-card-meta {
@@ -498,7 +505,7 @@ a  { color: inherit; text-decoration: none; }
 .work-card-meta span { color: var(--accent); }
 .work-card-title { font-size: 0.9rem; font-weight: 600; color: var(--text); line-height: 1.45; }
 
-/* ── Arrow pill — solid, readable, contextual label ── */
+/* Arrow pill */
 .work-card-arrow {
   display: flex; align-items: center; justify-content: flex-end;
   padding: 0 0.9rem 0.85rem;
@@ -663,7 +670,7 @@ footer {
   .nav-links { display: none; }
   .hamburger { visibility: visible; pointer-events: auto; }
   .section-sub {
-    white-space: normal;  /* ← wraps normally on mobile */
+    white-space: normal;
     max-width: 100%;
   }
   .hero {
@@ -671,26 +678,26 @@ footer {
     align-items: center;
     text-align: left;
     padding-top: calc(var(--nav-h) + 2rem);
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
-  /* Image on mobile: same circle, just smaller */
   .hero-image-col {
     width: 100%;
     justify-content: center;
-    order: -1;                /* image above text on mobile */
+    order: -1;
     margin-top: 0;
     flex: none;
   }
- .hero-photo-placeholder {
-  width: 180px;
-  height: 180px;        /* equal = circle */
-  border-radius: 50%;   /* circle, not arch */
-}
+
+  .hero-photo-placeholder {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+  }
   .hero-photo-placeholder > svg { display: none !important; }
   .hero-photo { border-radius: 0; }
 
-  .hero-text { width: 100%; margin-top: 0.5rem;}
+  .hero-text { width: 100%; margin-top: 0.5rem; }
   .hero-stats { flex-wrap: wrap; gap: 0.75rem; width: 100%; justify-content: space-around; }
 
   .exp-item { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.75rem 0; }
@@ -718,5 +725,5 @@ footer {
   .section-wrap.alt > *  { padding-left: 1rem; padding-right: 1rem; }
   .rec-card  { padding: 1.25rem; }
   .rec-text  { font-size: 0.88rem; }
-  .hero-photo-placeholder { width: 150px; height: 150px; border-radius: 50%; } /* arch scaled for small phones */
+  .hero-photo-placeholder { width: 150px; height: 150px; border-radius: 50%; }
 }
