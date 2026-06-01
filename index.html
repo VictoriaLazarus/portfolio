@@ -4,9 +4,44 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Victoria Lazarus — Technical Writer</title>
-  <meta name="description" content="Technical Writer &amp; Documentation Engineer specialising in developer docs, API writing, and content strategy." />
+  <meta name="description" content="Technical Writer & Documentation Engineer specialising in developer docs, API writing, and content strategy." />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── CUSTOM CARD VISUALS ── */
+    .card-visual {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: flex-start; justify-content: flex-end;
+      padding: 1rem;
+      position: relative; overflow: hidden;
+    }
+    .card-visual-icon {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -60%);
+      font-size: 2.8rem; opacity: 0.18;
+      pointer-events: none;
+      font-family: 'DM Mono', monospace;
+      color: #fff; white-space: nowrap;
+      letter-spacing: -0.04em; font-weight: 700;
+    }
+    .card-visual-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      opacity: 0.55; color: #fff; position: relative; z-index: 1;
+    }
+    /* card colour themes */
+    .cv-indigo  { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1d1f3d 100%); }
+    .cv-teal    { background: linear-gradient(135deg, #042f2e 0%, #0f4c4a 50%, #134e4a 100%); }
+    .cv-slate   { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f1a2e 100%); }
+    .cv-amber   { background: linear-gradient(135deg, #1c1200 0%, #3d2800 50%, #2a1c00 100%); }
+    .cv-rose    { background: linear-gradient(135deg, #1f0a0a 0%, #3b1010 50%, #2a0d0d 100%); }
+    .cv-violet  { background: linear-gradient(135deg, #1a0a2e 0%, #2d1060 50%, #1e0a3c 100%); }
+    .cv-emerald { background: linear-gradient(135deg, #052e16 0%, #14532d 50%, #0a3320 100%); }
+    .cv-blue    { background: linear-gradient(135deg, #0a1628 0%, #0c2a52 50%, #071220 100%); }
+    .cv-navy    { background: linear-gradient(135deg, #030712 0%, #111827 50%, #0d1524 100%); }
+  </style>
 </head>
 <body>
 
@@ -34,6 +69,7 @@
   </button>
 </nav>
 
+<!-- ══════════════ HERO ══════════════ -->
 <section class="hero" id="home">
   <div class="hero-text">
     <p class="hero-eyebrow">Technical Writer &amp; Documentation Engineer</p>
@@ -43,21 +79,7 @@
     <h1 class="hero-name">Victoria Lazarus</h1>
     <p class="hero-discipline">
       Your <span class="discipline-word">Technical Writer</span>
-      <span class="discipline-illustration">
-        <svg width="42" height="36" viewBox="0 0 48 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="4" y="8" width="30" height="24" rx="2" fill="rgba(35,83,212,0.1)" stroke="#2353d4" stroke-width="1.2"/>
-          <rect x="4" y="8" width="5" height="24" fill="#2353d4" rx="1.5"/>
-          <line x1="14" y1="16" x2="30" y2="16" stroke="#2353d4" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.4"/>
-          <line x1="14" y1="21" x2="30" y2="21" stroke="#2353d4" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.4"/>
-          <line x1="14" y1="26" x2="24" y2="26" stroke="#2353d4" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.4"/>
-          <g transform="rotate(-30, 36, 14)">
-            <rect x="31" y="4" width="7" height="20" rx="1.5" fill="#0f2557"/>
-            <polygon points="31,24 38,24 34.5,32" fill="#091b42"/>
-            <rect x="31" y="4" width="7" height="5" rx="1.5" fill="#3b6ef5"/>
-            <line x1="34.5" y1="28" x2="34.5" y2="32" stroke="#ffffff" stroke-width="1"/>
-          </g>
-        </svg>
-      </span>
+      <span class="discipline-illustration"><svg width="42" height="36" viewBox="0 0 48 40" fill="none" xmlns="http://www.w3.org/2000/svg"></svg></span>
     </p>
     <p class="hero-bio">With over five years of experience in the writing industry and more than three years as a technical writer, I create documentation and content that simplify complex technologies and help users navigate products with confidence. I've worked across API documentation, developer guides, landing pages, and content strategy to improve how users understand and interact with products.</p>
     <div class="hero-stats">
@@ -94,21 +116,23 @@
       </a>
     </div>
   </div>
-
   <div class="hero-image-col">
     <div class="hero-photo-wrapper">
       <div class="hero-photo-placeholder">
         <img src="images/victoria.jpg" alt="Victoria Lazarus" class="hero-photo" />
       </div>
+      <div class="hero-photo-badge"><span>✦</span> Available for work</div>
     </div>
   </div>
 </section>
 
+<!-- ══════════════ WORKS ══════════════ -->
 <section class="section-wrap" id="works" style="padding-top: 3rem;">
   <div class="section-tag">Portfolio</div>
   <h2 class="section-title fade-up">Featured <em>Works</em></h2>
   <p class="section-sub fade-up">Articles, guides, documentation, and landing pages across databases, developer tools, and software.</p>
 
+  <!-- DATABASE, SQL & DEVELOPER TOOLS -->
   <div class="works-category fade-up">
     <div class="category-header">
       <span class="category-emoji">🗄️</span>
@@ -116,9 +140,13 @@
       <div class="category-line"></div>
     </div>
     <div class="works-grid">
+
       <a href="https://blog.devart.com/datareader-vs-dataset-a-guide-to-connected-and-disconnected-data-access.html" target="_blank" class="work-card">
         <div class="work-card-img">
-          <img src="https://cdn0.devart.com/images/og/dbforge-sql-studio-1200-1200.png" alt="DataReader vs DataSet" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;background:linear-gradient(135deg,#dde5f5,#c8d6f0);display:flex;align-items:center;justify-content:center;font-size:2.4rem&quot;>🔌</div>'"/>
+          <div class="card-visual cv-indigo">
+            <span class="card-visual-icon">ADO.NET</span>
+            <span class="card-visual-tag">Devart Blog</span>
+          </div>
           <span class="work-card-type">Article</span>
         </div>
         <div class="work-card-body">
@@ -127,9 +155,13 @@
         </div>
         <div class="work-card-arrow"><span class="work-card-pill">Read article&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
       </a>
+
       <a href="https://blog.devart.com/c-equivalent-of-the-tinyint-data-type-in-sql.html" target="_blank" class="work-card">
         <div class="work-card-img">
-          <img src="https://cdn0.devart.com/images/og/devart-1200-1200.png" alt="TinyInt SQL" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;background:linear-gradient(135deg,#dde5f5,#c8d6f0);display:flex;align-items:center;justify-content:center;font-size:2.4rem&quot;>🔌</div>'"/>
+          <div class="card-visual cv-slate">
+            <span class="card-visual-icon">C# / SQL</span>
+            <span class="card-visual-tag">Devart Blog</span>
+          </div>
           <span class="work-card-type">Article</span>
         </div>
         <div class="work-card-body">
@@ -138,9 +170,13 @@
         </div>
         <div class="work-card-arrow"><span class="work-card-pill">Read article&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
       </a>
+
       <a href="https://blog.devart.com/data-integrity-in-database.html" target="_blank" class="work-card">
         <div class="work-card-img">
-          <img src="https://cdn0.devart.com/images/og/devart-1200-1200.png" alt="Data Integrity" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;background:linear-gradient(135deg,#dde5f5,#c8d6f0);display:flex;align-items:center;justify-content:center;font-size:2.4rem&quot;>🔌</div>'"/>
+          <div class="card-visual cv-teal">
+            <span class="card-visual-icon">Databases</span>
+            <span class="card-visual-tag">Devart Blog</span>
+          </div>
           <span class="work-card-type">Article</span>
         </div>
         <div class="work-card-body">
@@ -149,9 +185,13 @@
         </div>
         <div class="work-card-arrow"><span class="work-card-pill">Read article&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
       </a>
+
       <a href="https://blog.devart.com/sql-server-filtered-indexes.html" target="_blank" class="work-card">
         <div class="work-card-img">
-          <img src="https://cdn0.devart.com/images/og/dbforge-sql-studio-1200-1200.png" alt="SQL Server Filtered Indexes" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;background:linear-gradient(135deg,#dde5f5,#c8d6f0);display:flex;align-items:center;justify-content:center;font-size:2.4rem&quot;>🔌</div>'"/>
+          <div class="card-visual cv-violet">
+            <span class="card-visual-icon">SQL Server</span>
+            <span class="card-visual-tag">Devart Blog</span>
+          </div>
           <span class="work-card-type">Article</span>
         </div>
         <div class="work-card-body">
@@ -160,9 +200,13 @@
         </div>
         <div class="work-card-arrow"><span class="work-card-pill">Read article&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
       </a>
+
       <a href="https://blog.devart.com/vector-database-explained-architecture-use-cases-examples.html" target="_blank" class="work-card">
         <div class="work-card-img">
-          <img src="https://cdn0.devart.com/images/og/devart-1200-1200.png" alt="Vector Database" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;background:linear-gradient(135deg,#dde5f5,#c8d6f0);display:flex;align-items:center;justify-content:center;font-size:2.4rem&quot;>🔌</div>'"/>
+          <div class="card-visual cv-navy">
+            <span class="card-visual-icon">Databases</span>
+            <span class="card-visual-tag">Devart Blog</span>
+          </div>
           <span class="work-card-type">Article</span>
         </div>
         <div class="work-card-body">
@@ -171,9 +215,13 @@
         </div>
         <div class="work-card-arrow"><span class="work-card-pill">Read article&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
       </a>
+
       <a href="https://www.devart.com/blog/top-50-mysql-interview-questions-and-answers-for-every-skill-level.htm" target="_blank" class="work-card">
         <div class="work-card-img">
-          <img src="https://cdn0.devart.com/images/og/devart-1200-1200.png" alt="MySQL Interview Questions" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;background:linear-gradient(135deg,#dde5f5,#c8d6f0);display:flex;align-items:center;justify-content:center;font-size:2.4rem&quot;>🔌</div>'"/>
+          <div class="card-visual cv-amber">
+            <span class="card-visual-icon">MySQL</span>
+            <span class="card-visual-tag">Devart Blog</span>
+          </div>
           <span class="work-card-type">Article</span>
         </div>
         <div class="work-card-body">
@@ -182,9 +230,13 @@
         </div>
         <div class="work-card-arrow"><span class="work-card-pill">Read article&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
       </a>
+
       <a href="https://www.devart.com/dbforge/sql/studio/sql-server-columnstore-indexes.html" target="_blank" class="work-card">
         <div class="work-card-img">
-          <img src="https://cdn0.devart.com/images/og/dbforge-sql-studio-1200-1200.png" alt="SQL Server Columnstore Indexes" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;background:linear-gradient(135deg,#dde5f5,#c8d6f0);display:flex;align-items:center;justify-content:center;font-size:2.4rem&quot;>🔌</div>'"/>
+          <div class="card-visual cv-blue">
+            <span class="card-visual-icon">SQL Server</span>
+            <span class="card-visual-tag">dbForge Studio</span>
+          </div>
           <span class="work-card-type landing">Landing Page</span>
         </div>
         <div class="work-card-body">
@@ -193,9 +245,13 @@
         </div>
         <div class="work-card-arrow"><span class="work-card-pill">View page&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
       </a>
+
       <a href="https://www.devart.com/dbforge/sql/studio/sql-server-audit.html" target="_blank" class="work-card">
         <div class="work-card-img">
-          <img src="https://cdn0.devart.com/images/og/dbforge-sql-studio-1200-1200.png" alt="SQL Server Audit" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;background:linear-gradient(135deg,#dde5f5,#c8d6f0);display:flex;align-items:center;justify-content:center;font-size:2.4rem&quot;>🔌</div>'"/>
+          <div class="card-visual cv-rose">
+            <span class="card-visual-icon">SQL Server</span>
+            <span class="card-visual-tag">dbForge Studio</span>
+          </div>
           <span class="work-card-type landing">Landing Page</span>
         </div>
         <div class="work-card-body">
@@ -204,9 +260,11 @@
         </div>
         <div class="work-card-arrow"><span class="work-card-pill">View page&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
       </a>
+
     </div>
   </div>
 
+  <!-- AI & EMERGING TECH -->
   <div class="works-category fade-up">
     <div class="category-header">
       <span class="category-emoji">🤖</span>
@@ -214,9 +272,13 @@
       <div class="category-line"></div>
     </div>
     <div class="works-grid">
+
       <a href="https://blog.devart.com/how-to-use-ai-for-mysql.html" target="_blank" class="work-card">
         <div class="work-card-img">
-          <img src="https://cdn0.devart.com/images/og/devart-1200-1200.png" alt="AI for MySQL" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;background:linear-gradient(135deg,#dde5f5,#c8d6f0);display:flex;align-items:center;justify-content:center;font-size:2.4rem&quot;>🔌</div>'"/>
+          <div class="card-visual cv-teal">
+            <span class="card-visual-icon">AI / MySQL</span>
+            <span class="card-visual-tag">Devart Blog</span>
+          </div>
           <span class="work-card-type">Article</span>
         </div>
         <div class="work-card-body">
@@ -225,9 +287,13 @@
         </div>
         <div class="work-card-arrow"><span class="work-card-pill">Read article&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
       </a>
+
       <a href="https://blog.devart.com/entra-id-authentication.html" target="_blank" class="work-card">
         <div class="work-card-img">
-          <img src="https://cdn0.devart.com/images/og/devart-1200-1200.png" alt="Entra ID Authentication" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;background:linear-gradient(135deg,#dde5f5,#c8d6f0);display:flex;align-items:center;justify-content:center;font-size:2.4rem&quot;>🔌</div>'"/>
+          <div class="card-visual cv-navy">
+            <span class="card-visual-icon">Security</span>
+            <span class="card-visual-tag">Devart Blog</span>
+          </div>
           <span class="work-card-type">Article</span>
         </div>
         <div class="work-card-body">
@@ -236,9 +302,13 @@
         </div>
         <div class="work-card-arrow"><span class="work-card-pill">Read article&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
       </a>
+
       <a href="https://blog.devart.com/mariadb-12-guide.html" target="_blank" class="work-card">
         <div class="work-card-img">
-          <img src="https://cdn0.devart.com/images/og/devart-1200-1200.png" alt="MariaDB 12" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;background:linear-gradient(135deg,#dde5f5,#c8d6f0);display:flex;align-items:center;justify-content:center;font-size:2.4rem&quot;>🔌</div>'"/>
+          <div class="card-visual cv-slate">
+            <span class="card-visual-icon">MariaDB</span>
+            <span class="card-visual-tag">Devart Blog</span>
+          </div>
           <span class="work-card-type">Article</span>
         </div>
         <div class="work-card-body">
@@ -247,9 +317,11 @@
         </div>
         <div class="work-card-arrow"><span class="work-card-pill">Read article&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
       </a>
+
     </div>
   </div>
 
+  <!-- PRODUCT PAGES & LANDING PAGES -->
   <div class="works-category fade-up">
     <div class="category-header">
       <span class="category-emoji">🌐</span>
@@ -257,9 +329,13 @@
       <div class="category-line"></div>
     </div>
     <div class="works-grid">
+
       <a href="https://www.devart.com/dbforge/best-sql-text-editors.html" target="_blank" class="work-card">
         <div class="work-card-img">
-          <img src="https://cdn0.devart.com/images/og/dbforge-sql-studio-1200-1200.png" alt="Best SQL Text Editors" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;background:linear-gradient(135deg,#dde5f5,#c8d6f0);display:flex;align-items:center;justify-content:center;font-size:2.4rem&quot;>🔌</div>'"/>
+          <div class="card-visual cv-violet">
+            <span class="card-visual-icon">Product</span>
+            <span class="card-visual-tag">dbForge</span>
+          </div>
           <span class="work-card-type landing">Landing Page</span>
         </div>
         <div class="work-card-body">
@@ -268,9 +344,13 @@
         </div>
         <div class="work-card-arrow"><span class="work-card-pill">View page&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
       </a>
+
       <a href="https://www.devart.com/dbforge/best-sql-server-tools.html" target="_blank" class="work-card">
         <div class="work-card-img">
-          <img src="https://cdn0.devart.com/images/og/dbforge-sql-studio-1200-1200.png" alt="Best SQL Server Tools" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;background:linear-gradient(135deg,#dde5f5,#c8d6f0);display:flex;align-items:center;justify-content:center;font-size:2.4rem&quot;>🔌</div>'"/>
+          <div class="card-visual cv-indigo">
+            <span class="card-visual-icon">Product</span>
+            <span class="card-visual-tag">dbForge</span>
+          </div>
           <span class="work-card-type landing">Landing Page</span>
         </div>
         <div class="work-card-body">
@@ -279,9 +359,13 @@
         </div>
         <div class="work-card-arrow"><span class="work-card-pill">View page&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
       </a>
+
       <a href="https://www.devart.com/blog/top-tools-to-connect-your-analytics-and-data-visualization-platforms-with-zoho-crm.html" target="_blank" class="work-card">
         <div class="work-card-img">
-          <img src="https://cdn0.devart.com/images/og/devart-1200-1200.png" alt="Zoho CRM Integrations" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;background:linear-gradient(135deg,#dde5f5,#c8d6f0);display:flex;align-items:center;justify-content:center;font-size:2.4rem&quot;>🔌</div>'"/>
+          <div class="card-visual cv-amber">
+            <span class="card-visual-icon">Integrations</span>
+            <span class="card-visual-tag">Devart Blog</span>
+          </div>
           <span class="work-card-type">Article</span>
         </div>
         <div class="work-card-body">
@@ -290,9 +374,13 @@
         </div>
         <div class="work-card-arrow"><span class="work-card-pill">Read article&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
       </a>
+
       <a href="https://www.devart.com/success-story/vivo.html" target="_blank" class="work-card">
         <div class="work-card-img">
-          <img src="https://www.devart.com/success-story/images/vivo/big_main_vivo.png" alt="Vivo GmbH Success Story" loading="lazy" onerror="this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;background:linear-gradient(135deg,#dde5f5,#c8d6f0);display:flex;align-items:center;justify-content:center;font-size:2.4rem&quot;>🔌</div>'"/>
+          <div class="card-visual cv-emerald">
+            <span class="card-visual-icon">Case Study</span>
+            <span class="card-visual-tag">Devart</span>
+          </div>
           <span class="work-card-type success">Success Story</span>
         </div>
         <div class="work-card-body">
@@ -301,9 +389,11 @@
         </div>
         <div class="work-card-arrow"><span class="work-card-pill">Read story&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
       </a>
+
     </div>
   </div>
 
+  <!-- TUTORIALS & HOW-TOS -->
   <div class="works-category fade-up">
     <div class="category-header">
       <span class="category-emoji">📖</span>
@@ -338,6 +428,7 @@
     </div>
   </div>
 
+  <!-- GETTING STARTED GUIDES -->
   <div class="works-category fade-up">
     <div class="category-header">
       <span class="category-emoji">🪜</span>
@@ -372,6 +463,7 @@
     </div>
   </div>
 
+  <!-- DEVELOPER DOCUMENTATION -->
   <div class="works-category fade-up">
     <div class="category-header">
       <span class="category-emoji">👨🏽‍💻</span>
@@ -398,6 +490,7 @@
     </div>
   </div>
 
+  <!-- API DOCUMENTATION -->
   <div class="works-category fade-up">
     <div class="category-header">
       <span class="category-emoji">📄</span>
@@ -433,6 +526,7 @@
   </div>
 </section>
 
+<!-- ══════════════ EXPERIENCE ══════════════ -->
 <section class="section-wrap alt" id="experience">
   <div class="section-tag">Career</div>
   <h2 class="section-title fade-up">Where I've <em>Grown</em></h2>
@@ -509,6 +603,7 @@
   </div>
 </section>
 
+<!-- ══════════════ TOOLS ══════════════ -->
 <section class="section-wrap" id="tools" style="padding-bottom: 0; overflow: hidden;">
   <div class="section-tag">Tools</div>
   <h2 class="section-title fade-up">Tech I <em>Geek Out On</em></h2>
@@ -583,6 +678,7 @@
   </div>
 </section>
 
+<!-- ══════════════ RECOMMENDATIONS ══════════════ -->
 <section class="section-wrap alt" id="recommendations">
   <div class="section-tag">Testimonials</div>
   <h2 class="section-title fade-up">On Working With <em>Victoria</em></h2>
@@ -614,6 +710,7 @@
   </div>
 </section>
 
+<!-- ══════════════ FOOTER ══════════════ -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
