@@ -165,10 +165,15 @@ a  { color: inherit; text-decoration: none; }
 .hero {
   min-height: 100vh;
   padding: calc(var(--nav-h) + 3rem) clamp(1.25rem, 5vw, 4rem) 4rem;
-  display: flex; align-items: center;
-  gap: clamp(1rem, 2vw, 2.5rem);   /* ← was clamp(2rem,4vw,4rem) */
-  max-width: 1280px; margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;   /* ← ADD this */
+  gap: clamp(1rem, 2vw, 2.5rem);
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;                       /* ← ADD this */
 }
+
 .hero-text { flex: 1; min-width: 0; }
 
 .hero-eyebrow {
@@ -278,19 +283,22 @@ a  { color: inherit; text-decoration: none; }
 /* ══════════════════════════════════════════
    HERO IMAGE — circle, vertically centred
 ══════════════════════════════════════════ */
+
 .hero-image-col {
   flex: 0 0 320px;
   display: flex;
-  align-items: center;        /* vertically centre with text */
-  justify-content: center;
-  margin-top: 0;              /* no extra push */
+  align-items: center;
+  justify-content: flex-end;    /* ← push image to right edge */
+  margin-top: 0;
 }
+
 .hero-photo-wrapper { position: relative; }
+
 
 .hero-photo-placeholder {
   width: 300px;
-  height: 300px;              /* equal width & height = perfect circle */
-  border-radius: 50%;         /* circle */
+  height: 300px;        /* equal = true circle */
+  border-radius: 50%;   /* perfect circle */
   background: var(--surface2);
   border: 3px solid rgba(201,149,42,0.35);
   overflow: hidden;
@@ -607,11 +615,11 @@ footer {
     margin-top: 0;
     flex: none;
   }
-  .hero-photo-placeholder {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;       /* keep it a circle on mobile too */
-  }
+ .hero-photo-placeholder {
+  width: 180px;
+  height: 180px;        /* equal = circle */
+  border-radius: 50%;   /* circle, not arch */
+}
   .hero-photo-placeholder > svg { display: none !important; }
   .hero-photo { border-radius: 0; }
 
