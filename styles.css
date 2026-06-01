@@ -423,7 +423,7 @@ a  { color: inherit; text-decoration: none; }
 /* ══════════════════════════════════════════
    WORKS
 ══════════════════════════════════════════ */
-.works-category { margin-bottom: 3.5rem; }
+works-category { margin-bottom: 3.5rem; }
 .category-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem; }
 .category-emoji  { font-size: 1.1rem; }
 .category-title  {
@@ -441,7 +441,7 @@ a  { color: inherit; text-decoration: none; }
 
 @media (min-width: 1400px) {
   .works-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);  /* max 4 columns */
   }
 }
 
@@ -474,28 +474,15 @@ a  { color: inherit; text-decoration: none; }
   font-size: 2.4rem;
 }
 
-/* FIX: subtle badge — no bold colour block, just a soft ghost pill */
 .work-card-type {
   position: absolute; top: 0.6rem; left: 0.6rem;
-  font-size: 0.62rem; font-weight: 600;
-  letter-spacing: 0.07em; text-transform: uppercase;
-  background: rgba(0,0,0,0.52);
-  backdrop-filter: blur(6px);
-  color: rgba(255,255,255,0.72);
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  border: 1px solid rgba(255,255,255,0.12);
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  background: rgba(201,149,42,0.92); color: #0f0f0f;
+  padding: 0.25rem 0.55rem; border-radius: 6px;
 }
-.work-card-type.landing {
-  background: rgba(0,0,0,0.52);
-  color: rgba(232,108,74,0.9);
-  border-color: rgba(232,108,74,0.25);
-}
-.work-card-type.success {
-  background: rgba(0,0,0,0.52);
-  color: rgba(34,197,94,0.9);
-  border-color: rgba(34,197,94,0.25);
-}
+.work-card-type.landing { background: rgba(232,108,74,0.92); color: #fff; }
+.work-card-type.success { background: rgba(34,197,94,0.88); color: #0f0f0f; }
 
 .work-card-body { padding: 0.9rem 1rem 0.6rem; flex: 1; }
 .work-card-meta {
@@ -505,7 +492,7 @@ a  { color: inherit; text-decoration: none; }
 .work-card-meta span { color: var(--accent); }
 .work-card-title { font-size: 0.9rem; font-weight: 600; color: var(--text); line-height: 1.45; }
 
-/* Arrow pill */
+/* ── Arrow pill — solid, readable, contextual label ── */
 .work-card-arrow {
   display: flex; align-items: center; justify-content: flex-end;
   padding: 0 0.9rem 0.85rem;
