@@ -292,13 +292,10 @@ a  { color: inherit; text-decoration: none; }
 }
 .work-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 36px var(--accent-glow); }
 
-/* ── CARD IMAGES: show image, mask the baked-in OG text with a dark
-   gradient overlay that covers the top where the text lives ── */
 .work-card-img {
   width: 100%; height: 160px;
   overflow: hidden; position: relative; background: var(--surface2);
 }
-
 .work-card-img img {
   width: 100%; height: 100%;
   object-fit: cover; object-position: center center;
@@ -306,9 +303,6 @@ a  { color: inherit; text-decoration: none; }
   transition: transform 0.5s ease;
 }
 .work-card:hover .work-card-img img { transform: scale(1.04); }
-
-/* Dark gradient covers the top ~60% where OG text lives,
-   fades out cleanly toward the bottom so it looks intentional */
 .work-card-img::after {
   content: '';
   position: absolute; inset: 0;
@@ -322,24 +316,20 @@ a  { color: inherit; text-decoration: none; }
   pointer-events: none;
   z-index: 1;
 }
-
-/* onerror fallback div still works above the overlay */
 .work-card-img > div { position: relative; z-index: 2; width: 100%; height: 100%; }
 
-.work-card-img-placeholder {
-  width: 100%; height: 160px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 2.8rem;
-}
-
+/* ── Badge / type pill ── */
 .work-card-type {
   position: absolute; top: 0.6rem; left: 0.6rem; z-index: 3;
   font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
   background: rgba(201,149,42,0.92); color: #0f0f0f;
   padding: 0.25rem 0.55rem; border-radius: 6px;
 }
+/* Article — default gold */
 .work-card-type.landing { background: rgba(232,108,74,0.92); color: #fff; }
-.work-card-type.success { background: rgba(34,197,94,0.88); color: #0f0f0f; }
+.work-card-type.success { background: rgba(34,197,94,0.88);  color: #0f0f0f; }
+.work-card-type.guide   { background: rgba(99,179,237,0.92);  color: #0a1628; }
+.work-card-type.apidoc  { background: rgba(154,115,239,0.92); color: #fff; }
 
 .work-card-body { padding: 0.9rem 1rem 0.6rem; flex: 1; }
 .work-card-meta {
@@ -440,7 +430,6 @@ footer { background: #0f0f0f; border-top: 1px solid var(--border); padding: 0 cl
   }
   .hero-photo-placeholder > svg { display: none !important; }
 
-  /* Stats — revert to ORIGINAL mobile design (box with dividers) */
   .hero-stats {
     display: flex;
     align-items: center;
