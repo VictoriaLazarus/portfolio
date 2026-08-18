@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study: API Documentation Guide — Victoria Lazarus</title>
+  <meta name="description" content="How I built a full docs-as-code workflow — Docusaurus, Git, and automated CI/CD — for a self-directed API documentation project." />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .cv-navy { background: linear-gradient(135deg, #030712 0%, #111827 50%, #0d1524 100%); }
+
+    .cs-hero {
+      padding: calc(var(--nav-h) + 3.5rem) clamp(1.25rem, 4vw, 3rem) 3rem;
+      max-width: 900px; margin: 0 auto;
+    }
+    .cs-back {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.85rem; color: var(--text2); margin-bottom: 1.75rem;
+      transition: color var(--transition);
+    }
+    .cs-back:hover { color: var(--accent2); }
+    .cs-eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent-coral); margin-bottom: 0.85rem;
+    }
+    .cs-title {
+      font-family: 'Fraunces', serif; font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700; color: var(--text); margin-bottom: 1rem; letter-spacing: -0.02em;
+    }
+    .cs-subtitle { font-size: 1.05rem; color: var(--text2); line-height: 1.7; max-width: 62ch; margin-bottom: 1.75rem; }
+    .cs-links { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+
+    .cs-terminal {
+      max-width: 900px; margin: 0 auto 4rem; padding: 2rem clamp(1.25rem, 4vw, 3rem);
+      border-radius: var(--radius-lg); border: 1px solid var(--border2);
+      font-family: 'DM Mono', monospace; font-size: 0.85rem; line-height: 2.1;
+    }
+    .cs-terminal .st-dim { color: rgba(255,255,255,0.4); }
+    .cs-terminal .st-accent { color: #7ee0a8; }
+    .cs-terminal .st-tag {
+      display: inline-block; font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 1rem;
+    }
+
+    .cs-body { max-width: 720px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem) 5rem; }
+    .cs-section { margin-bottom: 3rem; }
+    .cs-section h2 {
+      font-family: 'Fraunces', serif; font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      font-weight: 700; color: var(--text); margin-bottom: 1rem; letter-spacing: -0.01em;
+    }
+    .cs-section p { color: var(--text2); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; }
+    .cs-section p:last-child { margin-bottom: 0; }
+
+    .cs-steps { list-style: none; counter-reset: step; }
+    .cs-steps li {
+      counter-increment: step; position: relative; padding-left: 3rem;
+      margin-bottom: 1.5rem; color: var(--text2); font-size: 0.98rem; line-height: 1.75;
+    }
+    .cs-steps li:last-child { margin-bottom: 0; }
+    .cs-steps li::before {
+      content: counter(step);
+      position: absolute; left: 0; top: 0;
+      width: 2rem; height: 2rem; border-radius: 50%;
+      background: var(--surface2); border: 1px solid var(--border2);
+      color: var(--accent2); font-family: 'DM Mono', monospace; font-size: 0.85rem;
+      font-weight: 500; display: flex; align-items: center; justify-content: center;
+    }
+    .cs-steps strong { color: var(--text); font-weight: 600; }
+
+    .cs-stack { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .cs-stack span {
+      font-family: 'DM Mono', monospace; font-size: 0.75rem;
+      padding: 0.45rem 0.85rem; border: 1px solid var(--border2);
+      border-radius: 999px; color: var(--text2);
+    }
+
+    .cs-cta {
+      max-width: 720px; margin: 0 auto; padding: 2.5rem clamp(1.25rem, 4vw, 3rem);
+      border-top: 1px solid var(--border); display: flex; gap: 0.75rem; flex-wrap: wrap;
+    }
+
+    .cs-figure { margin: 1.75rem 0; }
+    .cs-figure img {
+      width: 100%; display: block; border-radius: var(--radius);
+      border: 1px solid var(--border2); box-shadow: var(--shadow-lg);
+    }
+    .cs-figure-caption {
+      font-size: 0.82rem; color: var(--text3); margin-top: 0.65rem;
+      font-family: 'DM Mono', monospace;
+    }
+  </style>
+</head>
+<body>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#works" class="mobile-link">Works</a>
+  <a href="index.html#experience" class="mobile-link">Experience</a>
+  <a href="index.html#tools" class="mobile-link">Tools</a>
+  <a href="index.html#recommendations" class="mobile-link">Recommendations</a>
+  <a href="https://eu.wps.com/cms/docs/d/cbRadlva2UbcaMfI" target="_blank" class="mobile-link">My Resume</a>
+  <a href="mailto:techcontentwithvicky@gmail.com" class="mobile-link">Contact</a>
+</div>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">VL <span>✦</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#works">Works</a></li>
+    <li><a href="index.html#experience">Experience</a></li>
+    <li><a href="index.html#tools">Tools</a></li>
+    <li><a href="index.html#recommendations">Recommendations</a></li>
+    <li><a href="mailto:techcontentwithvicky@gmail.com" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════════════ CASE STUDY HERO ══════════════ -->
+<section class="cs-hero">
+  <a href="index.html#works" class="cs-back">← Back to Works</a>
+  <p class="cs-eyebrow">✦ Case Study</p>
+  <h1 class="cs-title">API Documentation Guide</h1>
+  <p class="cs-subtitle">A self-directed project demonstrating a full docs-as-code workflow, built and published with Docusaurus — from Markdown authoring through automated CI/CD to a live site.</p>
+  <div class="cs-links">
+    <a href="https://victorialazarus.github.io/api-documentation-guide/" target="_blank" class="btn btn-primary">Visit Live Site</a>
+    <a href="https://github.com/VictoriaLazarus/api-documentation-guide" target="_blank" class="btn btn-outline">View Repo</a>
+  </div>
+</section>
+
+<div class="cs-terminal cv-navy">
+  <span class="st-tag">Publishing pipeline</span>
+  <p><span class="st-dim">$</span> git push origin main</p>
+  <p class="st-accent">✓ Build triggered — GitHub Actions</p>
+  <p class="st-accent">✓ Docusaurus site built</p>
+  <p class="st-accent">✓ Deployed to GitHub Pages</p>
+  <p><span class="st-dim">$</span> live in ~90 seconds, no manual steps</p>
+</div>
+
+<!-- ══════════════ CASE STUDY BODY ══════════════ -->
+<div class="cs-body">
+
+  <div class="cs-section">
+    <h2>The Problem</h2>
+    <p>Most of my portfolio work shows writing samples — articles, guides, and API docs written for existing products at companies I've worked with. None of it showed the engineering side of documentation: how docs actually get built, versioned, reviewed, and published as part of a real workflow. I wanted a project that proved I could own that pipeline end to end, not just hand off a finished draft.</p>
+  </div>
+
+  <div class="cs-section">
+    <h2>What I Built</h2>
+    <p><em>The Beginner's Guide to API Documentation</em> is a Docusaurus site that teaches the fundamentals of writing API documentation: HTTP and JSON basics, authentication, requests and responses, parameters, examples, and error handling, plus the documentation process itself — Git, docs-as-code, and publishing with Docusaurus. The content is deliberately educational rather than tied to one product, since the goal was to demonstrate the system behind the docs, not just add another writing sample.</p>
+  </div>
+
+  <div class="cs-section">
+    <h2>The Workflow</h2>
+    <ul class="cs-steps">
+      <li><strong>Authoring:</strong> Content written in Markdown/MDX, organized with Docusaurus's sidebar and versioning conventions.</li>
+      <li><strong>Version control:</strong> Full Git history with structured commits — content and site configuration tracked together in one repository.</li>
+      <li><strong>CI/CD:</strong> A GitHub Actions workflow builds and deploys the site automatically on every push to <code>main</code> — no manual build-and-upload step.</li>
+      <li><strong>Publishing:</strong> Static site generated by Docusaurus and hosted on GitHub Pages.</li>
+      <li><strong>Information architecture:</strong> Sidebar and doc structure organized around a logical learning path — foundations, testing, documentation, docs-as-code, Docusaurus, and publishing.</li>
+    </ul>
+
+    <div class="cs-figure">
+      <img src="images/github-actions-workflow.png" alt="GitHub Actions workflow run history for the API Documentation Guide repo, showing successful automated deploys to GitHub Pages" loading="lazy" />
+      <p class="cs-figure-caption">GitHub Actions — every push to main triggers an automated build and deploy to GitHub Pages.</p>
+    </div>
+  </div>
+
+  <div class="cs-section">
+    <h2>Why It Matters</h2>
+    <p>This project is the difference between saying "I understand docs-as-code" and showing a working pipeline: clone the repo, push a commit, and watch the Actions workflow build and deploy the live site automatically. It's the same toolchain I'd bring to a developer documentation role — Git-based collaboration, automated builds, and a static-site-generator publishing pipeline — applied end to end on a project I own outright.</p>
+  </div>
+
+  <div class="cs-section">
+    <h2>Stack</h2>
+    <div class="cs-stack">
+      <span>Docusaurus</span><span>Markdown/MDX</span><span>Git</span><span>GitHub</span><span>GitHub Actions</span><span>GitHub Pages</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="cs-cta">
+  <a href="https://victorialazarus.github.io/api-documentation-guide/" target="_blank" class="btn btn-primary">Visit Live Site</a>
+  <a href="https://github.com/VictoriaLazarus/api-documentation-guide" target="_blank" class="btn btn-outline">View Repo</a>
+  <a href="index.html#works" class="btn btn-outline">Back to Portfolio</a>
+</div>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <p>Victoria Lazarus</p>
+      <span>Technical Writer &amp; Documentation Engineer</span>
+      <p class="footer-bio">Bridging the gap between tech and users through content that works.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Connect</p>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/victoria-lazarus" target="_blank" class="footer-link">LinkedIn</a>
+        <a href="https://twitter.com/Toria_Oluchi" target="_blank" class="footer-link">Twitter / X</a>
+        <a href="https://github.com/VictoriaLazarus" target="_blank" class="footer-link">GitHub</a>
+        <a href="https://hashnode.com/@Vicisagem" target="_blank" class="footer-link">Hashnode Blog</a>
+        <a href="https://www.linkedin.com/newsletters/dear-technical-writers-7169617343709491200" target="_blank" class="footer-link">Newsletter</a>
+      </div>
+    </div>
+    <div>
+      <p class="footer-col-title">Quick Links</p>
+      <div class="footer-links">
+        <a href="index.html#works" class="footer-link">Works</a>
+        <a href="index.html#experience" class="footer-link">Experience</a>
+        <a href="index.html#tools" class="footer-link">Tools</a>
+        <a href="index.html#recommendations" class="footer-link">Recommendations</a>
+        <a href="https://eu.wps.com/cms/docs/d/cbRadlva2UbcaMfI" target="_blank" class="footer-link">Resume</a>
+        <a href="mailto:techcontentwithvicky@gmail.com" class="footer-link">techcontentwithvicky@gmail.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Victoria Lazarus. All Rights Reserved.</span>
+    <span>Technical Writer · Documentation Engineer · Content Strategist</span>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>
