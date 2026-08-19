@@ -122,7 +122,9 @@
   <a href="index.html#works" class="cs-back">← Back to Works</a>
   <p class="cs-eyebrow">✦ Case Study</p>
   <h1 class="cs-title">API Documentation Guide</h1>
-  <p class="cs-subtitle">Most API documentation guides teach APIs the way you'd train a developer — assuming you already read code fluently. I built the guide I wish I'd had: one that teaches API documentation from a technical writer's starting point, and used the project to prove out a full docs-as-code publishing workflow along the way.</p>
+  <p class="cs-subtitle">Most API documentation resources are written from a developer's perspective. They explain how to call an endpoint, work with a payload, or authenticate a request, but often assume the reader already understands the underlying concepts.
+So I built the guide I wish I'd had. A practical, progressive guide that teaches API documentation from the technical writer's starting point while demonstrating a complete docs-as-code workflow.
+</p>
   <div class="cs-links">
     <a href="https://victorialazarus.github.io/api-documentation-guide/" target="_blank" class="btn btn-primary">Visit Live Site</a>
     <a href="https://github.com/VictoriaLazarus" target="_blank" class="btn btn-outline">View GitHub Profile</a>
@@ -142,27 +144,36 @@
 <div class="cs-body">
 
   <div class="cs-section">
-    <h2>The Problem</h2>
-    <p>When I started learning to document APIs, most resources fell into one of two camps: developer tutorials that taught you to build an API, or reference docs that assumed you already understood REST, JSON, and authentication cold. Neither one taught the actual skill a technical writer needs — how to read an API and turn it into documentation a developer can use, when you're not the one who wrote the code.</p>
-    <p>There wasn't a resource written for someone standing where I was standing. So I built one.</p>
-  </div>
+    <h2>The problem</h2>
+    <p>When I started learning API documentation, I found resources that generally fell into two categories:</p>
+<ul>
+<li>Developer-focused tutorials that taught readers how to build or consume APIs.</li>
+<li>API reference documentation that assumed an existing understanding of REST, HTTP, JSON, authentication, and API behavior.</li>
+</ul>
+<p>What was missing was the bridge between the two: a resource that teaches a complete beginner how to understand an API, investigate its behavior, and turn this into documentation a developer can actually use.</p>
+<p>That gap became the basis for this project.</p>
+</div>
 
   <div class="cs-section">
-    <h2>What I Built</h2>
-    <p><em>The Beginner's Guide to API Documentation</em> teaches API documentation from the technical writer's side of the desk — not the developer's. Instead of starting with "here's how to call this endpoint," it starts where most technical writers actually start: not knowing what an API is yet, needing to understand HTTP and JSON before touching an endpoint, and needing to read an API's behavior well enough to document it accurately, without being the person who built it.</p>
+    <h2>What I built</h2>
+    <p><em>The Beginner's Guide to API Documentation</em> takes a progressive, technical-writer-first approach.
+It begins with API fundamentals before moving into the practical work of understanding and documenting an API. Instead of starting with "here's how to call this endpoint," it starts where most beginners actually start: not knowing what an API is yet, needing to understand HTTP and JSON before touching an endpoint, and understanding how to read an API's behavior well enough to document it accurately, without being the person who built it.</p>
     <p>The guide walks through that path in order: API fundamentals, testing endpoints to understand real request/response behavior, then documentation itself — parameters, examples, authentication, error handling. It closes with the part most guides skip entirely: how the docs actually get built and published — Git, docs-as-code workflows, and Docusaurus.</p>
     <p>That last stretch is also where the project stops being content and becomes a working system: I used it to build a real CI/CD pipeline, so the guide about docs-as-code is itself published using docs-as-code.</p>
   </div>
 
   <div class="cs-section">
-    <h2>The Workflow</h2>
+    <h2>The workflow</h2>
     <p>The publishing chapter of the guide isn't theoretical — it's a description of how this exact site works.</p>
     <ul class="cs-steps">
-      <li><strong>Authoring:</strong> Content written in Markdown/MDX, organized with Docusaurus's sidebar and versioning conventions.</li>
-      <li><strong>Version control:</strong> Full Git history with structured commits — content and site configuration tracked together in one repository.</li>
-      <li><strong>CI/CD:</strong> A GitHub Actions workflow builds and deploys the site automatically on every push to <code>main</code> — no manual build-and-upload step.</li>
-      <li><strong>Publishing:</strong> Static site generated by Docusaurus and hosted on GitHub Pages.</li>
-      <li><strong>Information architecture:</strong> The guide's own structure — foundations, testing, documentation, docs-as-code, Docusaurus, publishing — mirrors the order a technical writer actually needs to learn it in, not the order a developer would.</li>
+      <li><strong>Authoring:</strong> Content is written in Markdown/MDX and organized using Docusaurus's documentation structure and sidebar navigation.</li>
+      <li><strong>Version control:</strong> The project is maintained in Git, with documentation content, configuration, and site changes tracked in the same repository.</li>
+      <li><strong>CI/CD:</strong> GitHub Actions automatically builds the Docusaurus site when changes are merged into <code>main</code>. Successful builds are deployed automatically to GitHub Pages, eliminating the need for a manual build-and-upload process.</li>
+      <li><strong>Publishing:</strong> Docusaurus generates the static documentation site, which is hosted on GitHub Pages. The result is a complete workflow:
+<strong>Write</strong> → <strong>Commit</strong> → <strong>Branch</strong> → <strong>Pull Request</strong> → <strong>Review</strong> → <strong>Merge</strong> → <strong>Build</strong> → <strong>Deploy</strong>
+</li>
+      <li><strong>Information architecture:</strong> The guide is structured around the way a beginner needs to develop the knowledge required to document an API.
+It progresses from: <strong>Foundations</strong> → <strong>API concepts</strong> → <strong>API exploration</strong> → <strong>Documentation</strong> → <strong>Docs-as-code</strong> → <strong>Publishing</strong> → Final project</li>
     </ul>
 
     <div class="cs-figure">
@@ -172,8 +183,10 @@
   </div>
 
   <div class="cs-section">
-    <h2>Why It Matters</h2>
-    <p>This project does two things at once. It's documentation written for a reader nobody else was writing for — a technical writer who needs to learn API documentation from the ground up, not a developer who already knows what a payload is. And it's proof that I can own the full pipeline that gets documentation like this published: Git-based version control, automated builds, and a static-site-generator workflow, applied end to end on something I built myself.</p>
+    <h2>Why it matters</h2>
+    <p>This project demonstrates how I approach documentation as both a content discipline and an engineering practice. I identified a gap in existing API documentation resources. Then I designed this guide to take the reader from API fundamentals through endpoint testing and documentation, then into the docs-as-code workflow used to maintain and publish the content.</p>
+    <p>More importantly, I applied the workflow I was teaching to the project itself. The guide is maintained in Git, developed through feature branches and pull requests, built with Docusaurus, and automatically deployed to GitHub Pages through GitHub Actions. This allowed me to demonstrate the complete documentation lifecycle—from research and information architecture to authoring, version control, CI/CD, and publishing.</p>
+    <p>The result is more than a documentation guide. It is a practical demonstration of how I combine technical communication, developer-focused content, and documentation engineering to build and maintain documentation that is both useful to its audience and sustainable to publish.</p>
   </div>
 
   <div class="cs-section">
