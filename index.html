@@ -70,6 +70,24 @@
     }
     .spotlight-terminal .st-dim { color: rgba(255,255,255,0.4); }
     .spotlight-terminal .st-accent { color: #7ee0a8; }
+
+    .spotlight-pipeline {
+      display: flex; flex-direction: column; gap: 1.15rem;
+      margin: 1.75rem 0; padding-left: 0.15rem; position: relative;
+    }
+    .spotlight-pipeline::before {
+      content: ''; position: absolute; left: 5px; top: 9px; bottom: 9px;
+      width: 1px; background: rgba(255,255,255,0.14);
+    }
+    .sp-step { display: flex; align-items: center; gap: 0.85rem; position: relative; z-index: 1; }
+    .sp-dot {
+      width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0;
+      background: #7ee0a8; box-shadow: 0 0 0 4px rgba(126,224,168,0.15);
+    }
+    .sp-label {
+      font-family: 'DM Mono', monospace; font-size: 0.8rem;
+      color: rgba(255,255,255,0.75); letter-spacing: 0.01em;
+    }
     .spotlight-body {
       padding: 2.25rem clamp(1.5rem, 3vw, 2.75rem);
       display: flex; flex-direction: column; justify-content: center;
@@ -193,6 +211,14 @@
   <div class="spotlight fade-up">
     <div class="spotlight-visual cv-navy">
       <span class="spotlight-visual-tag">Docs-as-Code</span>
+
+      <div class="spotlight-pipeline">
+        <div class="sp-step"><span class="sp-dot"></span><span class="sp-label">Write in Markdown/MDX</span></div>
+        <div class="sp-step"><span class="sp-dot"></span><span class="sp-label">Commit &amp; push to Git</span></div>
+        <div class="sp-step"><span class="sp-dot"></span><span class="sp-label">GitHub Actions builds the site</span></div>
+        <div class="sp-step"><span class="sp-dot"></span><span class="sp-label">Deploys live to GitHub Pages</span></div>
+      </div>
+
       <div class="spotlight-terminal">
         <p><span class="st-dim">$</span> git push origin main</p>
         <p class="st-accent">✓ Build triggered — GitHub Actions</p>
@@ -216,6 +242,21 @@
 
   <!-- FEATURED WORKS -->
   <div class="works-grid">
+
+    <a href="https://eu.wps.com/cms/docs/d/cbRado8AsBzwWvuP" target="_blank" class="work-card">
+      <div class="work-card-img">
+        <div class="card-visual cv-purple">
+          <span class="card-visual-icon">Flight API</span>
+          <span class="card-visual-tag">AltexSoft · Feb 2025 · 13 min</span>
+        </div>
+        <span class="work-card-type apidoc">API Doc</span>
+      </div>
+      <div class="work-card-body">
+        <p class="work-card-meta">AltexSoft <span>·</span> Feb 2025 · 13 min</p>
+        <p class="work-card-title">Amadeus Flight API Implementation Guide</p>
+      </div>
+      <div class="work-card-arrow"><span class="work-card-pill">Read guide&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
+    </a>
 
     <a href="https://www.devart.com/success-story/vivo.html" target="_blank" class="work-card">
       <div class="work-card-img">
@@ -322,21 +363,6 @@
       <div class="work-card-arrow"><span class="work-card-pill">View page&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
     </a>
 
-    <a href="https://eu.wps.com/cms/docs/d/cbRado8AsBzwWvuP" target="_blank" class="work-card">
-      <div class="work-card-img">
-        <div class="card-visual cv-purple">
-          <span class="card-visual-icon">Flight API</span>
-          <span class="card-visual-tag">AltexSoft · Feb 2025 · 13 min</span>
-        </div>
-        <span class="work-card-type apidoc">API Doc</span>
-      </div>
-      <div class="work-card-body">
-        <p class="work-card-meta">AltexSoft <span>·</span> Feb 2025 · 13 min</p>
-        <p class="work-card-title">Amadeus Flight API Implementation Guide</p>
-      </div>
-      <div class="work-card-arrow"><span class="work-card-pill">Read guide&nbsp;<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
-    </a>
-    
   </div>
 </section>
 
