@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study: TMDB API Developer Guide — Victoria Lazarus</title>
+  <meta name="description" content="An OpenAPI 3.0 specification built from real endpoint testing — 52 operations across 51 paths, from Postman exploration through schema modeling, QA, and a published Mintlify reference." />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .cv-navy { background: linear-gradient(135deg, #030712 0%, #111827 50%, #0d1524 100%); }
+
+    .cs-hero {
+      padding: calc(var(--nav-h) + 3.5rem) clamp(1.25rem, 4vw, 3rem) 3rem;
+      max-width: 900px; margin: 0 auto;
+    }
+    .cs-back {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.85rem; color: var(--text2); margin-bottom: 1.75rem;
+      transition: color var(--transition);
+    }
+    .cs-back:hover { color: var(--accent2); }
+    .cs-eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent-coral); margin-bottom: 0.85rem;
+    }
+    .cs-title {
+      font-family: 'Fraunces', serif; font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700; color: var(--text); margin-bottom: 1rem; letter-spacing: -0.02em;
+    }
+    .cs-subtitle { font-size: 1.05rem; color: var(--text2); line-height: 1.7; max-width: 62ch; margin-bottom: 1.75rem; }
+    .cs-links { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+
+    .cs-terminal {
+      max-width: 900px; margin: 0 auto 4rem; padding: 2rem clamp(1.25rem, 4vw, 3rem);
+      border-radius: var(--radius-lg); border: 1px solid var(--border2);
+      font-family: 'DM Mono', monospace; font-size: 0.85rem; line-height: 2.1;
+    }
+    .cs-terminal .st-dim { color: rgba(255,255,255,0.4); }
+    .cs-terminal .st-accent { color: #7ee0a8; }
+    .cs-terminal .st-tag {
+      display: inline-block; font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 1rem;
+    }
+
+    .cs-body { max-width: 720px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem) 5rem; }
+    .cs-section { margin-bottom: 3rem; }
+    .cs-section h2 {
+      font-family: 'Fraunces', serif; font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      font-weight: 700; color: var(--text); margin-bottom: 1rem; letter-spacing: -0.01em;
+    }
+    .cs-section p { color: var(--text2); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; }
+    .cs-section p:last-child { margin-bottom: 0; }
+
+    .cs-steps { list-style: none; }
+    .cs-steps li {
+      position: relative; padding-left: 1.4rem;
+      margin-bottom: 1.1rem; color: var(--text2); font-size: 0.98rem; line-height: 1.75;
+    }
+    .cs-steps li:last-child { margin-bottom: 0; }
+    .cs-steps li::before {
+      content: '—'; position: absolute; left: 0; top: 0; color: var(--accent2);
+    }
+    .cs-steps strong { color: var(--text); font-weight: 600; }
+
+    .cs-stack { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .cs-stack span {
+      font-family: 'DM Mono', monospace; font-size: 0.75rem;
+      padding: 0.45rem 0.85rem; border: 1px solid var(--border2);
+      border-radius: 999px; color: var(--text2);
+    }
+
+    .cs-cta {
+      max-width: 720px; margin: 0 auto; padding: 2.5rem clamp(1.25rem, 4vw, 3rem);
+      border-top: 1px solid var(--border); display: flex; gap: 0.75rem; flex-wrap: wrap;
+    }
+
+    .cs-table-wrap { margin: 1.5rem 0; overflow-x: auto; border: 1px solid var(--border2); border-radius: var(--radius); }
+    .cs-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .cs-table th, .cs-table td {
+      padding: 0.75rem 1.1rem; text-align: left; border-bottom: 1px solid var(--border);
+    }
+    .cs-table th {
+      font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--text3); font-weight: 500;
+    }
+    .cs-table td { color: var(--text2); }
+    .cs-table td.cs-pass { color: #7ee0a8; font-family: 'DM Mono', monospace; text-align: right; }
+    .cs-table tr:last-child td { border-bottom: none; }
+    .cs-table-caption {
+      font-size: 0.82rem; color: var(--text3); margin-top: 0.65rem;
+      font-family: 'DM Mono', monospace;
+    }
+  </style>
+</head>
+<body>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#works" class="mobile-link">Works</a>
+  <a href="index.html#experience" class="mobile-link">Experience</a>
+  <a href="index.html#tools" class="mobile-link">Tools</a>
+  <a href="index.html#recommendations" class="mobile-link">Recommendations</a>
+  <a href="https://eu.wps.com/cms/docs/d/cbRadlva2UbcaMfI" target="_blank" class="mobile-link">My Resume</a>
+  <a href="mailto:techcontentwithvicky@gmail.com" class="mobile-link">Contact</a>
+</div>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">VL <span>✦</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#works">Works</a></li>
+    <li><a href="index.html#experience">Experience</a></li>
+    <li><a href="index.html#tools">Tools</a></li>
+    <li><a href="index.html#recommendations">Recommendations</a></li>
+    <li><a href="mailto:techcontentwithvicky@gmail.com" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════════════ CASE STUDY HERO ══════════════ -->
+<section class="cs-hero">
+  <a href="index.html#works" class="cs-back">← Back to Works</a>
+  <p class="cs-eyebrow">✦ Case Study</p>
+  <h1 class="cs-title">TMDB API Developer Guide</h1>
+  <p class="cs-subtitle">Testing a real API endpoint by endpoint, then turning that hands-on work into an OpenAPI 3.0 specification — 52 operations across 51 paths, published as a developer reference on Mintlify.</p>
+  <div class="cs-links">
+    <a href="https://techwith-vicky.mintlify.site/overview/introduction" target="_blank" class="btn btn-primary">View the Guide</a>
+  </div>
+</section>
+
+<div class="cs-terminal cv-navy">
+  <span class="st-tag">Documentation pipeline</span>
+  <p><span class="st-dim">$</span> test endpoints in Postman</p>
+  <p class="st-accent">✓ 52 operations across 51 paths tested</p>
+  <p class="st-accent">✓ OpenAPI 3.0 spec generated &amp; corrected</p>
+  <p class="st-accent">✓ Published as a developer reference on Mintlify</p>
+</div>
+
+<!-- ══════════════ CASE STUDY BODY ══════════════ -->
+<div class="cs-body">
+
+  <div class="cs-section">
+    <h2>The Problem</h2>
+    <p>Writing about an API secondhand is different from working with one directly — testing real endpoints, seeing what a response actually returns versus what the docs claim it returns, and catching the gaps in between. That gap-catching is the actual skill behind good API documentation, and it's hard to prove without doing it.</p>
+    <p>So I picked a real, public API and did exactly that: tested it endpoint by endpoint, then built a specification precise enough for a developer to work from without guessing.</p>
+  </div>
+
+  <div class="cs-section">
+    <h2>What I Built</h2>
+    <p>The <strong>TMDB API Developer Guide</strong> documents 52 operations across 51 paths of The Movie Database API — authentication, accounts, search, discover, movies, and more — as an OpenAPI 3.0 specification, published as a developer reference on Mintlify.</p>
+    <p>The spec wasn't generated and left alone. I tested every endpoint in Postman first — checking request parameters, response shapes, error behavior, and authentication flows (bearer auth, API keys, session tokens, guest sessions) — before a spec ever got written. The generated OpenAPI file was then reviewed and corrected line by line: fixing malformed paths, standardizing operation IDs, defining reusable schemas for shared structures like movies, people, and search results, and rewriting descriptions so they read like documentation, not autogenerated placeholder text.</p>
+  </div>
+
+  <div class="cs-section">
+    <h2>The Workflow</h2>
+    <ul class="cs-steps">
+      <li><strong>Exploration &amp; testing:</strong> Every endpoint tested in Postman first — path, query, and body parameters; authentication and session flows; both successful and error responses — before any specification existed.</li>
+      <li><strong>Specification generation:</strong> An OpenAPI 3.0 spec generated from the tested Postman collection, then treated as a first draft, not a final artifact.</li>
+      <li><strong>Structural review:</strong> Operation IDs standardized, malformed paths corrected, path parameters verified, request bodies validated against actual API behavior.</li>
+      <li><strong>Schema modeling:</strong> Reusable component schemas built for structures shared across endpoints — movies, people, search results, pagination, errors — instead of repeating definitions endpoint by endpoint.</li>
+      <li><strong>Documentation QA:</strong> Terminology, grammar, and descriptions rewritten for a developer reader; authentication requirements cross-checked against each endpoint's actual requirements.</li>
+      <li><strong>Publishing:</strong> Final specification prepared and published as a developer reference on Mintlify.</li>
+    </ul>
+
+    <div class="cs-table-wrap">
+      <table class="cs-table">
+        <thead>
+          <tr><th>Check</th><th>Result</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Operations documented</td><td class="cs-pass">52</td></tr>
+          <tr><td>Unique operation IDs</td><td class="cs-pass">52 / 52</td></tr>
+          <tr><td>Broken local $refs</td><td class="cs-pass">0</td></tr>
+          <tr><td>Missing path parameters</td><td class="cs-pass">0</td></tr>
+          <tr><td>Broken documentation URLs</td><td class="cs-pass">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cs-table-caption">Every check above was run against the finished specification before publishing.</p>
+  </div>
+
+  <div class="cs-section">
+    <h2>Why It Matters</h2>
+    <p>A specification can look complete and still be wrong — an endpoint that returns something different from what's documented, an auth requirement that doesn't match reality. Catching that takes actually testing the API, not just reading its docs and writing around them.</p>
+    <p>This project shows that process end to end: the Postman collection is the testing record, the OpenAPI spec is what came out of reconciling it against real behavior, and both are included so the work is checkable, not just claimed.</p>
+  </div>
+
+  <div class="cs-section">
+    <h2>Stack</h2>
+    <div class="cs-stack">
+      <span>Postman</span><span>OpenAPI 3.0</span><span>YAML</span><span>REST APIs</span><span>JSON</span><span>VS Code</span><span>Git</span><span>GitHub</span><span>Swagger Editor</span><span>Mintlify</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="cs-cta">
+  <a href="https://techwith-vicky.mintlify.site/overview/introduction" target="_blank" class="btn btn-primary">View the Guide</a>
+  <a href="index.html#works" class="btn btn-outline">Back to Portfolio</a>
+</div>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <p>Victoria Lazarus</p>
+      <span>Technical Writer &amp; Documentation Engineer</span>
+      <p class="footer-bio">Bridging the gap between tech and users through content that works.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Connect</p>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/victoria-lazarus" target="_blank" class="footer-link">LinkedIn</a>
+        <a href="https://twitter.com/Toria_Oluchi" target="_blank" class="footer-link">Twitter / X</a>
+        <a href="https://github.com/VictoriaLazarus" target="_blank" class="footer-link">GitHub</a>
+        <a href="https://hashnode.com/@Vicisagem" target="_blank" class="footer-link">Hashnode Blog</a>
+        <a href="https://www.linkedin.com/newsletters/dear-technical-writers-7169617343709491200" target="_blank" class="footer-link">Newsletter</a>
+      </div>
+    </div>
+    <div>
+      <p class="footer-col-title">Quick Links</p>
+      <div class="footer-links">
+        <a href="index.html#works" class="footer-link">Works</a>
+        <a href="index.html#experience" class="footer-link">Experience</a>
+        <a href="index.html#tools" class="footer-link">Tools</a>
+        <a href="index.html#recommendations" class="footer-link">Recommendations</a>
+        <a href="https://eu.wps.com/cms/docs/d/cbRadlva2UbcaMfI" target="_blank" class="footer-link">Resume</a>
+        <a href="mailto:techcontentwithvicky@gmail.com" class="footer-link">techcontentwithvicky@gmail.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Victoria Lazarus. All Rights Reserved.</span>
+    <span>Technical Writer · Documentation Engineer · Content Strategist</span>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>
