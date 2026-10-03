@@ -465,7 +465,7 @@ footer { background: #0f0f0f; border-top: 1px solid var(--border); padding: 0 cl
 
 /* ══════ RESPONSIVE ≤ 600px ══════ */
 @media (max-width: 600px) {
-  :root { --gutter: 1rem; }
+  .section-wrap  { padding-left: 1rem; padding-right: 1rem; }
 
   .hero-name     { font-size: clamp(2.2rem, 11vw, 3rem); white-space: normal; }
   .section-title { font-size: clamp(1.6rem, 7vw, 2.2rem); }
