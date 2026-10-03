@@ -128,7 +128,7 @@ a  { color: inherit; text-decoration: none; }
   flex: 0 0 auto;
   display: flex; align-items: center; justify-content: flex-start;
   align-self: flex-start;
-  margin-top: clamp(2.25rem, 5vw, 4rem);
+  margin-top: clamp(0.5rem, 1.5vw, 1.25rem);
 }
 .hero-eyebrow {
   font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em;
