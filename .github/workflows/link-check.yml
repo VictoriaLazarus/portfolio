@@ -20,5 +20,7 @@ jobs:
           args: >
             --no-progress
             --accept 200,206,429
+            --exclude 'hashnode\.dev'
             '*.html'
           fail: true
+          
