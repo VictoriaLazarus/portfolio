@@ -1,21 +1,27 @@
-   name: Check writing quality
+name: Check writing quality
 
-   on:
-     pull_request:
-       branches: [main]
-     workflow_dispatch:
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
 
-   jobs:
-     vale:
-       runs-on: ubuntu-latest
-       steps:
-         - name: Check out the repo
-           uses: actions/checkout@v4
+jobs:
+  vale:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
 
-         - name: Run Vale
-           uses: errata-ai/vale-action@v2
-           with:
-             files: all
-             fail_on_error: false
-           env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Debug Vale
+        run: |
+          curl -sL https://github.com/errata-ai/vale/releases/download/v3.24.0/vale_3.24.0_Linux_64-bit.tar.gz | tar xz
+          ./vale sync
+          ./vale index.html || true
+
+      - name: Run Vale
+        uses: errata-ai/vale-action@v2
+        with:
+          files: all
+          fail_on_error: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
