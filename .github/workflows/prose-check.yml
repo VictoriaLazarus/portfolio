@@ -1,0 +1,21 @@
+   name: Check writing quality
+
+   on:
+     pull_request:
+       branches: [main]
+     workflow_dispatch:
+
+   jobs:
+     vale:
+       runs-on: ubuntu-latest
+       steps:
+         - name: Check out the repo
+           uses: actions/checkout@v4
+
+         - name: Run Vale
+           uses: errata-ai/vale-action@v2
+           with:
+             files: all
+             fail_on_error: false
+           env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
