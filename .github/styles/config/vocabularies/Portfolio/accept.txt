@@ -21,3 +21,6 @@ Oluchi
 Zemliakova
 Yeven
 Pankratovych
+[Rr]epo
+repos
+API's
